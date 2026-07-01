@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasteles | El Lado Dulce</title>
+
+    <link rel="stylesheet" href="inicio.css">
+
+    <style>
+
+        .cake-hero{
+            background:#171b4f;
+            color:#fff;
+            padding:60px 45px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:60px;
+        }
+
+        .cake-info{
+            max-width:550px;
+        }
+
+        .cake-info h1{
+            font-size:58px;
+            margin-bottom:18px;
+        }
+
+        .cake-info p{
+            color:#d8d8ea;
+            line-height:1.7;
+            margin-bottom:28px;
+            max-width:360px;
+        }
+
+        .cake-buttons{
+            display:flex;
+            gap:15px;
+            margin-bottom:18px;
+        }
+
+        .btn-whatsapp{
+            background:#25D366;
+            color:#fff;
+            padding:12px 22px;
+            border-radius:30px;
+            font-weight:600;
+            font-size:14px;
+        }
+
+        .btn-custom{
+            border:1px solid #ff4f8b;
+            color:#ff4f8b;
+            padding:12px 22px;
+            border-radius:30px;
+            font-weight:600;
+            font-size:14px;
+        }
+
+        .cake-tags{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+        }
+
+        .cake-tags span{
+            background:#2b2f67;
+            color:#d8d8ea;
+            padding:8px 15px;
+            border-radius:20px;
+            font-size:12px;
+        }
+
+        .cake-image img{
+            width:340px;
+            height:260px;
+            object-fit:cover;
+            border-radius:18px;
+            background:#ececec;
+        }
+
+        .cakes-section{
+            background:#f6f1f4;
+            padding:45px;
+        }
+
+        .cakes-section h2{
+            color:#171b4f;
+            font-size:22px;
+            margin-bottom:25px;
+        }
+
+        .cakes-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:22px;
+        }
+
+        .cake-card{
+            background:#fff;
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:0 6px 18px rgba(0,0,0,.08);
+        }
+
+        .cake-card img{
+            width:100%;
+            height:300px;
+            object-fit:cover;
+            background:#e5e5e5;
+        }
+
+        .cake-content{
+            padding:18px;
+        }
+
+        .cake-content h3{
+            color:#171b4f;
+            margin-bottom:8px;
+            font-size:18px;
+        }
+
+        .cake-content p{
+            color:#7a7a93;
+            font-size:14px;
+            line-height:1.6;
+            margin-bottom:18px;
+        }
+
+        .cake-content a{
+            display:inline-block;
+            padding:8px 18px;
+            border:1px solid #ff4f8b;
+            color:#ff4f8b;
+            border-radius:25px;
+            font-size:13px;
+            transition:.2s;
+        }
+
+        .cake-content a:hover{
+            background:#ff4f8b;
+            color:white;
+        }
+
+        @media(max-width:900px){
+
+            .cake-hero{
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .cake-info p{
+                max-width:100%;
+            }
+
+            .cake-buttons,
+            .cake-tags{
+                justify-content:center;
+            }
+
+            .cakes-grid{
+                grid-template-columns:1fr;
+            }
+
+            .cake-image img{
+                width:100%;
+                max-width:340px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <img src="imagenes/logo2019.png" class="logo-img">
+        <span>El <strong>Lado Dulce</strong></span>
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="#">Helados</a>
+        <a href="#">Bebidas</a>
+        <a href="#">Crepes</a>
+        <a href="#">Boquitas</a>
+        <a class="active" href="pasteles.html">Pasteles</a>
+        <a href="#">Reservas</a>
+        <a href="#">Actividades</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Mi cuenta</a>
+    </nav>
+
+    <div class="cart">
+        <a href="#">🛒</a>
+    </div>
+
+</header>
+
+<section class="cake-hero">
+
+    <div class="cake-info">
+
+        <h1>Pasteles</h1>
+
+        <p>
+            Pasteles personalizados y prediseñados para cada ocasión especial.
+        </p>
+
+        <div class="cake-buttons">
+
+            <a href="#" class="btn-whatsapp">
+                Cotizar por WhatsApp
+            </a>
+
+            <a href="#" class="btn-custom">
+                Personalizar pastel
+            </a>
+
+        </div>
+
+        <div class="cake-tags">
+            <span>❤ Hechos con amor</span>
+            <span>🎂 Diseño a tu medida</span>
+        </div>
+
+    </div>
+
+    <div class="cake-image">
+        <img src="https://hips.hearstapps.com/hmg-prod/images/tarta-de-nata-y-fresas-elle-gourmet-67d13e7412b2a.jpg?crop=0.564xw:1.00xh;0.300xw,0&resize=640:*" alt="Pastel Principal">
+    </div>
+
+</section>
+
+<section class="cakes-section">
+
+<h2>PASTELES PREDISEÑADOS</h2>
+
+<div class="cakes-grid">
+    <!-- Tarjeta 1 -->
+    <div class="cake-card">
+        <img src="https://thumbs.dreamstime.com/b/impresionante-pastel-floral-de-colores-vivos-y-detalles-delicados-de-una-pr%C3%ADstina-superficie-de-m%C3%A1rmol-379006763.jpg" alt="Pastel Floral">
+
+        <div class="cake-content">
+            <h3>Pastel Floral</h3>
+            <p>
+                Delicado pastel decorado con flores naturales y crema suave.
+            </p>
+
+            <a href="#">Ver más</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="cake-card">
+        <img src="https://amoradulce.com/wp-content/uploads/2019/12/Torta-chocolate-1_04_13_2024-scaled.jpg" alt="Pastel de Chocolate">
+
+        <div class="cake-content">
+            <h3>Pastel de Chocolate</h3>
+            <p>
+                Intenso y húmedo, cubierto de ganache y decoraciones artesanales.
+            </p>
+
+            <a href="#">Ver más</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta 3 -->
+    <div class="cake-card">
+        <img src="https://cdn.shopify.com/s/files/1/0806/9876/9709/files/Delivery_Dia_del_Nino_2024confetti_480x480.jpg?v=1712098271" alt="Pastel Infantil">
+
+        <div class="cake-content">
+            <h3>Pastel Infantil</h3>
+            <p>
+                Colorido y divertido, perfecto para celebrar con los más pequeños.
+            </p>
+
+            <a href="#">Ver más</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta 4 -->
+    <div class="cake-card">
+        <img src="https://i.etsystatic.com/50694682/r/il/71e979/6232197493/il_570xN.6232197493_l8z9.jpg" alt="Pastel Minimalista">
+
+        <div class="cake-content">
+            <h3>Pastel Minimalista</h3>
+            <p>
+                Elegante y sencillo, para quienes aprecian la sofisticación.
+            </p>
+
+            <a href="#">Ver más</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta 5 -->
+    <div class="cake-card">
+        <img src="https://thescranline.com/wp-content/uploads/2021/09/BEST-EVER-BIRTHDAY-CAKE-THUMBNAIL-24-1.jpg" alt="Pastel de Cumpleaños">
+
+        <div class="cake-content">
+            <h3>Pastel de Cumpleaños</h3>
+            <p>
+                Clásico y festivo, ideal para hacer memorable cada celebración.
+            </p>
+
+            <a href="#">Ver más</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta 6 -->
+    <div class="cake-card">
+        <img src="https://images.stockcake.com/public/7/b/4/7b4c1c80-d687-4b1a-9025-b3f9b40c834f_large/elegant-wedding-cake-stockcake.jpg" alt="Pastel Elegante">
+
+        <div class="cake-content">
+            <h3>Pastel Elegante</h3>
+            <p>
+                Niveles perfectos con acabados en fondant y detalles exclusivos.
+            </p>
+
+            <a href="#">Ver más</a>
+        </div>
+    </div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+    <div>
+
+        <div class="footer-logo">
+            <img src="imagenes/logo2019.png" class="footer-logo-img">
+            <h3>El <span>Lado Dulce</span></h3>
+        </div>
+
+        <p>
+            Tu lugar favorito para endulzar cada momento.
+        </p>
+
+    </div>
+
+    <div>
+        <h3>Horarios</h3>
+
+        <p>
+            Lunes<br>
+            1:00 p.m. - 8:00 p.m.
+        </p>
+
+        <br>
+
+        <p>
+            Martes a Domingos<br>
+            1:00 p.m. - 9:00 p.m.
+        </p>
+
+    </div>
+
+    <div>
+
+        <h3>Ubicación</h3>
+
+        <p>
+            Brisas Mall, Av. Principal,
+            San Miguelito,
+            Provincia de Panamá.
+        </p>
+
+        <br>
+
+        <a href="#">
+            Cómo llegar →
+        </a>
+
+    </div>
+
+    <div>
+
+        <h3>Contacto</h3>
+
+        <p>@elladodulce</p>
+        <br>
+        <p>+507 315-8752</p>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 El Lado Dulce. Todos los derechos reservados.
+    </div>
+
+</footer>
+
+</body>
+</html>
