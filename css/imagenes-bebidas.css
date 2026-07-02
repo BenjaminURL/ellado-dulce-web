@@ -1,0 +1,86 @@
+/* =====================================================
+   IMAGENES-BEBIDAS.CSS
+   Aquí van únicamente las imágenes de los productos.
+   Así no se mezclan con tamaños, colores ni layout.
+===================================================== */
+
+/* Bebidas frías */
+.img-ice-coffee {
+    background-image:
+        url("../IMG/bebidas/ice-coffee.jpg"),
+        radial-gradient(circle, #b87941 0 30%, #eeeeee 31% 56%, #ffffff 57%);
+}
+
+.img-ice-latte {
+    background-image:
+        url("../IMG/bebidas/ice-latte.jpg"),
+        radial-gradient(circle, #c9c9c9 0 38%, #eeeeee 39% 60%, #ffffff 61%);
+}
+
+/* Frappes */
+.img-frappe-mocca {
+    background-image:
+        url("../IMG/bebidas/frappe-mocca.jpg"),
+        radial-gradient(circle, #21201d 0 36%, #dddddd 37% 58%, #ffffff 59%);
+}
+
+.img-frappe-vainilla {
+    background-image:
+        url("../IMG/bebidas/frappe-vainilla.jpg"),
+        radial-gradient(circle, #d99b42 0 27%, #161616 28% 38%, #eeeeee 39%);
+}
+
+.img-frappe-caramel {
+    background-image:
+        url("../IMG/bebidas/frappe-caramel.jpg"),
+        radial-gradient(circle, #ae7b4f 0 32%, #d5d5d5 33% 56%, #ffffff 57%);
+}
+
+/* Cafés calientes */
+.img-americano,
+.img-espresso,
+.img-espresso-doble,
+.img-cappuccino,
+.img-mocaccino,
+.img-latte,
+.img-latte-vainilla,
+.img-latte-amaretto,
+.img-chocolate {
+    background-image:
+        url("../IMG/bebidas/cafe-caliente.jpg"),
+        radial-gradient(circle, #85572e 0 30%, #eeeeee 31% 56%, #ffffff 57%);
+}
+
+/* Soft drinks */
+.img-soda,
+.img-agua {
+    background-image:
+        url("../IMG/bebidas/soft-drink.jpg"),
+        radial-gradient(circle, #c8c8c8 0 40%, #eeeeee 41% 60%, #ffffff 61%);
+}
+
+/* Smoothies */
+.img-smoothie-fresa {
+    background-image:
+        url("../IMG/bebidas/smoothie-fresa.jpg"),
+        radial-gradient(circle, #ff6f9f 0 35%, #ffe1ec 36% 60%, #ffffff 61%);
+}
+
+.img-smoothie-mango {
+    background-image:
+        url("../IMG/bebidas/smoothie-mango.jpg"),
+        radial-gradient(circle, #f6b23c 0 35%, #ffe5aa 36% 60%, #ffffff 61%);
+}
+
+/* Batidos */
+.img-batido-banana {
+    background-image:
+        url("../IMG/bebidas/batido-banana.jpg"),
+        radial-gradient(circle, #f1d46b 0 35%, #fff1b8 36% 60%, #ffffff 61%);
+}
+
+.img-batido-mixto {
+    background-image:
+        url("../IMG/bebidas/batido-mixto.jpg"),
+        radial-gradient(circle, #d86ee8 0 35%, #ffd9ff 36% 60%, #ffffff 61%);
+}

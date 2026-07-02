@@ -1,0 +1,140 @@
+/* =====================================================
+   MODALES.CSS
+   Estilos para las ventanas emergentes sin JavaScript.
+   Se usan cuando el botón apunta a un id, por ejemplo:
+   href="#ice-latte"
+===================================================== */
+
+/* Fondo oscuro del modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(23, 27, 79, 0.78);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+}
+
+/* Muestra el modal cuando el enlace apunta al id */
+.modal:target {
+    display: flex;
+}
+
+/* Caja blanca del modal */
+.modal-contenido {
+    width: 390px;
+    max-width: 100%;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 24px;
+    position: relative;
+    text-align: center;
+}
+
+/* Botón de cerrar */
+.cerrar {
+    position: absolute;
+    top: 12px;
+    right: 17px;
+    color: #ff477f;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Imagen del producto dentro del modal */
+.modal-img {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Textos del modal */
+.modal-contenido h2 {
+    color: #15184b;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.modal-contenido p {
+    color: #6f6c7d;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.modal-contenido strong {
+    display: block;
+    color: #ff477f;
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+
+/* Botones dentro del modal */
+.boton-modal,
+.modal-contenido button {
+    display: inline-block;
+    border: none;
+    background: #ff477f;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 11px 24px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-modal:hover,
+.modal-contenido button:hover {
+    background: #171b4f;
+}
+
+/* Formularios de pedido rápido */
+.modal-contenido form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.modal-contenido label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #15184b;
+}
+
+.modal-contenido textarea,
+.modal-contenido select {
+    width: 100%;
+    border: 1px solid #f0e3ea;
+    border-radius: 12px;
+    padding: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    resize: vertical;
+}
+
+/* Modales con formulario de personalización */
+.modal-formulario {
+    text-align: left;
+    max-height: 92vh;
+    overflow-y: auto;
+}
+
+.modal-formulario h2,
+.modal-formulario p,
+.modal-formulario strong {
+    text-align: center;
+}
+
+.modal-formulario form {
+    margin-top: 16px;
+}
+
+.modal-formulario label {
+    font-size: 12px;
+    font-weight: 800;
+}

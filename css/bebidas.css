@@ -1,0 +1,219 @@
+/* =====================================================
+   BEBIDAS.CSS
+   Estilos específicos de la página bebidas.html:
+   banner, video de fondo, categorías, grid de productos
+   y tarjetas del catálogo.
+===================================================== */
+
+/* =========================
+   BANNER CON VIDEO
+========================= */
+
+.banner {
+    min-height: 250px;
+    background: #171b4f;
+    color: #ffffff;
+    padding: 48px 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Video de fondo del banner */
+.video-fondo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 320%;
+    transform: translate(-50%, -50%);
+    border: none;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Capa oscura encima del video para que el texto se lea */
+.capa-video {
+    position: absolute;
+    inset: 0;
+    background: rgba(23, 27, 79, 0.72);
+    z-index: 1;
+}
+
+/* Texto y decoración del banner encima del video */
+.banner-texto,
+.banner-foto {
+    position: relative;
+    z-index: 2;
+}
+
+.banner h1 {
+    font-size: 57px;
+    line-height: 1;
+    margin-bottom: 14px;
+    letter-spacing: -2px;
+}
+
+.banner p {
+    color: #d8daef;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Decoración visual del banner */
+.banner-foto {
+    width: 145px;
+    height: 145px;
+    background: #f3f0f5;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.foto-cafe,
+.foto-bebida-oscura {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    top: 45px;
+}
+
+.foto-cafe {
+    left: 27px;
+    background: radial-gradient(circle, #b87941 0 35%, #f3e6dc 36% 58%, #ffffff 59%);
+}
+
+.foto-bebida-oscura {
+    right: 22px;
+    background: radial-gradient(circle, #17271f 0 45%, #e6e6e6 46% 62%, #ffffff 63%);
+}
+
+/* =========================
+   CONTENIDO Y CATEGORÍAS
+========================= */
+
+.contenido {
+    padding: 42px 34px 56px;
+}
+
+.categoria {
+    margin-bottom: 58px;
+}
+
+.categoria h2 {
+    text-align: left;
+    color: #171b4f;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+}
+
+/* Grid principal de productos */
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 22px;
+    align-items: stretch;
+}
+
+/* Grid para soda y agua */
+.grid-soft {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    max-width: 520px;
+}
+
+/* =========================
+   TARJETAS DE PRODUCTOS
+========================= */
+
+.tarjeta {
+    background: #ffffff;
+    border: 1px solid #f3dce7;
+    border-radius: 18px;
+    padding: 28px 18px 18px;
+    min-height: 275px;
+    text-align: center;
+    transition: 0.2s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    border-color: #ff5f9a;
+}
+
+/* Imagen circular del producto */
+.producto-img {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    margin-bottom: 22px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 12px solid #eeeeee;
+}
+
+/* Nombre del producto */
+.tarjeta h3 {
+    color: #171b4f;
+    font-size: 19px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+/* Descripción breve */
+.tarjeta p {
+    color: #5f6178;
+    font-size: 13px;
+    line-height: 1.4;
+    min-height: 36px;
+}
+
+/* Precio */
+.precio {
+    display: block;
+    color: #ff477f;
+    font-weight: 900;
+    font-size: 18px;
+    margin: 20px 0 10px;
+}
+
+/* Etiqueta Regular */
+.etiqueta {
+    display: inline-block;
+    background: #171b4f;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-top: 10px;
+}
+
+/* Botón Ver más */
+.boton {
+    margin-top: auto;
+    display: inline-block;
+    padding: 8px 25px;
+    border: 1px solid #ff477f;
+    border-radius: 999px;
+    color: #ff477f;
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.boton:hover {
+    background: #ff477f;
+    color: #ffffff;
+}
