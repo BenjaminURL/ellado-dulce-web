@@ -722,3 +722,508 @@ main {
     }
 
 }
+
+.custom-header{
+
+    background:#171b4f;
+    color:white;
+
+    padding:60px 50px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.header-text{
+
+    max-width:650px;
+
+}
+
+.header-text h1{
+
+    font-size:42px;
+    margin-bottom:18px;
+
+}
+
+.header-text p{
+
+    color:#d9d9ec;
+    line-height:1.7;
+
+}
+
+
+.preview-panel{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.preview-panel img{
+
+    width:100%;
+
+    height:520px;
+
+    object-fit:contain;
+
+}
+
+.summary-panel{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    height:fit-content;
+
+    position:sticky;
+
+    top:30px;
+
+}
+
+.summary-panel h2{
+
+    color:#171b4f;
+
+    margin-bottom:25px;
+
+}
+
+.summary-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+    font-size:15px;
+
+}
+
+.summary-item span{
+
+    color:#777;
+
+}
+
+.summary-item strong{
+
+    color:#171b4f;
+
+}
+
+.summary-price{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:25px 0;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.summary-panel button{
+
+    width:100%;
+
+    margin-top:10px;
+
+}
+
+/*========================================*/
+
+
+.category{
+
+    margin-bottom:55px;
+
+}
+
+.category h2{
+
+    color:#171b4f;
+
+    margin-bottom:20px;
+
+    font-size:28px;
+
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+}
+
+/*========================================*/
+
+
+.option-card:hover{
+
+    transform:translateY(-8px) scale(1.02);
+
+    border-color:#ff4f8b;
+
+    box-shadow:0 12px 28px rgba(255,79,139,.25);
+
+}
+
+.option-card.selected{
+
+    border-color:#ff4f8b;
+
+}
+
+.option-card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+.option-info{
+
+    padding:18px;
+
+}
+
+.option-info h3{
+
+    color:#171b4f;
+
+    margin-bottom:10px;
+
+}
+
+.option-info p{
+
+    color:#777;
+
+    line-height:1.6;
+
+    font-size:14px;
+
+    margin-bottom:15px;
+
+}
+
+.option-price{
+
+    color:#ff4f8b;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+/*========================================*/
+
+@media(max-width:950px){
+
+    .cake-configurator{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .summary-panel{
+
+        position:static;
+
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .custom-header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:25px;
+
+    }
+
+}
+
+#previewCake{
+
+    transition:.35s;
+
+}
+
+.option-card{
+
+    position:relative;
+
+}
+
+.option-card.selected::after{
+
+    content:"✓";
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    width:28px;
+
+    height:28px;
+
+    border-radius:50%;
+
+    background:#ff4f8b;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:bold;
+
+}
+
+.cart{
+
+    position:relative;
+
+}
+
+#cartCount{
+
+    position:absolute;
+
+    top:-8px;
+
+    right:-10px;
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    background:#ff4f8b;
+
+    color:white;
+
+    font-size:11px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:bold;
+
+}
+
+/* =========================
+   CONFIGURADOR MODERNO
+========================= */
+
+.configurator-grid {
+    max-width: 1200px;
+    margin: 45px auto;
+    padding: 0 25px 60px;
+    display: grid;
+    grid-template-columns: 1.8fr 3fr 2fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ===== HEADER ===== */
+.custom-header {
+    background: #171b4f;
+    color: white;
+    padding: 60px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-text {
+    max-width: 650px;
+}
+
+.header-text h1 {
+    font-size: 42px;
+    margin-bottom: 18px;
+}
+
+.header-text p {
+    color: #d9d9ec;
+    line-height: 1.7;
+}
+
+/* ===== PREVIEW ===== */
+.preview-panel {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    position: sticky;
+    top: 30px;
+}
+
+#previewCake {
+    width: 100%;
+    height: 420px;
+    object-fit: contain;
+    transition: .35s;
+    border-radius: 12px;
+}
+
+/* ===== OPCIONES ===== */
+.options-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.category h2 {
+    color: #171b4f;
+    margin-bottom: 14px;
+    font-size: 22px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+/* tarjetas generadas por JS */
+.cards div,
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    cursor: pointer;
+    transition: .25s;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.cards div:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(255, 79, 139, 0.18);
+}
+
+.cards div * {
+    pointer-events: none;
+}
+
+/* seleccionado (JS debe agregar clase selected si quieres) */
+.cards div.selected {
+    border-color: #ff4f8b;
+}
+
+/* ===== RESUMEN ===== */
+.summary-panel {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    position: sticky;
+    top: 30px;
+    height: fit-content;
+}
+
+.summary-panel h2 {
+    color: #171b4f;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    font-size: 14px;
+}
+
+.summary-item span {
+    color: #777;
+}
+
+.summary-price {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.summary-panel button {
+    width: 100%;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 950px) {
+    .configurator-grid {
+        grid-template-columns: 2fr 3fr 1.8fr;
+    }
+
+    .preview-panel,
+    .summary-panel {
+        position: static;
+    }
+
+    .summary-panel {
+        min-width: 280px;
+    }
+
+    .summary-panel {
+        padding: 28px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .custom-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+}

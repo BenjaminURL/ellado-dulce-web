@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Personalizar Pastel | El Lado Dulce</title>
+
+    <link rel="stylesheet" href="inicio.css">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <img src="img/logo.png" class="logo-img">
+            <span>El <strong>Lado Dulce</strong></span>
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="#">Helados</a>
+            <a href="#">Bebidas</a>
+            <a href="#">Crepes</a>
+            <a href="#">Boquitas</a>
+            <a class="active" href="pasteles.html">Pasteles</a>
+            <a href="#">Reservas</a>
+            <a href="#">Actividades</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Mi Cuenta</a>
+        </nav>
+
+        <div class="cart">
+
+            🛒
+
+            <span id="cartCount">
+
+                0
+
+            </span>
+
+        </div>
+
+    </header>
+
+    <!--================ HERO =================-->
+
+    <section class="custom-header">
+
+        <div class="header-text">
+
+            <h1>Personaliza tu pastel</h1>
+
+            <p>
+
+                Diseña tu pastel ideal seleccionando la base, el sabor,
+                la cobertura y la decoración. La vista previa cambiará
+                automáticamente conforme hagas tus elecciones.
+
+            </p>
+
+        </div>
+
+        <a href="pasteles.html" class="btn-custom">
+
+            ← Volver
+
+        </a>
+
+    </section>
+
+
+    <!--================ CONFIGURADOR =================-->
+
+    <section class="configurator-grid">
+
+        <!--========== VISTA PREVIA ==========-->
+
+        <div class="preview-panel">
+
+            <img
+
+                id="previewCake"
+
+                src="img/combinaciones/base1_sabor1_cobertura1_decoracion1.png"
+
+                alt="Vista previa"
+
+            >
+
+        </div>
+
+
+        <!--========== OPCIONES ==========-->
+
+        <div class="options-panel">
+
+            <div class="category">
+
+                <h2>Base</h2>
+
+                <div
+                    class="cards"
+                    id="cardsBase">
+
+                </div>
+
+            </div>
+
+            <div class="category">
+
+                <h2>Sabor</h2>
+
+                <div
+                    class="cards"
+                    id="cardsSabor">
+
+                </div>
+
+            </div>
+
+            <div class="category">
+
+                <h2>Cobertura</h2>
+
+                <div
+                    class="cards"
+                    id="cardsCobertura">
+
+                </div>
+
+            </div>
+
+            <div class="category">
+
+                <h2>Decoración</h2>
+
+                <div
+                    class="cards"
+                    id="cardsDecoracion">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!--========== RESUMEN ==========-->
+
+        <aside class="summary-panel">
+
+            <h2>
+
+                Resumen
+
+            </h2>
+
+            <div class="summary-item">
+
+                <span>Base</span>
+
+                <strong id="txtBase">
+
+                    Redondo
+
+                </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+                <span>Sabor</span>
+
+                <strong id="txtSabor">
+
+                    Vainilla
+
+                </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+                <span>Cobertura</span>
+
+                <strong id="txtCobertura">
+
+                    Chantillí
+
+                </strong>
+
+            </div>
+
+            <div class="summary-item">
+
+                <span>Decoración</span>
+
+                <strong id="txtDecoracion">
+
+                    Flores
+
+                </strong>
+
+            </div>
+
+            <hr>
+
+            <div class="summary-price">
+
+                <span>Total</span>
+
+                <strong id="txtPrecio">
+
+                    B/.19.99
+
+                </strong>
+
+            </div>
+
+            <button
+
+                id="btnAgregar"
+
+                class="btn-primary">
+
+                Agregar al carrito
+
+            </button>
+
+        </aside>
+
+</section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div>
+
+            <div class="footer-logo">
+
+                <img
+                    src="img/logo.png"
+                    class="footer-logo-img"
+                    alt="Logo">
+
+                <h3>
+
+                    El <span>Lado Dulce</span>
+
+                </h3>
+
+            </div>
+
+            <p>
+
+                Tu lugar favorito para celebrar cada ocasión
+                con un postre hecho especialmente para ti.
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Horarios</h3>
+
+            <p>
+
+                Lunes<br>
+                10:00 a.m. - 8:00 p.m.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                Martes a Domingo<br>
+                10:00 a.m. - 9:00 p.m.
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Ubicación</h3>
+
+            <p>
+
+                Brisas Mall<br>
+                San Miguelito<br>
+                Provincia de Panamá
+
+            </p>
+
+            <br>
+
+            <a href="#">
+
+                Cómo llegar →
+
+            </a>
+
+        </div>
+
+        <div>
+
+            <h3>Contacto</h3>
+
+            <p>
+
+                @elladodulce
+
+            </p>
+
+            <br>
+
+            <p>
+
+                +507 318-8752
+
+            </p>
+
+        </div>
+
+        <div class="copyright">
+
+            © 2026 El Lado Dulce. Todos los derechos reservados.
+
+        </div>
+
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="personalizarPastel.js"></script>
+
+</body>
+
+</html>
