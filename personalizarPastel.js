@@ -126,9 +126,6 @@ function crearTarjetas(categoria, contenedorID){
 
         tarjeta.innerHTML = `
 
-            <img
-                src="${opcion.imagen}"
-                alt="${opcion.nombre}">
 
             <div class="option-info">
 

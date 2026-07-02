@@ -849,16 +849,6 @@ main {
 
 }
 
-.cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:22px;
-
-}
-
 /*========================================*/
 
 
@@ -888,30 +878,19 @@ main {
 
 }
 
-.option-info{
-
-    padding:18px;
-
+.option-info {
+    padding: 0;
 }
 
-.option-info h3{
-
-    color:#171b4f;
-
-    margin-bottom:10px;
-
+.option-info h3 {
+    font-size: 14px;
+    margin: 0;
 }
 
-.option-info p{
-
-    color:#777;
-
-    line-height:1.6;
-
-    font-size:14px;
-
-    margin-bottom:15px;
-
+.option-info p {
+    font-size: 12px;
+    margin: 0;
+    color: #ff4f8b;
 }
 
 .option-price{
@@ -940,11 +919,6 @@ main {
 
     }
 
-    .cards{
-
-        grid-template-columns:1fr;
-
-    }
 
     .custom-header{
 
@@ -1101,26 +1075,30 @@ main {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
 
 /* tarjetas generadas por JS */
 .cards div,
 .card {
     background: white;
-    border-radius: 14px;
-    padding: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06);
     cursor: pointer;
-    transition: .25s;
+    transition: .2s;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     border: 2px solid transparent;
-    text-align: center;
 }
 
 .cards div:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(255, 79, 139, 0.18);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(255, 79, 139, 0.15);
 }
 
 .cards div * {
@@ -1190,9 +1168,6 @@ main {
         padding: 28px;
     }
 
-    .cards {
-        grid-template-columns: 1fr;
-    }
 
     .custom-header {
         flex-direction: column;
