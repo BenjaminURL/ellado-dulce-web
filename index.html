@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio | Ellado Dulce</title>
-    <link rel="stylesheet" href="inicio.css">
+<title>Inicio | Ellado Dulce</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="inicio.css">
 </head>
 <body>
 
@@ -16,7 +21,7 @@
 
         <nav class="menu">
             <a href="#" class="active">Inicio</a>
-            <a href="#">Helados</a>
+            <a href="helados.html">Helados</a>
             <a href="#">Bebidas</a>
             <a href="#">Crepes</a>
             <a href="#">Boquitas</a>
@@ -31,28 +36,30 @@
 
     <main>
 
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Endulza tu día <br><span>con Ellado Dulce</span></h1>
-                <p>
-                    Helados, crepes, cafés, pasteles personalizados, boquitas para eventos
-                    y actividades creativas para crear momentos inolvidables.
-                </p>
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-content">
+            <h1>Endulza tu día <br><span>con Ellado Dulce</span></h1>
+            <p>
+                Helados, crepes, cafés, pasteles personalizados, boquitas para eventos
+                y actividades creativas para crear momentos inolvidables.
+            </p>
 
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">Ver menú</a>
-                    <a href="#" class="btn btn-outline">Reservar ahora</a>
-                </div>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Ver menú</a>
+                <a href="#" class="btn btn-outline">Reservar ahora</a>
             </div>
+        </div>
 
-            <div class="hero-images">
-                <div class="hero-card dark">Light Gray</div>
-                <div class="hero-card light">Light Gray</div>
-                <div class="hero-card wide">Light Gray</div>
-            </div>
-        </section>
+        <div class="hero-images">
+            <div class="hero-card dark">Light Gray</div>
+            <div class="hero-card light">Light Gray</div>
+            <div class="hero-card wide">Light Gray</div>
+        </div>
+    </div>
+</section>
 
-        <section class="section">
+        <section class="section container">
             <h2><span></span> Productos destacados</h2>
 
             <div class="product-grid">
@@ -92,7 +99,7 @@
             </div>
         </section>
 
-        <section class="promo-section">
+        <section class="promo-section container">
             <article class="promo-card dark-promo">
                 <h3>Boquitas para eventos</h3>
                 <p>
@@ -117,9 +124,10 @@
                 </div>
             </article>
         </section>
-
-        <section class="reserve-section">
-            <div class="reserve-info">
+        
+        <section class="reserve-band">
+            <div class="reserve-section">
+                <div class="reserve-info">
                 <h2><span></span> Reserva de local</h2>
                 <p>
                     Celebra en nuestro espacio con decoración personalizada,
@@ -145,61 +153,72 @@
                     <small>c/u</small>
                 </div>
             </div>
+            </div>
         </section>
 
-        <section class="section">
-            <h2><span></span> Actividades del mes</h2>
+        <section class="section container">
+    <h2><span></span> Actividades del mes</h2>
 
             <div class="activity-grid">
                 <article class="activity-card pink">
-                    <div class="activity-icon">🦋</div>
+                    <div class="activity-icon">
+                        <img src="imagenes/iconos/origamiwoback.png" alt="Icono de origami">
+                    </div>
                     <h3>Origami</h3>
                     <p>Aprende a doblar papel y crear figuras increíbles con nuestros instructores.</p>
                     <a href="#">Ver detalles</a>
                 </article>
 
                 <article class="activity-card purple">
-                    <div class="activity-icon">🍪</div>
+                    <div class="activity-icon">
+                        <img src="imagenes/iconos/decoracion de galletas.png" alt="Icono de decoración de galletas">
+                    </div>
                     <h3>Decoración de galletas</h3>
                     <p>Decora tus propias galletas con glasé real y diseños únicos.</p>
                     <a href="#">Ver detalles</a>
                 </article>
-
+                
                 <article class="activity-card yellow">
-                    <div class="activity-icon">🎨</div>
+                    <div class="activity-icon">
+                        <img src="imagenes/iconos/pinturaback.png" alt="Icono de pintura">
+                    </div>
                     <h3>Pintura</h3>
                     <p>Expresa tu creatividad en lienzo con pinturas y colores vibrantes.</p>
                     <a href="#">Ver detalles</a>
                 </article>
             </div>
         </section>
+        
+        <section class="points-wrapper">
+            <div class="points-section">
+        <div>
+            <h2>Sistema de puntos</h2>
+            <p>
+                Cada compra te acerca a más beneficios. Acumula puntos en cada visita
+                y canjéalos por productos, descuentos y beneficios especiales.
+            </p>
+        </div>
 
-        <section class="points-section">
-            <div>
-                <h2>Sistema de puntos</h2>
-                <p>
-                    Cada compra te acerca a más beneficios. Acumula puntos en cada visita
-                    y canjéalos por productos, descuentos y beneficios especiales.
-                </p>
+        <div class="points-steps">
+            <div class="point-step">
+                <img src="imagenes/iconos/compra3 (1).png" alt="Icono de compra">
+                <p>Compra</p>
             </div>
 
-            <div class="points-steps">
-                <div>
-                    <span>🛍️</span>
-                    <p>Compra</p>
-                </div>
-                <div>
-                    <span>⭐</span>
-                    <p>Puntos</p>
-                </div>
-                <div>
-                    <span>🎁</span>
-                    <p>Premio</p>
-                </div>
+            <div class="point-step">
+                <img src="imagenes/iconos/medall (1).png" alt="Icono de puntos">
+                <p>Puntos</p>
             </div>
 
-            <a href="#" class="btn btn-primary">Conocer más</a>
-        </section>
+            <div class="point-step">
+                <img src="imagenes/iconos/giftbox1.1 (1).png" alt="Icono de premio">
+                <p>Premio</p>
+            </div>
+        </div>
+
+        <a href="#" class="btn btn-primary">Conocer más</a>
+    </div>
+</section>
 
     </main>
 
