@@ -4,274 +4,249 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boquitas | El Lado Dulce</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="boquitas.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">
-            <img src="imagenes/logo2019.png" alt="Logo El Lado Dulce" class="logo-img">
-            <span>El <strong>Lado Dulce</strong></span>
+<header class="navbar">
+    <div class="logo">
+        <img src="imagenes/logo2019.png" class="logo-img">
+        <span>El <strong>Lado Dulce</strong></span>
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="#">Helados</a>
+        <a href="#">Bebidas</a>
+        <a href="#">Crepes</a>
+        <a class="active" href="Boquitas.html">Boquitas</a>
+        <a href="pasteles.html">Pasteles</a>
+        <a href="#">Reservas</a>
+        <a href="#">Actividades</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Mi cuenta</a>
+    </nav>
+
+    <div class="cart">
+        <a href="#">🛒</a>
+    </div>
+</header>
+
+<section class="snacks-hero">
+    <div class="snacks-info">
+        <h1>Boquitas</h1>
+        <p>
+            Boquitas dulces y saladas para eventos, reuniones y celebraciones.
+            Armamos el paquete perfecto según la cantidad de invitados.
+        </p>
+        <div class="snacks-buttons">
+            <a href="#" class="btn-whatsapp">Cotizar por WhatsApp</a>
+            <a href="#" class="btn-custom">Armar mi paquete</a>
         </div>
-
-        <nav class="menu">
-            <a class="active" href="index.html">Inicio</a>
-            <a href="helados.html">Helados</a>
-            <a href="html/bebidas.html">Bebidas</a>
-            <a href="">Crepes</a>
-
-            <a href="Boquitas.html">Boquitas</a>
-            <a href="pasteles.html">Pasteles</a>
-            <a href="reservas.html">Reservas</a>
-            <a href="actividades.html">Actividades</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="mi-cuenta.html">Mi cuenta</a>
-        </nav>
-        <div class="cart">
-            <a href="">
-                <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
-            </a>
+        <div class="snacks-tags">
+            <span>Ideal para eventos</span>
+            <span>Dulces y saladas</span>
         </div>
-    </header>
+    </div>
+    <div class="snacks-image">
+        <img src="imagenes/boquitas.png" alt="Boquitas para eventos">
+    </div>
+</section>
 
-    <main>
+<section class="snacks-section">
 
-        <section class="page-hero">
-            <div class="page-hero-inner">
-                <div class="page-hero-content">
-                    <h1>Boquitas</h1>
-                    <p>
-                        Boquitas dulces y saladas para eventos, reuniones y celebraciones.
-                        Armamos el paquete perfecto según la cantidad de invitados.
-                    </p>
-                </div>
-
-                <div class="page-hero-image">
-                    <span>Imagen</span>
-                </div>
+    <details class="menu-accordion" open>
+        <summary class="accordion-header">
+            <h2>BOQUITAS DULCES</h2>
+            <span class="icon">▼</span>
+        </summary>
+        <div class="accordion-content">
+            <div class="menu-item">
+                <span class="item-name">Mini Donas</span>
+                <span class="item-description">| Glaseadas en variedad de colores con toppings artesanales. Mín. 12 uds.</span>
+                <span class="item-price">$12.50</span>
             </div>
-        </section>
-
-        <section class="products-section">
-            <div class="products-container">
-
-                <article class="ice-card">
-                    <div class="ice-image placeholder"></div>
-
-                    <div class="ice-info">
-                        <h2>Mini Donas</h2>
-                        <p class="price">$12.50</p>
-                        <p class="description">
-                            Glaseadas en variedad de colores con toppings artesanales.
-                            Mínimo 12 unidades por pedido.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag orange">Mín. 12 uds.</span>
-                            <span class="tag pink">Dulces</span>
-                        </div>
-                    </div>
-
-                    <div class="ice-action">
-                        <a href="detalle-mini-donas.html" class="buy-btn">Comprar</a>
-                    </div>
-                </article>
-
-                <article class="ice-card">
-                    <div class="ice-image placeholder"></div>
-
-                    <div class="ice-info">
-                        <h2>Cupcakes Tradicionales</h2>
-                        <p class="price">$15.00</p>
-                        <p class="description">
-                            Esponjosos con buttercream de vainilla, chocolate o dulce de leche.
-                            Mínimo 12 unidades por pedido.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag orange">Mín. 12 uds.</span>
-                            <span class="tag pink">Dulces</span>
-                        </div>
-                    </div>
-
-                    <div class="ice-action">
-                        <a href="detalle-cupcakes.html" class="buy-btn">Comprar</a>
-                    </div>
-                </article>
-
-                <article class="ice-card">
-                    <div class="ice-image placeholder"></div>
-
-                    <div class="ice-info">
-                        <h2>Brownies de Fudge</h2>
-                        <p class="price">$10.00</p>
-                        <p class="description">
-                            Húmedos de chocolate intenso, cortados en cuadritos individuales.
-                            Mínimo 10 unidades por pedido.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag orange">Mín. 10 uds.</span>
-                            <span class="tag pink">Dulces</span>
-                        </div>
-                    </div>
-
-                    <div class="ice-action">
-                        <a href="detalle-brownies.html" class="buy-btn">Comprar</a>
-                    </div>
-                </article>
-
-                <article class="ice-card">
-                    <div class="ice-image placeholder"></div>
-
-                    <div class="ice-info">
-                        <h2>Alfajores de Maicena</h2>
-                        <p class="price">$9.50</p>
-                        <p class="description">
-                            Rellenos de abundante dulce de leche y borde de coco rallado.
-                            Mínimo 12 unidades por pedido.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag orange">Mín. 12 uds.</span>
-                            <span class="tag pink">Dulces</span>
-                        </div>
-                    </div>
-
-                    <div class="ice-action">
-                        <a href="detalle-alfajores.html" class="buy-btn">Comprar</a>
-                    </div>
-                </article>
-
-                <article class="ice-card">
-                    <div class="ice-image placeholder"></div>
-
-                    <div class="ice-info">
-                        <h2>Mini Empanaditas</h2>
-                        <p class="price">$18.00</p>
-                        <p class="description">
-                            Masa horneada crujiente rellenas de carne molida, pollo desmechado o queso.
-                            Mínimo 20 unidades por pedido.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag orange">Mín. 20 uds.</span>
-                            <span class="tag pink">Saladas</span>
-                        </div>
-                    </div>
-
-                    <div class="ice-action">
-                        <a href="detalle-empanaditas.html" class="buy-btn">Comprar</a>
-                    </div>
-                </article>
-
-                <article class="ice-card">
-                    <div class="ice-image placeholder"></div>
-
-                    <div class="ice-info">
-                        <h2>Tequeños Venezolanos</h2>
-                        <p class="price">$15.50</p>
-                        <p class="description">
-                            Deditos de masa frita rellenos de queso blanco fundido,
-                            dorados y crujientes. Mínimo 25 unidades.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag orange">Mín. 25 uds.</span>
-                            <span class="tag pink">Saladas</span>
-                        </div>
-                    </div>
-
-                    <div class="ice-action">
-                        <a href="detalle-tequenos.html" class="buy-btn">Comprar</a>
-                    </div>
-                </article>
-
-                <article class="ice-card">
-                    <div class="ice-image placeholder"></div>
-
-                    <div class="ice-info">
-                        <h2>Canapés Gourmet Surtidos</h2>
-                        <p class="price">$22.00</p>
-                        <p class="description">
-                            Base de pan tostado con combinaciones elegantes
-                            (salmón, queso crema, jamón serrano). Mín. 15 uds.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag orange">Mín. 15 uds.</span>
-                            <span class="tag pink">Saladas</span>
-                        </div>
-                    </div>
-
-                    <div class="ice-action">
-                        <a href="detalle-canapes.html" class="buy-btn">Comprar</a>
-                    </div>
-                </article>
-
-                <article class="ice-card">
-                    <div class="ice-image placeholder"></div>
-
-                    <div class="ice-info">
-                        <h2>Mini Hamburguesas Artesanales</h2>
-                        <p class="price">$24.00</p>
-                        <p class="description">
-                            Pan brioche suave, carne premium, queso fundido y salsa de la casa.
-                            Mínimo 10 unidades por pedido.
-                        </p>
-
-                        <div class="tags">
-                            <span class="tag orange">Mín. 10 uds.</span>
-                            <span class="tag pink">Saladas</span>
-                        </div>
-                    </div>
-
-                    <div class="ice-action">
-                        <a href="detalle-hamburguesas.html" class="buy-btn">Comprar</a>
-                    </div>
-                </article>
-
+            <div class="menu-item">
+                <span class="item-name">Cupcakes Tradicionales</span>
+                <span class="item-description">| Esponjosos con buttercream de vainilla, chocolate o dulce de leche. Mín. 12 uds.</span>
+                <span class="item-price">$15.00</span>
             </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="footer-col">
-            <div class="footer-logo">
-                <img src="imagenes/logo2019.png" alt="Logo El Lado Dulce" class="footer-logo-img">
-                <h3>El <span>Lado Dulce</span></h3>
+            <div class="menu-item">
+                <span class="item-name">Brownies de Fudge</span>
+                <span class="item-description">| Húmedos de chocolate intenso, cortados en cuadritos individuales. Mín. 10 uds.</span>
+                <span class="item-price">$10.00</span>
             </div>
-            <p>Tu lugar favorito para endulzar cada momento.</p>
+            <div class="menu-item">
+                <span class="item-name">Alfajores de Maicena</span>
+                <span class="item-description">| Rellenos de abundante dulce de leche y borde de coco rallado. Mín. 12 uds.</span>
+                <span class="item-price">$9.50</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Mini Tartaletas de Frutas</span>
+                <span class="item-description">| Base de galleta crocante con crema pastelera y frutas frescas de temporada. Mín. 12 uds.</span>
+                <span class="item-price">$14.00</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Macarons Surtidos</span>
+                <span class="item-description">| Delicados bocadillos franceses rellenos de ganache de sabores. Mín. 10 uds.</span>
+                <span class="item-price">$16.50</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Shots Dulces en Vasito</span>
+                <span class="item-description">| Mini postres individuales (Tres leches, Marquesa de chocolate, Cheesecake). Mín. 15 uds.</span>
+                <span class="item-price">$22.50</span>
+            </div>
         </div>
+    </details>
 
-        <div class="footer-col">
-            <h3>Horarios</h3>
-            <p>Lunes<br>10:00 a.m. - 8:00 p.m.</p>
-            <p>Martes a Domingo<br>10:00 a.m. - 9:00 p.m.</p>
+    <!-- ACORDEÓN 2: BOQUITAS SALADAS -->
+    <details class="menu-accordion">
+        <summary class="accordion-header">
+            <h2>BOQUITAS SALADAS</h2>
+            <span class="icon">▼</span>
+        </summary>
+        <div class="accordion-content">
+            <div class="menu-item">
+                <span class="item-name">Mini Empanaditas</span>
+                <span class="item-description">| Masa horneada crujiente rellenas de carne molida, pollo desmechado o queso. Mín. 20 uds.</span>
+                <span class="item-price">$18.00</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Tequeños Venezolanos</span>
+                <span class="item-description">| Deditos de masa frita rellenos de queso blanco fundido, dorados y crujientes. Mín. 25 uds.</span>
+                <span class="item-price">$15.50</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Canapés Gourmet Surtidos</span>
+                <span class="item-description">| Base de pan tostado con combinaciones elegantes (salmón, queso crema, jamón serrano). Mín. 15 uds.</span>
+                <span class="item-price">$22.00</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Mini Quiches</span>
+                <span class="item-description">| Tartas saladas francesas de jamón con queso (Lorraine) o espinacas. Mín. 12 uds.</span>
+                <span class="item-price">$14.50</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Croquetas de Jamón</span>
+                <span class="item-description">| Crujientes por fuera y extremadamente cremosas por dentro. Mín. 20 uds.</span>
+                <span class="item-price">$16.00</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Mini Hamburguesas Artesanales</span>
+                <span class="item-description">| Pan brioche suave, carne premium, queso fundido y salsa de la casa. Mín. 10 uds.</span>
+                <span class="item-price">$24.00</span>
+            </div>
         </div>
+    </details>
 
-        <div class="footer-col">
-            <h3>Ubicación</h3>
-            <p>Brisas Mall, Av. Principal, San Miguelito, Provincia de Panamá.</p>
-            <a href="#">Cómo llegar →</a>
+    <!-- ACORDEÓN 3: ESTACIONES Y TABLAS -->
+    <details class="menu-accordion">
+        <summary class="accordion-header">
+            <h2>TABLAS Y ESTACIONES</h2>
+            <span class="icon">▼</span>
+        </summary>
+        <div class="accordion-content">
+            <div class="menu-item">
+                <span class="item-name">Tabla de Quesos y Embutidos Mediana</span>
+                <span class="item-description">| Selección de quesos finos, jamones, frutas secas, aceitunas y galletas. Para 6-8 personas.</span>
+                <span class="item-price">$38.00</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Tabla de Quesos y Embutidos Grande</span>
+                <span class="item-description">| Presentación premium ideal para mesas principales de picadas. Para 12-15 personas.</span>
+                <span class="item-price">$65.00</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Estación de Crudités</span>
+                <span class="item-description">| Bastoncitos de zanahoria, apio, pepino y tomates cherry acompañados de dip de yogurt y cilantro.</span>
+                <span class="item-price">$20.00</span>
+            </div>
         </div>
+    </details>
 
-        <div class="footer-col">
-            <h3>Contacto</h3>
-            <p>@elladodulce</p>
-            <p>+507 315-8752</p>
+    <!-- ACORDEÓN 4: BEBIDAS PARA EVENTOS -->
+    <details class="menu-accordion">
+        <summary class="accordion-header">
+            <h2>BEBIDAS REFRESCANTES</h2>
+            <span class="icon">▼</span>
+        </summary>
+        <div class="accordion-content">
+            <div class="menu-item">
+                <span class="item-name">Dispensador de Limonada con Hierbabuena</span>
+                <span class="item-description">| Bebida refrescante natural en dispensador de vidrio premium. Incluye vasos. Capacidad: 5 Litros.</span>
+                <span class="item-price">$18.50</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Dispensador de Té Frío de la Casa</span>
+                <span class="item-description">| Té negro preparado de forma artesanal con toques de limón y endulzado al punto. Capacidad: 5 Litros.</span>
+                <span class="item-price">$16.00</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Pack de Botellas de Agua Personalizadas</span>
+                <span class="item-description">| Agua mineral de manantial fresca con etiquetas limpias de la marca. Paquete de 12 uds.</span>
+                <span class="item-price">$10.00</span>
+            </div>
         </div>
+    </details>
 
-        <div class="copyright">
-            © 2026 El Lado Dulce. Todos los derechos reservados.
+</section>
+
+<section class="reserve-section">
+    <div class="reserve-info">
+        <h2><span></span> Paquetes para eventos</h2>
+        <p style="color: black">
+            Elige el paquete de boquitas que mejor se adapte a tu evento.
+            Incluye variedad dulce y salada, con opción de personalizar el menú.
+        </p>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">Cotizar ahora</a>
+            <a href="#" class="btn btn-outline">Más información</a>
         </div>
-    </footer>
+    </div>
+    <div class="reserve-prices">
+        <div class="price-box">
+            <span>Paquete Básico</span>
+            <strong>$45</strong>
+            <small>25 uds.</small>
+        </div>
+        <div class="price-box dark-box">
+            <span>Paquete Premium</span>
+            <strong>$85</strong>
+            <small>50 uds.</small>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div>
+        <div class="footer-logo">
+            <img src="imagenes/logo2019.png" class="footer-logo-img">
+            <h3>El <span>Lado Dulce</span></h3>
+        </div>
+        <p>Tu lugar favorito para endulzar cada momento.</p>
+    </div>
+    <div>
+        <h3>Horarios</h3>
+        <p>Lunes<br>10:00 a.m. - 8:00 p.m.</p>
+        <br>
+        <p>Martes a Domingo<br>10:00 a.m. - 9:00 p.m.</p>
+    </div>
+    <div>
+        <h3>Ubicación</h3>
+        <p>Brisas Mall, Av. Principal, San Miguelito, Provincia de Panamá.</p>
+        <br>
+        <a href="#">Cómo llegar →</a>
+    </div>
+    <div>
+        <h3>Contacto</h3>
+        <p>@elladodulce</p>
+        <br>
+        <p>+507 315-8752</p>
+    </div>
+    <div class="copyright">
+        © 2026 El Lado Dulce. Todos los derechos reservados.
+    </div>
+</footer>
 
 </body>
 </html>
