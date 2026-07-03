@@ -4,24 +4,24 @@
 const teamMembers = [
     {
         nombre: "Ashely Hernandez",
-        rol: "Fundadora & Pastelera",
-        descripcion: "Con 15 años de experiencia, Ashely es el alma creativa detrás de cada pastel. Su pasión por la repostería comenzó en la cocina de su abuela.",
+        rol: "...",
+        descripcion: "...",
         imagen: "imagenes/equipo/ashely.jpg",
         cedula: "8-1021-1342",
         carrera: "Ingenieria de software"
     },
     {
         nombre: "Benjamin Romero",
-        rol: "Chef Ejecutivo",
-        descripcion: "benjamin combina técnicas tradicionales con un toque moderno. Especialista en helados artesanales y postres de autor.",
+        rol: "...",
+        descripcion: "...",
         imagen: "imagenes/equipo/benjamin.jpg",
         cedula: "8-1025-1530",
         carrera: "Ingenieria de software"
     },
     {
         nombre: "Juan Bermudez",
-        rol: "Diseñador de Pasteles",
-        descripcion: "Juan convierte cada pastel en una obra de arte. Su ojo para el diseño y los detalles hace que cada creación sea única.",
+        rol: "...",
+        descripcion: "....",
         imagen: "imagenes/equipo/juan.jpg",
         cedula: "20-70-8224",
         carrera: "Ingenieria de software"
@@ -29,15 +29,15 @@ const teamMembers = [
     {
         nombre: "Diego Cedeño",
         rol: "Maestro Heladero",
-        descripcion: "Diego es el responsable de nuestros helados cremosos y llenos de sabor. Siempre está experimentando con nuevas combinaciones.",
+        descripcion: "...",
         imagen: "imagenes/equipo/diego.jpg",
         cedula: "8-1026-447",
         carrera: "Ingeniería de software"
     },
     {
         nombre: "Alejandro Chan",
-        rol: "Gerente de Operaciones",
-        descripcion: "Alejandro asegura que todo funcione a la perfección. Su liderazgo y organización mantienen el equipo unido y los pedidos en tiempo récord.",
+        rol: "...",
+        descripcion: "...",
         imagen: "imagenes/equipo/alejandro.jpg",
         cedula: "8-1031-302",
         carrera: "Ingenieria de software"

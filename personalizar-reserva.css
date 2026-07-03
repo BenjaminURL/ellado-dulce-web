@@ -692,3 +692,15 @@ textarea:focus {
 .birthday-name-box input:focus {
     border-color: #ff4f8b;
 }
+
+.cart a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}

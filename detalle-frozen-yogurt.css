@@ -547,15 +547,6 @@ textarea:focus {
     cursor: not-allowed;
 }
 
-.topping-option:has(input:checked) {
-    border-color: #ff4f8b;
-    background-color: #fff0f6;
-}
-
-.topping-option:has(input:checked) span,
-.topping-option:has(input:checked) strong {
-    color: #ff4f8b;
-}
 
 .base-fixed {
     display: flex;
@@ -603,4 +594,16 @@ textarea:focus {
 .quantity-control button:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+.cart a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
 }
