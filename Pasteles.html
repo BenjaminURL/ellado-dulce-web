@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pasteles | El Lado Dulce</title>
 
-    <link rel="stylesheet" href="inicio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="pasteles.css">
 </head>
-
 <body>
 
     <header class="navbar">
         <div class="logo">
-            <img src="imagenes/logo2019.png" class="logo-img" alt="Logo El Lado Dulce" />
+            <img src="imagenes/logo2019.png" alt="Logo El Lado Dulce" class="logo-img">
             <span>El <strong>Lado Dulce</strong></span>
         </div>
 
@@ -24,211 +25,161 @@
             <a href="#">Bebidas</a>
             <a href="#">Crepes</a>
             <a href="Boquitas.html">Boquitas</a>
-            <a class="active" href="pasteles.html">Pasteles</a>
+            <a href="pasteles.html" class="active">Pasteles</a>
             <a href="#">Reservas</a>
             <a href="#">Actividades</a>
             <a href="nosotros.html">Nosotros</a>
             <a href="#">Mi cuenta</a>
         </nav>
 
-        <div class="cart">
-            <a href="#">🛒</a>
-        </div>
+        <div class="cart">🛒</div>
     </header>
 
-<section class="cake-hero">
+    <main>
 
-    <div class="cake-info">
+        <section class="page-hero">
+            <div class="page-hero-inner">
+                <div class="page-hero-content">
+                    <h1>Pasteles</h1>
+                    <p>
+                        Pasteles artesanales hechos con amor y los mejores ingredientes.
+                        Personaliza el tuyo o elige uno de nuestros diseños exclusivos.
+                    </p>
+                </div>
 
-        <h1>Pasteles</h1>
+                <div class="page-hero-image">
+                    <span>Imagen</span>
+                </div>
+            </div>
+        </section>
 
-        <p>
-            Pasteles personalizados y prediseñados para cada ocasión especial.
-        </p>
+        <section class="products-section">
+            <div class="products-container">
 
-        <div class="cake-buttons">
+                <article class="ice-card">
+                    <div class="ice-image placeholder"></div>
 
-            <a href="#" class="btn-whatsapp">
-                Cotizar por WhatsApp
-            </a>
+                    <div class="ice-info">
+                        <h2>Pastel de Vainilla</h2>
+                        <p class="price">Desde $19.99</p>
+                        <p class="description">
+                            Esponjoso pastel de vainilla con relleno cremoso de buttercream.
+                            Perfecto para cumpleaños y celebraciones especiales.
+                        </p>
 
-            <a href="personalizarPastel.html" class="btn-custom">
-                Personalizar pastel
-            </a>
+                        <div class="tags">
+                            <span class="tag orange">Personalizable</span>
+                            <span class="tag pink">Fondant +$3.00</span>
+                        </div>
+                    </div>
 
+                    <div class="ice-action">
+                        <a href="detalle-pastel-vainilla.html" class="buy-btn">Comprar</a>
+                    </div>
+                </article>
+
+                <article class="ice-card">
+                    <div class="ice-image placeholder"></div>
+
+                    <div class="ice-info">
+                        <h2>Pastel de Chocolate</h2>
+                        <p class="price">Desde $22.50</p>
+                        <p class="description">
+                            Pastel de chocolate intenso con ganache de chocolate belga.
+                            Una experiencia irresistible para los amantes del cacao.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag orange">Personalizable</span>
+                            <span class="tag pink">Fondant +$3.00</span>
+                        </div>
+                    </div>
+
+                    <div class="ice-action">
+                        <a href="detalle-pastel-chocolate.html" class="buy-btn">Comprar</a>
+                    </div>
+                </article>
+
+                <article class="ice-card">
+                    <div class="ice-image placeholder"></div>
+
+                    <div class="ice-info">
+                        <h2>Pastel de Red Velvet</h2>
+                        <p class="price">Desde $24.00</p>
+                        <p class="description">
+                            El clásico pastel terciopelo rojo con crema de queso.
+                            Suave, húmedo y con un color espectacular.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag orange">Personalizable</span>
+                            <span class="tag pink">Fondant +$3.00</span>
+                        </div>
+                    </div>
+
+                    <div class="ice-action">
+                        <a href="detalle-pastel-red-velvet.html" class="buy-btn">Comprar</a>
+                    </div>
+                </article>
+
+                <article class="ice-card">
+                    <div class="ice-image placeholder"></div>
+
+                    <div class="ice-info">
+                        <h2>Pastel de Frutas</h2>
+                        <p class="price">Desde $26.50</p>
+                        <p class="description">
+                            Pastel fresco con crema pastelera y frutas de temporada.
+                            Una opción ligera, colorida y llena de sabor.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag orange">Personalizable</span>
+                            <span class="tag pink">Fondant +$3.00</span>
+                        </div>
+                    </div>
+
+                    <div class="ice-action">
+                        <a href="detalle-pastel-frutas.html" class="buy-btn">Comprar</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-col">
+            <div class="footer-logo">
+                <img src="imagenes/logo2019.png" alt="Logo El Lado Dulce" class="footer-logo-img">
+                <h3>El <span>Lado Dulce</span></h3>
+            </div>
+            <p>Tu lugar favorito para endulzar cada momento.</p>
         </div>
 
-        <div class="cake-tags">
-            <span>❤ Hechos con amor</span>
-            <span>🎂 Diseño a tu medida</span>
+        <div class="footer-col">
+            <h3>Horarios</h3>
+            <p>Lunes<br>10:00 a.m. - 8:00 p.m.</p>
+            <p>Martes a Domingo<br>10:00 a.m. - 9:00 p.m.</p>
         </div>
 
-    </div>
-
-    <div class="cake-image">
-        <img src="https://hips.hearstapps.com/hmg-prod/images/tarta-de-nata-y-fresas-elle-gourmet-67d13e7412b2a.jpg?crop=0.564xw:1.00xh;0.300xw,0&resize=640:*" alt="Pastel Principal">
-    </div>
-
-</section>
-
-<section class="cakes-section">
-
-<h2>PASTELES PREDISEÑADOS</h2>
-
-<div class="cakes-grid">
-    <!-- Tarjeta 1 -->
-    <div class="cake-card">
-        <img src="https://thumbs.dreamstime.com/b/impresionante-pastel-floral-de-colores-vivos-y-detalles-delicados-de-una-pr%C3%ADstina-superficie-de-m%C3%A1rmol-379006763.jpg" alt="Pastel Floral">
-
-        <div class="cake-content">
-            <h3>Pastel Floral</h3>
-            <p>
-                Delicado pastel decorado con flores naturales y crema suave.
-            </p>
-
-            <a href="#">Ver más</a>
-        </div>
-    </div>
-
-    <!-- Tarjeta 2 -->
-    <div class="cake-card">
-        <img src="https://amoradulce.com/wp-content/uploads/2019/12/Torta-chocolate-1_04_13_2024-scaled.jpg" alt="Pastel de Chocolate">
-
-        <div class="cake-content">
-            <h3>Pastel de Chocolate</h3>
-            <p>
-                Intenso y húmedo, cubierto de ganache y decoraciones artesanales.
-            </p>
-
-            <a href="#">Ver más</a>
-        </div>
-    </div>
-
-    <!-- Tarjeta 3 -->
-    <div class="cake-card">
-        <img src="https://cdn.shopify.com/s/files/1/0806/9876/9709/files/Delivery_Dia_del_Nino_2024confetti_480x480.jpg?v=1712098271" alt="Pastel Infantil">
-
-        <div class="cake-content">
-            <h3>Pastel Infantil</h3>
-            <p>
-                Colorido y divertido, perfecto para celebrar con los más pequeños.
-            </p>
-
-            <a href="#">Ver más</a>
-        </div>
-    </div>
-
-    <!-- Tarjeta 4 -->
-    <div class="cake-card">
-        <img src="https://i.etsystatic.com/50694682/r/il/71e979/6232197493/il_570xN.6232197493_l8z9.jpg" alt="Pastel Minimalista">
-
-        <div class="cake-content">
-            <h3>Pastel Minimalista</h3>
-            <p>
-                Elegante y sencillo, para quienes aprecian la sofisticación.
-            </p>
-
-            <a href="#">Ver más</a>
-        </div>
-    </div>
-
-    <!-- Tarjeta 5 -->
-    <div class="cake-card">
-        <img src="https://thescranline.com/wp-content/uploads/2021/09/BEST-EVER-BIRTHDAY-CAKE-THUMBNAIL-24-1.jpg" alt="Pastel de Cumpleaños">
-
-        <div class="cake-content">
-            <h3>Pastel de Cumpleaños</h3>
-            <p>
-                Clásico y festivo, ideal para hacer memorable cada celebración.
-            </p>
-
-            <a href="#">Ver más</a>
-        </div>
-    </div>
-
-    <!-- Tarjeta 6 -->
-    <div class="cake-card">
-        <img src="https://images.stockcake.com/public/7/b/4/7b4c1c80-d687-4b1a-9025-b3f9b40c834f_large/elegant-wedding-cake-stockcake.jpg" alt="Pastel Elegante">
-
-        <div class="cake-content">
-            <h3>Pastel Elegante</h3>
-            <p>
-                Niveles perfectos con acabados en fondant y detalles exclusivos.
-            </p>
-
-            <a href="#">Ver más</a>
-        </div>
-    </div>
-
-</div>
-
-</section>
-
-<footer class="footer">
-
-    <div>
-
-        <div class="footer-logo">
-            <img src="imagenes/logo2019.png" class="footer-logo-img">
-            <h3>El <span>Lado Dulce</span></h3>
+        <div class="footer-col">
+            <h3>Ubicación</h3>
+            <p>Brisas Mall, Av. Principal, San Miguelito, Provincia de Panamá.</p>
+            <a href="#">Cómo llegar →</a>
         </div>
 
-        <p>
-            Tu lugar favorito para endulzar cada momento.
-        </p>
+        <div class="footer-col">
+            <h3>Contacto</h3>
+            <p>@elladodulce</p>
+            <p>+507 315-8752</p>
+        </div>
 
-    </div>
-
-    <div>
-        <h3>Horarios</h3>
-
-        <p>
-            Lunes<br>
-            1:00 p.m. - 8:00 p.m.
-        </p>
-
-        <br>
-
-        <p>
-            Martes a Domingos<br>
-            1:00 p.m. - 9:00 p.m.
-        </p>
-
-    </div>
-
-    <div>
-
-        <h3>Ubicación</h3>
-
-        <p>
-            Brisas Mall, Av. Principal,
-            San Miguelito,
-            Provincia de Panamá.
-        </p>
-
-        <br>
-
-        <a href="#">
-            Cómo llegar →
-        </a>
-
-    </div>
-
-    <div>
-
-        <h3>Contacto</h3>
-
-        <p>@elladodulce</p>
-        <br>
-        <p>+507 315-8752</p>
-
-    </div>
-
-    <div class="copyright">
-        © 2026 El Lado Dulce. Todos los derechos reservados.
-    </div>
-
-</footer>
+        <div class="copyright">
+            © 2026 El Lado Dulce. Todos los derechos reservados.
+        </div>
+    </footer>
 
 </body>
 </html>
