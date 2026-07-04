@@ -7,8 +7,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open detalle-frozen-yogurt.html",
-            "file": "c:\\Users\\Usuario\\OneDrive\\Documentos\\ellado dulce\\webpage\\detalle-frozen-yogurt.html"
+            "name": "Open detalle-frozen-yogurt.jsp",
+            "file": "c:\\Users\\Usuario\\OneDrive\\Documentos\\ellado dulce\\webpage\\detalle-frozen-yogurt.jsp"
         }
     ]
 }

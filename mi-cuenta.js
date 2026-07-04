@@ -49,26 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
         const nombre = nombreActividad.toLowerCase();
 
         if (nombre.includes("crochet")) {
-            return "detalle-crochet.html";
+            return "detalle-crochet.jsp";
         }
 
         if (nombre.includes("dibujo")) {
-            return "detalle-dibujo.html";
+            return "detalle-dibujo.jsp";
         }
 
         if (nombre.includes("cupcakes")) {
-            return "detalle-cupcakes.html";
+            return "detalle-cupcakes.jsp";
         }
 
         if (nombre.includes("galletas")) {
-            return "detalle-galletas.html";
+            return "detalle-galletas.jsp";
         }
 
         if (nombre.includes("origami")) {
-            return "detalle-origami.html";
+            return "detalle-origami.jsp";
         }
 
-        return "actividades.html";
+        return "actividades.jsp";
     }
 
     function mostrarDatosUsuario() {
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="empty-activities">
                 <strong>No hay actividades aún.</strong>
                 <p>Cuando compres un cupo para una actividad, aparecerá aquí con su información.</p>
-                <a href="actividades.html">Ver actividades disponibles</a>
+                <a href="actividades.jsp">Ver actividades disponibles</a>
             </div>
         `;
 
