@@ -1,0 +1,112 @@
+/* ===================================================
+   ESTILOS PARA EL CONFIGURADOR POR PASOS (WIZARD)
+   =================================================== */
+
+/* Oculta las secciones de los pasos por defecto */
+.step-container {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Muestra únicamente el paso que tiene la clase active */
+.step-container.active {
+    display: flex;
+}
+
+/* Alineación e interfaz de los botones de navegación */
+.step-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    gap: 15px; /* Espaciado entre botones si están juntos */
+}
+
+/* Botón principal (Siguiente) */
+.btn-nav {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff6b81; /* Ajusta este color al tono rosa/pastel de tu logo */
+    color: white;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-nav:hover {
+    background-color: #ff4757;
+}
+
+.btn-nav:active {
+    transform: scale(0.98); /* Pequeño efecto visual al presionar */
+}
+
+/* Botón secundario (Volver) */
+.btn-nav.btn-secondary {
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+}
+
+.btn-nav.btn-secondary:hover {
+    background-color: #dee2e6;
+    color: #212529;
+}
+
+/* ===================================================
+   CORRECCIÓN DE GRID Y TAMAÑO DE VISTA PREVIA
+   =================================================== */
+
+/* Reconfiguramos el grid para darle más espacio a la vista previa (60% / 40%) */
+.configurator-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; /* La primera columna (imagen) es más ancha */
+    gap: 40px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Forzamos a que el footer ocupe todo el ancho inferior y no se suba al grid */
+.footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para que la imagen se vea más grande y limpia */
+.preview-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcf8f8; /* Un fondo suave para resaltar el pastel */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+#previewCake {
+    width: 100%;
+    max-width: 550px; /* Incrementamos el tamaño máximo de la imagen */
+    height: auto;
+    object-fit: contain;
+    transition: opacity 0.15s ease-in-out;
+}
+
+/* Responsivo: En celulares vuelve a ponerse uno abajo del otro */
+@media (max-width: 768px) {
+    .configurator-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #previewCake {
+        max-width: 350px; /* Tamaño moderado en móviles */
+    }
+}
