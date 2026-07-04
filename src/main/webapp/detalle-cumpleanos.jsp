@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumpleaños Dulce | Ellado Dulce</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="detalle-cumpleanos.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <img src="imagenes/logo2019.png" alt="Logo Ellado Dulce" class="logo-img">
+            <span>Ellado <strong>Dulce</strong></span>
+        </div>
+
+        <nav class="menu">
+            <a class="active" href="index.jsp">Inicio</a>
+            <a href="helados.jsp">Helados</a>
+            <a href="html/bebidas.jsp">Bebidas</a>
+            <a href="">Crepes</a>
+
+            <a href="Boquitas.jsp">Boquitas</a>
+            <a href="pasteles.jsp">Pasteles</a>
+            <a href="reservas.jsp">Reservas</a>
+            <a href="actividades.jsp">Actividades</a>
+            <a href="nosotros.jsp">Nosotros</a>
+            <a href="mi-cuenta.jsp">Mi cuenta</a>
+        </nav>
+        <div class="cart">
+            <a href="">
+                <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
+            </a>
+        </div>
+    </header>
+
+    <main class="cumpleanos-page">
+
+        <a href="reservas.jsp" class="back-link">← Volver a Reservas</a>
+
+        <section class="cumpleanos-layout">
+
+            <div class="left-area">
+
+                <div class="product-image placeholder"></div>
+
+                <section class="form-card">
+                    <h2>Completa tu reserva</h2>
+
+                    <form id="cumpleanosForm">
+
+                        <div class="form-group">
+                            <label for="cumpleanero">Nombre del cumpleañero</label>
+                            <input 
+                                type="text" 
+                                id="cumpleanero" 
+                                placeholder="Ej: Sofía"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="decoracion">Tipo de decoración deseada</label>
+                            <textarea 
+                                id="decoracion" 
+                                placeholder="Ej: temática de princesa, colores rosado y dorado, globos, flores..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="invitados">Cantidad aproximada de invitados</label>
+                            <input 
+                                type="text" 
+                                id="invitados" 
+                                placeholder="Ej: 20 personas"
+                            >
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label>
+                                <input type="date" id="fecha">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="hora">Hora</label>
+                                <input type="time" id="hora">
+                            </div>
+                        </div>
+
+                        <a href="personalizar-reserva.jsp" class="continue-btn">
+                            Continuar personalizando →
+                        </a>
+
+                    </form>
+                </section>
+
+            </div>
+
+            <aside class="package-card">
+                <h1>Cumpleaños Dulce</h1>
+
+                <div class="price">
+                    <strong>$75.00</strong>
+                    <span>/ 2 horas</span>
+                </div>
+
+                <p class="description">
+                    Celebra un cumpleaños especial en un espacio dulce, cómodo y decorado
+                    para compartir con familia y amigos.
+                </p>
+
+                <h3>Este paquete incluye:</h3>
+
+                <ul class="include-list">
+                    <li>
+                        <span></span>
+                        Local del evento por 2 horas
+                    </li>
+
+                    <li>
+                        <span></span>
+                        Decoración básica de cumpleaños
+                    </li>
+
+                    <li>
+                        <span></span>
+                        Mesa principal decorada
+                    </li>
+
+                    <li>
+                        <span></span>
+                        Espacio para pastel
+                    </li>
+
+                    <li>
+                        <span></span>
+                        Área para fotos
+                    </li>
+
+                    <li>
+                        <span></span>
+                        Atención básica durante el evento
+                    </li>
+                </ul>
+
+                <a href="#" target="_blank" class="buy-btn" id="whatsappCumpleanos">
+                    Comprar
+                </a>
+            </aside>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-col">
+            <div class="footer-logo">
+                <img src="imagenes/logo2019.png" alt="Logo Ellado Dulce" class="footer-logo-img">
+                <h3>Ellado <span>Dulce</span></h3>
+            </div>
+            <p>Tu lugar favorito para endulzar cada momento.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Horarios</h3>
+            <p>Lunes<br>1:00 p.m. - 8:00 p.m.</p>
+            <p>Martes a Domingos<br>1:00 p.m. - 9:00 p.m.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Ubicación</h3>
+            <p>Brisas Mall, Av. Principal, San Miguelito, Provincia de Panamá.</p>
+            <a href="#">Cómo llegar →</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contacto</h3>
+            <p>@elladodulce</p>
+            <p>+507 315-8752</p>
+        </div>
+
+        <div class="copyright">
+            © 2025 Ellado Dulce. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="detalle-cumpleanos.js"></script>
+</body>
+</html>
