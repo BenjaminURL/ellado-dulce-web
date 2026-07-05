@@ -80,15 +80,14 @@
 <div class="cakes-grid">
     <!-- Tarjeta 1 -->
     <div class="cake-card">
-        <img src="https://thumbs.dreamstime.com/b/impresionante-pastel-floral-de-colores-vivos-y-detalles-delicados-de-una-pr%C3%ADstina-superficie-de-m%C3%A1rmol-379006763.jpg" alt="Pastel Floral">
-
+        <img src="https://images.aws.nestle.recipes/resized/2024_10_23T06_40_18_badun_images.badun.es_tarta_fria_de_chocolate_blanco_con_frutas_1290_742.jpg" alt="Pastel Floral">
         <div class="cake-content">
-            <h3>Pastel Floral</h3>
+            <h3>Pastel Frutas</h3>
             <p>
-                Delicado pastel decorado con flores naturales y crema suave.
+                Delicado pastel decorado con frutas naturales y crema suave.
             </p>
 
-            <a href="#">Ver más</a>
+            <a href="detalle-pastel-frutas.jsp">Ver más</a>
         </div>
     </div>
 
@@ -102,7 +101,7 @@
                 Intenso y húmedo, cubierto de ganache y decoraciones artesanales.
             </p>
 
-            <a href="#">Ver más</a>
+            <a href="detalle-pastel-chocolate.jsp">Ver más</a>
         </div>
     </div>
 
@@ -116,21 +115,21 @@
                 Colorido y divertido, perfecto para celebrar con los más pequeños.
             </p>
 
-            <a href="#">Ver más</a>
+            <a href="detalle-pastel-infantil.jsp">Ver más</a>
         </div>
     </div>
 
     <!-- Tarjeta 4 -->
     <div class="cake-card">
-        <img src="https://i.etsystatic.com/50694682/r/il/71e979/6232197493/il_570xN.6232197493_l8z9.jpg" alt="Pastel Minimalista">
+        <img src="https://cafedelaflor.com/images/productos/20250418115254pag.web_-_2025-04-18t115241.272.jpg" alt="Pastel Minimalista">
 
         <div class="cake-content">
-            <h3>Pastel Minimalista</h3>
+            <h3>Pastel Red Velvet</h3>
             <p>
-                Elegante y sencillo, para quienes aprecian la sofisticación.
+                Un bizcocho sedoso de color rojo brillante con un sutil toque de cacao y un caracter�stico relleno de crema de queso dulce.
             </p>
 
-            <a href="#">Ver más</a>
+            <a href="detalle-pastel-red-velvet.jsp">Ver más</a>
         </div>
     </div>
 
@@ -144,21 +143,21 @@
                 Clásico y festivo, ideal para hacer memorable cada celebración.
             </p>
 
-            <a href="#">Ver más</a>
+            <a href="detalle-pastel-cumplea�os.jsp">Ver más</a>
         </div>
     </div>
 
     <!-- Tarjeta 6 -->
     <div class="cake-card">
-        <img src="https://images.stockcake.com/public/7/b/4/7b4c1c80-d687-4b1a-9025-b3f9b40c834f_large/elegant-wedding-cake-stockcake.jpg" alt="Pastel Elegante">
+        <img src="https://marubotana.tv/uploads/responsive/2026/03/torta-de-vainilla-768.webp" alt="Pastel Elegante">
 
         <div class="cake-content">
-            <h3>Pastel Elegante</h3>
+            <h3>Pastel de Vainilla</h3>
             <p>
-                Niveles perfectos con acabados en fondant y detalles exclusivos.
+                Un cl�sico bizcocho esponjoso, suave y arom�tico elaborado con extracto natural de vainilla, ideal para combinar con cualquier tipo de cobertura.
             </p>
 
-            <a href="#">Ver más</a>
+            <a href="detalle-pastel-vainilla.jsp">Ver más</a>
         </div>
     </div>
 
