@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,15 +22,15 @@
 
     <nav class="menu">
         <a href="index.jsp">Inicio</a>
-        <a href="#">Helados</a>
+        <a href="helados.jsp">Helados</a>
         <a href="#">Bebidas</a>
         <a href="#">Crepes</a>
-        <a href="#">Boquitas</a>
-        <a class="active" href="pasteles.jsp">Pasteles</a>
-        <a href="#">Reservas</a>
-        <a href="#">Actividades</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Mi cuenta</a>
+        <a href="Boquitas.jsp">Boquitas</a>
+        <a class="active" href="Pasteles.jsp">Pasteles</a>
+        <a href="reservas.jsp">Reservas</a>
+        <a href="actividades.jsp">Actividades</a>
+        <a href="Nosotros.jsp">Nosotros</a>
+        <a href="mi-cuenta.jsp">Mi cuenta</a>
     </nav>
 
     <div class="cart">

@@ -1,10 +1,11 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nosotros | El Lado Dulce</title>
-    <link rel="stylesheet" href="nosotros.css" />
+    <link rel="stylesheet" href="Nosotros.css" />
 </head>
 <body>
 
@@ -149,6 +150,6 @@
     </footer>
 
     <!-- ================= JAVASCRIPT ================= -->
-    <script src="nosotros.js"></script>
+    <script src="Nosotros.js"></script>
 </body>
 </html>

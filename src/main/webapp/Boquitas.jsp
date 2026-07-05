@@ -16,15 +16,15 @@
 
     <nav class="menu">
         <a href="index.jsp">Inicio</a>
-        <a href="#">Helados</a>
+        <a href="helados.jsp">Helados</a>
         <a href="#">Bebidas</a>
         <a href="#">Crepes</a>
         <a class="active" href="Boquitas.jsp">Boquitas</a>
-        <a href="pasteles.jsp">Pasteles</a>
-        <a href="#">Reservas</a>
-        <a href="#">Actividades</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Mi cuenta</a>
+        <a href="Pasteles.jsp">Pasteles</a>
+        <a href="reservas.jsp">Reservas</a>
+        <a href="actividades.jsp">Actividades</a>
+        <a href="Nosotros.jsp">Nosotros</a>
+        <a href="mi-cuenta.jsp">Mi cuenta</a>
     </nav>
 
     <div class="cart">

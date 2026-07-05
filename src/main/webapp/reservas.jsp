@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,7 +27,7 @@
             <a href="">Crepes</a>
 
             <a href="Boquitas.jsp">Boquitas</a>
-            <a href="pasteles.jsp">Pasteles</a>
+            <a href="Pasteles.jsp">Pasteles</a>
             <a href="reservas.jsp">Reservas</a>
             <a href="actividades.jsp">Actividades</a>
             <a href="nosotros.jsp">Nosotros</a>

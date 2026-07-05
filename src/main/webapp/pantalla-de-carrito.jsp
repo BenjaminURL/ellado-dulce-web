@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,131 +17,59 @@
 
     <nav class="menu">
         <a href="index.jsp">Inicio</a>
-        <a href="#">Helados</a>
+        <a href="helados.jsp">Helados</a>
         <a href="#">Bebidas</a>
         <a href="#">Crepes</a>
         <a href="Boquitas.jsp">Boquitas</a>
-        <a href="pasteles.jsp">Pasteles</a>
-        <a href="#">Reservas</a>
-        <a href="#">Actividades</a>
-        <a href="#">Nosotros</a>
-        <a href="#">Mi cuenta</a>
+        <a href="Pasteles.jsp">Pasteles</a>
+        <a href="reservas.jsp">Reservas</a>
+        <a href="actividades.jsp">Actividades</a>
+        <a href="Nosotros.jsp">Nosotros</a>
+        <a href="mi-cuenta.jsp">Mi cuenta</a>
     </nav>
 
     <div class="cart">
-        <a class="active" href="carrito.jsp">🛒 <span class="cart-count">3</span></a>
+        <a class="active" href="pantalla-de-carrito.jsp">🛒 <span class="cart-count">3</span></a>
     </div>
 </header>
 
-<main class="cart-container">
+<main class="cart-page">
     <h1 class="cart-title">Tu <span>Carrito</span></h1>
 
-    <div class="cart-layout">
-        <section class="cart-items">
-            
-            <div class="cart-item">
-                <div class="item-img-placeholder">
-                    <!-- <span>🧁</span> -->
+    <section class="cart-content" id="cartContent">
+        <div class="cart-list-card">
+            <div id="cartItems">
+                <div class="empty-cart-inline" id="emptyCart">
+                    <h2>Sin productos</h2>
+                    <p>Aún no has agregado productos al carrito.</p>
+                    <a href="Boquitas.jsp">Ver productos</a>
                 </div>
-                <div class="item-details">
-                    <h3>Cupcakes Tradicionales</h3>
-                    <p class="item-meta">Categoría: Boquitas Dulces | Mín. 12 uds.</p>
-                    <span class="item-unit-price">$15.00</span>
-                </div>
-                <div class="item-quantity">
-                    <button class="qty-btn">-</button>
-                    <input type="number" value="1" min="1" readonly>
-                    <button class="qty-btn">+</button>
-                </div>
-                <div class="item-total">
-                    $15.00
-                </div>
-                <button class="item-remove" title="Eliminar producto">×</button>
+            </div>
+        </div>
+
+        <aside class="cart-summary-card">
+            <h2>Resumen del pedido</h2>
+
+            <div class="summary-line">
+                <span>Subtotal</span>
+                <strong id="cartSubtotal">$0.00</strong>
             </div>
 
-            <div class="cart-item">
-                <div class="item-img-placeholder">
-                    <!-- <span>🫔</span> -->
-                </div>
-                <div class="item-details">
-                    <h3>Tequeños Venezolanos</h3>
-                    <p class="item-meta">Categoría: Boquitas Saladas | Mín. 25 uds.</p>
-                    <span class="item-unit-price">$15.50</span>
-                </div>
-                <div class="item-quantity">
-                    <button class="qty-btn">-</button>
-                    <input type="number" value="2" min="1" readonly>
-                    <button class="qty-btn">+</button>
-                </div>
-                <div class="item-total">
-                    $31.00
-                </div>
-                <button class="item-remove" title="Eliminar producto">×</button>
-            </div>
-
-            <div class="cart-item">
-                <div class="item-img-placeholder">
-                    <!-- <span>🍋</span> -->
-                </div>
-                <div class="item-details">
-                    <h3>Dispensador de Limonada con Hierbabuena</h3>
-                    <p class="item-meta">Categoría: Bebidas | Capacidad: 5 Litros</p>
-                    <span class="item-unit-price">$18.50</span>
-                </div>
-                <div class="item-quantity">
-                    <button class="qty-btn">-</button>
-                    <input type="number" value="1" min="1" readonly>
-                    <button class="qty-btn">+</button>
-                </div>
-                <div class="item-total">
-                    $18.50
-                </div>
-                <button class="item-remove" title="Eliminar producto">×</button>
-            </div>
-
-            <div class="cart-back-link">
-                <a href="Boquitas.jsp">← Seguir comprando boquitas u otros productos</a>
-            </div>
-        </section>
-
-        <aside class="cart-summary">
-            <h2>Resumen del Pedido</h2>
-            
-            <div class="summary-row">
-                <span>Subtotal (4 productos)</span>
-                <span>$64.50</span>
-            </div>
-            <div class="summary-row">
+            <div class="summary-line">
                 <span>ITBMS (7%)</span>
-                <span>$4.52</span>
-            </div>
-            <div class="summary-row delivery-row">
-                <span>Método de entrega</span>
-                <select class="summary-select">
-                    <option value="pickup">Retiro en Brisas Mall</option>
-                    <option value="delivery">Envío a domicilio</option>
-                </select>
-            </div>
-            
-            <hr class="summary-divider">
-
-            <div class="summary-row total-row">
-                <span>Total Estimado</span>
-                <strong>$69.02</strong>
+                <strong id="cartTax">$0.00</strong>
             </div>
 
-            <div class="coupon-container">
-                <input type="text" placeholder="Código de descuento" class="coupon-input">
-                <button class="coupon-btn">Aplicar</button>
+            <div class="summary-divider"></div>
+
+            <div class="summary-line total-line">
+                <span>Total</span>
+                <strong id="cartTotal">$0.00</strong>
             </div>
 
-            <a href="#" class="btn btn-primary btn-checkout">Proceder al Pago</a>
-            
-            <div class="secure-checkout-badge">
-                <!-- 🔒 Pago 100% seguro y garantizado -->
-            </div>
+            <a href="#" class="checkout-btn disabled-checkout" id="checkoutBtn">Proceder al pago</a>
         </aside>
-    </div>
+    </section>
 </main>
 
 <footer class="footer">
@@ -173,6 +102,6 @@
         © 2026 El Lado Dulce. Todos los derechos reservados.
     </div>
 </footer>
-
+<script src="pantalla-de-carrito.js"></script>
 </body>
 </html>
