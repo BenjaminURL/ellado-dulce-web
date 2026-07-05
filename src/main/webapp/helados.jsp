@@ -10,10 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Estilos base compartidos con Pasteles -->
-    <link rel="stylesheet" href="inicio.css">
-    <!-- Tus estilos específicos y adaptados de helados -->
-    <link rel="stylesheet" href="helados.css">
+        <link rel="stylesheet" href="catalogo-productos.css">
+
 </head>
 <body>
 
@@ -54,11 +52,6 @@
             <div class="cake-buttons">
                 <a href="#" class="btn-whatsapp">Cotizar por WhatsApp</a>
                 <a href="#" class="btn-custom">Ver Sabores del Mes</a>
-            </div>
-
-            <div class="cake-tags">
-                <span>❤️ Ingredientes frescos</span>
-                <span>🍦 Preparados al momento</span>
             </div>
         </div>
 

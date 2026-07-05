@@ -12,6 +12,9 @@
     String[] nombres = request.getParameterValues("nombreProducto");
     String[] precios = request.getParameterValues("precioProducto");
     String[] cantidades = request.getParameterValues("cantidadProducto");
+    String[] sabores = request.getParameterValues("saborProducto");
+    String[] toppings = request.getParameterValues("toppingsProducto");
+    String[] notas = request.getParameterValues("notasProducto");
 
     String metodoPago = request.getParameter("metodoPago");
 
@@ -43,16 +46,9 @@
         String sqlBuscarMenu = "SELECT m_id_menu FROM menu WHERE m_producto = ?";
 
         String sqlPedido =
-            "INSERT INTO pedido " +
-            "(pd_m_id_menu, pd_c_id_cliente, pd_cantidad, pd_descripcion, pd_total, pd_estado, pf_fechapedido, pd_metodo_pago, pd_estado_pago) " +
-            "VALUES (?, ?, ?, ?, ?, 'Pendiente', NOW(), ?, 'Pagado') " +
-            "ON DUPLICATE KEY UPDATE " +
-            "pd_cantidad = pd_cantidad + VALUES(pd_cantidad), " +
-            "pd_total = pd_total + VALUES(pd_total), " +
-            "pd_estado = 'Pendiente', " +
-            "pf_fechapedido = NOW(), " +
-            "pd_metodo_pago = VALUES(pd_metodo_pago), " +
-            "pd_estado_pago = 'Pagado'";
+    "INSERT INTO pedido " +
+    "(pd_m_id_menu, pd_c_id_cliente, pd_cantidad, pd_descripcion, pd_sabor, pd_toppings, pd_total, pd_estado, pf_fechapedido, pd_metodo_pago, pd_estado_pago) " +
+    "VALUES (?, ?, ?, ?, ?, ?, ?, 'Pendiente', NOW(), ?, 'Pagado')";
 
         psBuscarMenu = con.prepareStatement(sqlBuscarMenu);
         psPedido = con.prepareStatement(sqlPedido);
@@ -62,6 +58,22 @@
             double precioProducto = Double.parseDouble(precios[i]);
             int cantidadProducto = Integer.parseInt(cantidades[i]);
             double totalProducto = precioProducto * cantidadProducto;
+
+            String saborProducto = "No seleccionado";
+            String toppingsProducto = "Sin toppings";
+            String notasProducto = null;
+
+            if (sabores != null && sabores.length > i && sabores[i] != null && !sabores[i].trim().equals("")) {
+                saborProducto = sabores[i].trim();
+            }
+
+            if (toppings != null && toppings.length > i && toppings[i] != null && !toppings[i].trim().equals("")) {
+                toppingsProducto = toppings[i].trim();
+            }
+
+            if (notas != null && notas.length > i && notas[i] != null && !notas[i].trim().equals("")) {
+                notasProducto = notas[i].trim();
+            }
 
             psBuscarMenu.setString(1, nombreProducto);
             rs = psBuscarMenu.executeQuery();
@@ -78,9 +90,11 @@
             psPedido.setInt(1, idMenu);
             psPedido.setInt(2, idCliente);
             psPedido.setInt(3, cantidadProducto);
-            psPedido.setString(4, "Pedido realizado desde pago web con tarjeta simulada");
-            psPedido.setDouble(5, totalProducto);
-            psPedido.setString(6, metodoPago);
+            psPedido.setString(4, notasProducto);
+            psPedido.setString(5, saborProducto);
+            psPedido.setString(6, toppingsProducto);
+            psPedido.setDouble(7, totalProducto);
+            psPedido.setString(8, metodoPago);
 
             psPedido.addBatch();
         }

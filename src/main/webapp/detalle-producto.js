@@ -1,15 +1,37 @@
 const form = document.getElementById("orderForm");
+
+const nombreProducto = form.dataset.nombre;
+const categoriaProducto = form.dataset.categoria;
+const imagenProducto = form.dataset.imagen;
+const saborBaseProducto = form.dataset.sabor || "";
+
+const notasEspecificas = document.getElementById("notasEspecificas");
 const btnRestar = document.getElementById("btnRestar");
 const btnSumar = document.getElementById("btnSumar");
 const cantidadTexto = document.getElementById("cantidad");
 const subtotalPrice = document.getElementById("subtotalPrice");
 const toppingCheckboxes = document.querySelectorAll(".topping-checkbox");
 const btnAgregarCarrito = document.getElementById("btnAgregarCarrito");
+const flavorRadios = document.querySelectorAll('input[name="sabor"]');
 
 let cantidad = 1;
 const precioBase = parseFloat(form.dataset.basePrice);
 
 btnRestar.disabled = true;
+
+flavorRadios.forEach(function (radio) {
+    radio.addEventListener("change", function () {
+        document.querySelectorAll(".flavor-card").forEach(function (card) {
+            card.classList.remove("selected");
+        });
+
+        const tarjeta = radio.closest(".flavor-card");
+
+        if (tarjeta) {
+            tarjeta.classList.add("selected");
+        }
+    });
+});
 
 function calcularToppings() {
     let totalToppings = 0;
@@ -85,6 +107,20 @@ function crearClaveProducto(producto) {
     ].join("|");
 }
 
+function obtenerClaveCarrito() {
+    if (typeof clienteLogueado === "undefined" || typeof idClienteActual === "undefined") {
+        window.location.href = "login.jsp";
+        return null;
+    }
+
+    if (!clienteLogueado || !idClienteActual) {
+        window.location.href = "login.jsp";
+        return null;
+    }
+
+    return "carrito_cliente_" + idClienteActual;
+}
+
 function agregarProductoAlCarrito() {
     const saborSeleccionado = document.querySelector('input[name="sabor"]:checked');
     const toppings = obtenerToppingsSeleccionados();
@@ -92,18 +128,25 @@ function agregarProductoAlCarrito() {
     const precioUnitario = precioBase + calcularToppings();
 
     const producto = {
-        nombre: "Ice Cream Rolls",
-        categoria: "Helados",
+        nombre: nombreProducto,
+        categoria: categoriaProducto,
         precio: precioUnitario,
         cantidad: cantidad,
-        imagen: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=500&auto=format&fit=crop",
-        sabor: saborSeleccionado ? saborSeleccionado.value : "No seleccionado",
-        toppings: toppings.length > 0 ? toppings.join(", ") : "Sin toppings"
+        imagen: imagenProducto,
+        sabor: saborSeleccionado ? saborSeleccionado.value : saborBaseProducto,
+        toppings: toppings.length > 0 ? toppings.join(", ") : "",
+        notas: notasEspecificas ? notasEspecificas.value.trim() : ""
     };
 
     producto.clave = crearClaveProducto(producto);
 
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const claveCarrito = obtenerClaveCarrito();
+
+    if (claveCarrito === null) {
+        return;
+    }
+
+    let carrito = JSON.parse(localStorage.getItem(claveCarrito)) || [];
 
     const productoExistente = carrito.find(function (item) {
         const claveItem = item.clave || crearClaveProducto(item);
@@ -116,7 +159,7 @@ function agregarProductoAlCarrito() {
         carrito.push(producto);
     }
 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem(claveCarrito, JSON.stringify(carrito));
 
     alert("Producto agregado al carrito");
 

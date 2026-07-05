@@ -1280,4 +1280,11 @@ main {
     font-weight: 800;
 }
 
+.cake-price {
+    display: block;
+    color: #ff4f8b;
+    font-size: 15px;
+    font-weight: 800;
+    margin: 8px 0 12px;
+}
 

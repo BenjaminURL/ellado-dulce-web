@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,7 +34,7 @@
             <a href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
         <div class="cart">
-            <a href="">
+            <a href="pantalla-de-carrito.jsp">
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
             </a>
         </div>
@@ -67,13 +68,20 @@
                     </p>
                 </div>
 
-                <form class="order-form" id="frozenYogurtForm" data-base-price="4.75">
+                <form 
+    class="order-form" 
+    id="orderForm" 
+    data-base-price="4.75"
+    data-nombre="Frozen Yogurt"
+    data-categoria="Helados"
+    data-sabor="Natural"
+    data-imagen="URL_DE_LA_IMAGEN">
 
                     <section class="option-box">
     <h2>1. Base del yogurt</h2>
 
     <div class="base-fixed">
-        <input type="hidden" name="base" value="Natural">
+        <input type="hidden" name="sabor" value="Natural">
         <span class="base-circle"></span>
 
         <div>
@@ -89,49 +97,49 @@
 
                         <div class="topping-grid">
                             <label class="topping-option">
-                                <input type="checkbox" class="frozen-topping" value="Fresa" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Fresa" data-price="0.50">
                                 <span>Fresa</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="frozen-topping" value="Banano" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Banano" data-price="0.50">
                                 <span>Banano</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="frozen-topping" value="Kiwi" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Kiwi" data-price="0.50">
                                 <span>Kiwi</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="frozen-topping" value="Mango" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Mango" data-price="0.50">
                                 <span>Mango</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="frozen-topping" value="Piña" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Piña" data-price="0.50">
                                 <span>Piña</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="frozen-topping" value="Uva" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Uva" data-price="0.50">
                                 <span>Uva</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="frozen-topping" value="Arándanos" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Arándanos" data-price="0.50">
                                 <span>Arándanos</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="frozen-topping" value="Melocotón" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Melocotón" data-price="0.50">
                                 <span>Melocotón</span>
                                 <strong>+$0.50</strong>
                             </label>
@@ -142,43 +150,37 @@
                         <h2>3. Cantidad</h2>
 
                         <div class="quantity-control">
-                            <button type="button" id="frozenBtnRestar">−</button>
-                            <span id="frozenCantidad">1</span>
-                            <button type="button" id="frozenBtnSumar" class="plus">+</button>
+                            <button type="button" id="btnRestar">−</button>
+<span id="cantidad">1</span>
+<button type="button" id="btnSumar" class="plus">+</button>
                         </div>
                     </section>
 
                     <section class="option-box">
                         <h2>4. Notas especiales <span>(opcional)</span></h2>
 
-                        <textarea id="frozenNotas" placeholder="Ej: sin sirope, poca fruta, extra frío..."></textarea>
+                        <textarea id="notasEspecificas" placeholder="Ej: sin sirope, poca fruta, extra frío..."></textarea>
                     </section>
 
                     <section class="summary-box">
-                        <div>
-                            <span>Subtotal</span>
-                            <strong id="frozenSubtotal">$4.75</strong>
-                            <small>Precio provisional</small>
-                        </div>
+    <div>
+        <span>Subtotal</span>
+        <strong id="subtotalPrice">$4.75</strong>
+        <small>Precio provisional</small>
+    </div>
 
-                        <button type="button" class="cart-btn">
-                            agregar al carrito
-                        </button>
+    <button type="button" class="cart-btn" id="btnAgregarCarrito">
+        Agregar al carrito
+    </button>
 
-                       <a
-                       class="whatsapp-btn"
-                       id="frozenWhatsapp"
-                       href="#"
-                       target="_blank">
-                       Pedir vía WhatsApp
-                    </a>
-                    </section>
-
-                </form>
-
-            </div>
-
-        </section>
+    <a
+        class="whatsapp-btn"
+        id="frozenWhatsapp"
+        href="#"
+        target="_blank">
+        Pedir vía WhatsApp
+    </a>
+</section>
 
     </main>
 
@@ -214,7 +216,11 @@
         </div>
     </footer>
 
-    <script src="detalle-frozen-yogurt.js"></script>
-    <script src="carrito-global.js"></script>
+    <script>
+    const clienteLogueado = <%= session.getAttribute("idCliente") != null ? "true" : "false" %>;
+    const idClienteActual = "<%= session.getAttribute("idCliente") != null ? session.getAttribute("idCliente") : "" %>";
+</script>
+
+<script src="detalle-producto.js"></script>
 </body>
 </html>

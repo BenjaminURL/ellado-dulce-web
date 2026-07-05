@@ -1,3 +1,7 @@
+function obtenerClaveCarrito() {
+    return "carrito_cliente_" + idClienteActual;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const cartItems = document.getElementById("cartItems");
 
@@ -7,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartCount = document.querySelector(".cart-count");
     const checkoutBtn = document.getElementById("checkoutBtn");
 
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const carrito = JSON.parse(localStorage.getItem(obtenerClaveCarrito())) || [];
 
     if (carrito.length === 0) {
         cartItems.innerHTML = `
@@ -40,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     carrito.forEach(function (producto, index) {
         const nombre = producto.nombre || "Producto";
-        const categoria = producto.categoria || "Sin categoría";
         const precio = Number(producto.precio) || 0;
         const cantidad = Number(producto.cantidad) || 1;
         const imagen = producto.imagen || "";
@@ -60,9 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <div class="item-details">
                 <h3>${nombre}</h3>
-                <p class="item-meta">Categoría: ${categoria}</p>
-                ${producto.sabor ? `<p class="item-meta">Sabor: ${producto.sabor}</p>` : ""}
-                ${producto.toppings ? `<p class="item-meta">Toppings: ${producto.toppings}</p>` : ""}
+                ${producto.sabor && producto.sabor !== "No seleccionado" ? `<p class="item-meta">Sabor: ${producto.sabor}</p>` : ""}
+                ${producto.toppings && producto.toppings !== "Sin toppings" ? `<p class="item-meta">Toppings: ${producto.toppings}</p>` : ""}
                 <span class="item-unit-price">$${precio.toFixed(2)}</span>
             </div>
 
@@ -118,6 +120,7 @@ function enviarPedidoAPago(carrito, subtotal, itbms, total) {
         agregarCampo(form, "cantidadProducto", Number(producto.cantidad) || 1);
         agregarCampo(form, "saborProducto", producto.sabor || "");
         agregarCampo(form, "toppingsProducto", producto.toppings || "");
+        agregarCampo(form, "notasProducto", producto.notas || "");
     });
 
     agregarCampo(form, "subtotal", subtotal.toFixed(2));
@@ -137,11 +140,11 @@ function agregarCampo(form, nombre, valor) {
 }
 
 function guardarCarrito(carrito) {
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem(obtenerClaveCarrito(), JSON.stringify(carrito));
 }
 
 function sumarCantidad(index) {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const carrito = JSON.parse(localStorage.getItem(obtenerClaveCarrito())) || [];
 
     carrito[index].cantidad++;
 
@@ -150,7 +153,7 @@ function sumarCantidad(index) {
 }
 
 function restarCantidad(index) {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const carrito = JSON.parse(localStorage.getItem(obtenerClaveCarrito())) || [];
 
     if (carrito[index].cantidad > 1) {
         carrito[index].cantidad--;
@@ -161,7 +164,7 @@ function restarCantidad(index) {
 }
 
 function eliminarProducto(index) {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const carrito = JSON.parse(localStorage.getItem(obtenerClaveCarrito())) || [];
 
     carrito.splice(index, 1);
 

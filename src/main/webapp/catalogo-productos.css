@@ -1,0 +1,413 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background-color: #f8f2f6;
+    color: #101942;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVBAR */
+
+.navbar {
+    width: 100%;
+    background-color: #171b4f;
+    color: #ffffff;
+    padding: 18px 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.logo-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.logo strong {
+    color: #ff4f8b;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    font-size: 13px;
+}
+
+.menu a {
+    color: #ffffff;
+    opacity: 0.9;
+    transition: 0.2s ease;
+}
+
+.menu a:hover,
+.menu .active {
+    color: #ff4f8b;
+}
+
+.cart a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* HERO COMPARTIDO */
+
+.cake-hero {
+    background-color: #171b4f;
+    color: #ffffff;
+    padding: 60px 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.cake-info {
+    max-width: 550px;
+}
+
+.cake-info h1 {
+    font-size: 58px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.cake-info p {
+    color: #d8d8ea;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 420px;
+}
+
+.cake-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp {
+    background-color: #ff4f8b;
+    color: #ffffff;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn-whatsapp:hover {
+    background-color: #f63878;
+}
+
+.btn-custom {
+    border: 1px solid #ff4f8b;
+    color: #ff4f8b;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn-custom:hover {
+    background-color: #ff4f8b;
+    color: #ffffff;
+}
+
+.cake-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cake-tags span {
+    background-color: #2b2f67;
+    color: #d8d8ea;
+    padding: 8px 15px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cake-image img {
+    width: 340px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 18px;
+    background-color: #ececec;
+}
+
+/* SECCION DE PRODUCTOS */
+
+.cakes-section {
+    background-color: #f8f2f6;
+    padding: 45px;
+}
+
+.cakes-section h2 {
+    color: #171b4f;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.cakes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.cake-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(16, 25, 66, 0.08);
+    transition: 0.2s ease;
+}
+
+.cake-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(16, 25, 66, 0.12);
+}
+
+.cake-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    background-color: #e5e5e5;
+}
+
+.cake-content {
+    padding: 18px;
+}
+
+.cake-content h3 {
+    color: #171b4f;
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.cake-content .price,
+.price,
+.cake-price {
+    display: block;
+    color: #ff4f8b;
+    font-size: 15px;
+    font-weight: 800;
+    margin: 6px 0 10px;
+}
+
+.cake-content p {
+    color: #7a7a93;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+/* TAGS */
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.tag.orange {
+    background-color: #fff2df;
+    color: #ef8a24;
+    border: 1px solid #ffd8a8;
+}
+
+.tag.pink {
+    background-color: #ffe8f1;
+    color: #ff4f8b;
+    border: 1px solid #ffc8dc;
+}
+
+/* BOTON DE TARJETA */
+
+.cake-content a {
+    display: inline-block;
+    padding: 9px 20px;
+    border: 1px solid #ff4f8b;
+    color: #ff4f8b;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.cake-content a:hover {
+    background-color: #ff4f8b;
+    color: #ffffff;
+}
+
+/* FOOTER */
+
+.footer {
+    background-color: #171b4f;
+    color: #ffffff;
+    padding: 42px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 34px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.footer-logo-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.footer-logo h3 {
+    margin-bottom: 0;
+}
+
+.footer h3 {
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+.footer h3 span,
+.footer a {
+    color: #ff4f8b;
+}
+
+.footer p {
+    color: #d9d9ec;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #aeb1d0;
+    font-size: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 22px;
+    margin-top: 8px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .menu {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        gap: 20px;
+    }
+
+    .cake-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cake-info p {
+        max-width: 100%;
+    }
+
+    .cake-buttons,
+    .cake-tags {
+        justify-content: center;
+    }
+
+    .cakes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar,
+    .cakes-section,
+    .footer {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .cake-hero {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .cake-info h1 {
+        font-size: 42px;
+    }
+
+    .cake-image img {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .cakes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cake-card img {
+        height: 230px;
+    }
+
+    .tags {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

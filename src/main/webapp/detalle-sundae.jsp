@@ -34,7 +34,7 @@
             <a href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
         <div class="cart">
-            <a href="">
+            <a href="pantalla-de-carrito.jsp">
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
             </a>
         </div>
@@ -61,14 +61,20 @@
 
                 <div class="product-header">
                     <h1>Sundae</h1>
-                    <p class="product-price">Desde $3.00</p>
+                    <p class="product-price">Desde $4.95</p>
                     <p class="product-description">
                         Sundae cremoso con sabor a fresa o chocolate. Agrega toppings crujientes
                         para personalizarlo a tu gusto.
                     </p>
                 </div>
 
-                <form class="order-form" id="sundaeForm" data-base-price="3.00">
+                <form 
+    class="order-form" 
+    id="orderForm" 
+    data-base-price="4.95"
+    data-nombre="Sundae"
+    data-categoria="Helados"
+    data-imagen="URL_DE_LA_IMAGEN">
 
                     <section class="option-box">
                         <h2>1. Elige tu sabor</h2>
@@ -94,61 +100,61 @@
 
                         <div class="topping-grid">
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Maní triturado" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Maní triturado" data-price="0.50">
                                 <span>Maní triturado</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Almendras" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Almendras" data-price="0.50">
                                 <span>Almendras</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Nueces" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Nueces" data-price="0.50">
                                 <span>Nueces</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Granola" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Granola" data-price="0.50">
                                 <span>Granola</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Cereal" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Cereal" data-price="0.50">
                                 <span>Cereal</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Galleta Oreo" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Galleta Oreo" data-price="0.50">
                                 <span>Galleta Oreo</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Galleta María" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Galleta María" data-price="0.50">
                                 <span>Galleta María</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Chispas de chocolate" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Chispas de chocolate" data-price="0.50">
                                 <span>Chispas de chocolate</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Barquillo" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Barquillo" data-price="0.50">
                                 <span>Barquillo</span>
                                 <strong>+$0.50</strong>
                             </label>
 
                             <label class="topping-option">
-                                <input type="checkbox" class="sundae-topping" value="Brownie en trozos" data-price="0.50">
+                                <input type="checkbox" class="topping-checkbox" value="Brownie en trozos" data-price="0.50">
                                 <span>Brownie en trozos</span>
                                 <strong>+$0.50</strong>
                             </label>
@@ -159,28 +165,28 @@
                         <h2>3. Cantidad</h2>
 
                         <div class="quantity-control">
-                            <button type="button" id="sundaeBtnRestar">−</button>
-                            <span id="sundaeCantidad">1</span>
-                            <button type="button" id="sundaeBtnSumar" class="plus">+</button>
+                            <button type="button" id="btnRestar">−</button>
+<span id="cantidad">1</span>
+<button type="button" id="btnSumar" class="plus">+</button>
                         </div>
                     </section>
 
                     <section class="option-box">
                         <h2>4. Notas especiales <span>(opcional)</span></h2>
 
-                        <textarea id="sundaeNotas" placeholder="Ej: poco sirope, extra frío, sin maní..."></textarea>
+                        <textarea id="notasEspecificas" placeholder="Ej: poco sirope, extra frío, sin maní..."></textarea>
                     </section>
 
                     <section class="summary-box">
                         <div>
                             <span>Subtotal</span>
-                            <strong id="sundaeSubtotal">$3.00</strong>
+                            <strong id="subtotalPrice">$4.95</strong>
                             <small>Precio provisional</small>
                         </div>
 
-                        <button type="button" class="cart-btn">
-                        Agregar al carrito
-                        </button>
+                        <button type="button" class="cart-btn" id="btnAgregarCarrito">
+    Agregar al carrito
+</button>
 
                         <a
                             class="whatsapp-btn"
@@ -230,7 +236,11 @@
             © 2025 Ellado Dulce. Todos los derechos reservados.
         </div>
     </footer>
+<script>
+    const clienteLogueado = <%= session.getAttribute("idCliente") != null ? "true" : "false" %>;
+    const idClienteActual = "<%= session.getAttribute("idCliente") != null ? session.getAttribute("idCliente") : "" %>";
+</script>
 
-    <script src="detalle-sundae.js"></script>
+<script src="detalle-producto.js"></script>
 </body>
 </html>

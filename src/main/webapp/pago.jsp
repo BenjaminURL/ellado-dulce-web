@@ -10,6 +10,9 @@
     String[] categorias = request.getParameterValues("categoriaProducto");
     String[] precios = request.getParameterValues("precioProducto");
     String[] cantidades = request.getParameterValues("cantidadProducto");
+    String[] sabores = request.getParameterValues("saborProducto");
+    String[] toppings = request.getParameterValues("toppingsProducto");
+    String[] notas = request.getParameterValues("notasProducto");
 
     String subtotal = request.getParameter("subtotal");
     String itbms = request.getParameter("itbms");

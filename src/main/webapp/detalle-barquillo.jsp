@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,7 +34,7 @@
             <a href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
         <div class="cart">
-            <a href="">
+            <a href="pantalla-de-carrito.jsp">
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
             </a>
         </div>
@@ -67,7 +68,14 @@
                     </p>
                 </div>
 
-                <form class="order-form" id="barquilloForm" data-base-price="2.50">
+                <form 
+    class="order-form" 
+    id="orderForm" 
+    data-base-price="2.50"
+    data-nombre="Cono de Vainilla"
+    data-categoria="Helados"
+    data-sabor="Vainilla"
+    data-imagen="URL_DE_LA_IMAGEN">
 
                     <section class="option-box">
                         <h2>1. Producto</h2>
@@ -86,28 +94,28 @@
                         <h2>2. Cantidad</h2>
 
                         <div class="quantity-control">
-                            <button type="button" id="barquilloBtnRestar">−</button>
-                            <span id="barquilloCantidad">1</span>
-                            <button type="button" id="barquilloBtnSumar" class="plus">+</button>
+                            <button type="button" id="btnRestar">−</button>
+<span id="cantidad">1</span>
+<button type="button" id="btnSumar" class="plus">+</button>
                         </div>
                     </section>
 
                     <section class="option-box">
                         <h2>3. Notas especiales <span>(opcional)</span></h2>
 
-                        <textarea id="barquilloNotas" placeholder="Ej: servir bien frío, sin servilleta extra..."></textarea>
+                        <textarea id="notasEspecificas" placeholder="Ej: servir bien frío, sin servilleta extra..."></textarea>
                     </section>
 
                     <section class="summary-box">
                         <div>
                             <span>Subtotal</span>
-                            <strong id="barquilloSubtotal">$2.50</strong>
+                            <strong id="subtotalPrice">$2.50</strong>
                             <small>Precio fijo por unidad</small>
                         </div>
 
-                        <button type="button" class="cart-btn">
-                        Agregar al carrito
-                        </button>
+                        <button type="button" class="cart-btn" id="btnAgregarCarrito">
+    Agregar al carrito
+</button>
 
                         <a
                             class="whatsapp-btn"
@@ -158,7 +166,11 @@
         </div>
     </footer>
 
-    <script src="detalle-barquillo.js"></script>
-    <script src="carrito-global.js"></script>
+    <script>
+    const clienteLogueado = <%= session.getAttribute("idCliente") != null ? "true" : "false" %>;
+    const idClienteActual = "<%= session.getAttribute("idCliente") != null ? session.getAttribute("idCliente") : "" %>";
+</script>
+
+<script src="detalle-producto.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -67,7 +68,13 @@
                     </p>
                 </div>
 
-                <form class="order-form" id="orderForm" data-base-price="5.50">
+                <form 
+    class="order-form" 
+    id="orderForm" 
+    data-base-price="5.50"
+    data-nombre="Ice Cream Rolls"
+    data-categoria="Helados"
+    data-imagen="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=500&auto=format&fit=crop">
 
                     <section class="option-box">
                         <h2>1. Elige tu sabor</h2>
@@ -109,39 +116,39 @@
                         <p class="option-note">Puedes agregar más de uno.</p>
                         <div class="topping-grid">
     <label class="topping-option">
-        <input type="checkbox" class="topping-checkbox" value="Fresa fresca" data-price="1.00">
+        <input type="checkbox" class="topping-checkbox" value="Fresa fresca" data-price="0.50">
         <span>Fresa fresca</span>
-        <strong>+$1.00</strong>
+        <strong>+$0.50</strong>
     </label>
 
     <label class="topping-option">
-        <input type="checkbox" class="topping-checkbox" value="Nutella Banana" data-price="1.50">
+        <input type="checkbox" class="topping-checkbox" value="Nutella Banana" data-price="0.50">
         <span>Nutella Banana</span>
-        <strong>+$1.50</strong>
+        <strong>+$0.50</strong>
     </label>
 
     <label class="topping-option">
-        <input type="checkbox" class="topping-checkbox" value="Oreo triturado" data-price="1.00">
+        <input type="checkbox" class="topping-checkbox" value="Oreo triturado" data-price="0.50">
         <span>Oreo triturado</span>
-        <strong>+$1.00</strong>
+        <strong>+$0.50</strong>
     </label>
 
     <label class="topping-option">
-        <input type="checkbox" class="topping-checkbox" value="Mango y chamoy" data-price="1.25">
+        <input type="checkbox" class="topping-checkbox" value="Mango y chamoy" data-price="0.50">
         <span>Mango y chamoy</span>
-        <strong>+$1.25</strong>
+        <strong>+$0.50</strong>
     </label>
 
     <label class="topping-option">
-        <input type="checkbox" class="topping-checkbox" value="Chispas de choco" data-price="0.75">
+        <input type="checkbox" class="topping-checkbox" value="Chispas de choco" data-price="0.50">
         <span>Chispas de choco</span>
-        <strong>+$0.75</strong>
+        <strong>+$0.50</strong>
     </label>
 
     <label class="topping-option">
-        <input type="checkbox" class="topping-checkbox" value="Leche condensada" data-price="0.75">
+        <input type="checkbox" class="topping-checkbox" value="Leche condensada" data-price="0.50">
         <span>Leche condensada</span>
-        <strong>+$0.75</strong>
+        <strong>+$0.50</strong>
     </label>
 </div>
                     </section>
@@ -159,7 +166,10 @@
                     <section class="option-box">
                         <h2>4. Notas especiales <span>(opcional)</span></h2>
 
-                        <textarea placeholder="Ej: sin azúcar, extra fresa, sin leche condensada..."></textarea>
+                        <textarea 
+    id="notasEspecificas"
+    placeholder="Ej: sin azúcar, extra fresa, sin leche condensada...">
+</textarea>
                     </section>
 
                     <section class="summary-box">
@@ -258,6 +268,11 @@
             © 2025 Ellado Dulce. Todos los derechos reservados.
         </div>
     </footer>
-    <script src="detalle-producto.js"></script>
+<script>
+    const clienteLogueado = <%= session.getAttribute("idCliente") != null ? "true" : "false" %>;
+    const idClienteActual = "<%= session.getAttribute("idCliente") != null ? session.getAttribute("idCliente") : "" %>";
+</script>
+
+<script src="detalle-producto.js"></script>
 </body>
 </html>

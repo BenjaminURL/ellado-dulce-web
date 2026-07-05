@@ -1,4 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    if (session.getAttribute("idCliente") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
+<script>
+    const idClienteActual = "<%= session.getAttribute("idCliente") %>";
+</script>
+
+<script src="pantalla-de-carrito.js"></script>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

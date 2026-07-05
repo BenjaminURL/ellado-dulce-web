@@ -37,7 +37,15 @@
 </main>
 
 <script>
+    const idClienteActual = "<%= session.getAttribute("idCliente") %>";
+
     localStorage.removeItem("carrito");
+    localStorage.removeItem("carrito_cliente_" + idClienteActual);
+
+    window.addEventListener("load", function () {
+        localStorage.removeItem("carrito");
+        localStorage.removeItem("carrito_cliente_" + idClienteActual);
+    });
 </script>
 
 </body>
