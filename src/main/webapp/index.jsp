@@ -30,7 +30,7 @@
             <a href="Pasteles.jsp">Pasteles</a>
             <a href="reservas.jsp">Reservas</a>
             <a href="actividades.jsp">Actividades</a>
-            <a href="Nosotros.jsp">Nosotros</a>
+            <a href="nosotros.jsp">Nosotros</a>
             <a href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
         <div class="cart">
@@ -51,6 +51,11 @@
                 Helados, crepes, cafés, pasteles personalizados, boquitas para eventos
                 y actividades creativas para crear momentos inolvidables.
             </p>
+
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Ver menú</a>
+                <a href="#" class="btn btn-outline">Reservar ahora</a>
+            </div>
         </div>
 
         <div class="hero-images">
@@ -109,8 +114,7 @@
                     alfajores y más para compartir.
                 </p>
                 <div>
-                    <a href="#" class="btn btn-primary">Ver opciones</a>
-                    <a href="#" class="btn btn-outline small-outline">Cotizar aquí</a>
+                    <a href="Boquitas.jsp" class="btn btn-primary">Ver opciones</a>
                 </div>
             </article>
 
@@ -138,7 +142,6 @@
 
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-primary">Reservar ahora</a>
-                    <a href="#" class="btn btn-outline">Más información</a>
                 </div>
             </div>
 

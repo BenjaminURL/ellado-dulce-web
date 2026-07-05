@@ -215,5 +215,6 @@
     </footer>
 
     <script src="detalle-frozen-yogurt.js"></script>
+    <script src="carrito-global.js"></script>
 </body>
 </html>

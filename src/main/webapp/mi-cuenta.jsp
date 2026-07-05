@@ -1,4 +1,27 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%@ page import="java.sql.*" %>
+<%
+    if (session.getAttribute("idCliente") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
+int idCliente = (Integer) session.getAttribute("idCliente");
+
+String nombreCliente = (String) session.getAttribute("nombreCliente");
+String apellidoCliente = (String) session.getAttribute("apellidoCliente");
+String usuarioCliente = (String) session.getAttribute("usuarioCliente");
+String correoCliente = (String) session.getAttribute("correoCliente");
+String telefonoCliente = (String) session.getAttribute("telefonoCliente");
+
+if (nombreCliente == null) nombreCliente = "";
+if (apellidoCliente == null) apellidoCliente = "";
+if (usuarioCliente == null) usuarioCliente = "";
+if (correoCliente == null) correoCliente = "";
+if (telefonoCliente == null || telefonoCliente.trim().equals("")) telefonoCliente = "No registrado";
+%>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,7 +44,7 @@
         </div>
 
         <nav class="menu">
-            <a class="active" href="index.jsp">Inicio</a>
+            <a href="index.jsp">Inicio</a>
             <a href="helados.jsp">Helados</a>
             <a href="html/bebidas.jsp">Bebidas</a>
             <a href="">Crepes</a>
@@ -31,10 +54,15 @@
             <a href="reservas.jsp">Reservas</a>
             <a href="actividades.jsp">Actividades</a>
             <a href="Nosotros.jsp">Nosotros</a>
-            <a href="mi-cuenta.jsp">Mi cuenta</a>
+
+            <%
+    boolean clienteLogueado = session.getAttribute("idCliente") != null;
+%>
+
+<a class="active" href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
         <div class="cart">
-            <a href="">
+            <a href="pantalla-de-carrito.jsp">
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
             </a>
         </div>
@@ -52,7 +80,7 @@
 
                         <div>
                             <span>Bienvenida de vuelta</span>
-                            <h1>Hola, <strong id="userName">María</strong></h1>
+                            <h1>Hola, <strong id="userName"><%= nombreCliente %></strong></h1>
                             <p>
                                 Aquí puedes ver tus pedidos, reservas, actividades y disfrutar los beneficios.
                             </p>
@@ -102,18 +130,18 @@
 
                     <div class="personal-data">
                         <p>
-                            <span>👤</span>
-                            <strong id="profileName">María Alejandra</strong>
+                            <span></span>
+                            <strong id="profileName"><%= nombreCliente %> <%= apellidoCliente %></strong>
                         </p>
 
                         <p>
-                            <span>✉</span>
-                            <strong id="profileEmail">maria@ejemplo.com</strong>
+                            <span></span>
+                            <strong id="profileEmail"><%= correoCliente %></strong>
                         </p>
 
                         <p>
-                            <span>📞</span>
-                            <strong id="profilePhone">+507 6123-4567</strong>
+                            <span></span>
+                            <strong id="profilePhone"><%= telefonoCliente %></strong>
                         </p>
                     </div>
 

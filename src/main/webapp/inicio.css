@@ -268,42 +268,53 @@ main {
     float: right;
 }
 
-.promo-section {
-    padding: 42px 32px 28px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 26px;
-}
 
 .promo-card {
-    min-height: 230px;
-    border-radius: 18px;
-    padding: 34px;
+    min-height: 260px;
+    border-radius: 22px;
+    padding: 42px 44px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .promo-card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 18px;
 }
 
 .promo-card p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
-    margin-bottom: 18px;
-    max-width: 430px;
+    max-width: 520px;
+    margin-bottom: 28px;
+}
+
+.promo-card div {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .dark-promo {
-    background-color: #6f728d;
+    background-color: #777b97;
     color: #ffffff;
 }
 
 .light-promo {
-    background-color: #e9e1e6;
+    background-color: #e9e0e6;
     color: #ffffff;
+}
+
+@media (max-width: 900px) {
+    .promo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .promo-card {
+        padding: 34px 28px;
+    }
 }
 
 .small-outline {
@@ -555,12 +566,12 @@ main {
     }
 
     .product-grid,
-    .promo-section,
+    .promo-grid,
     .activity-grid,
     .points-section,
     .footer {
-        grid-template-columns: 1fr;
-    }
+    grid-template-columns: 1fr;
+}
 
     .reserve-section {
         grid-template-columns: 1fr;
@@ -1256,6 +1267,17 @@ main {
     width: 28px;
     height: 28px;
     object-fit: contain;
+}
+
+.eventos-title {
+    margin-top: 46px;
+    margin-bottom: 24px;
+}
+
+.eventos-title h2 {
+    color: #101942;
+    font-size: 28px;
+    font-weight: 800;
 }
 
 

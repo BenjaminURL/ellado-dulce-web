@@ -33,7 +33,7 @@
             <a href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
         <div class="cart">
-            <a href="">
+            <a href="pantalla-de-carrito.jsp">
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
             </a>
         </div>
@@ -67,7 +67,7 @@
                     </p>
                 </div>
 
-                <form class="order-form" id="orderForm" data-base-price="5.50"></form>
+                <form class="order-form" id="orderForm" data-base-price="5.50">
 
                     <section class="option-box">
                         <h2>1. Elige tu sabor</h2>
@@ -169,15 +169,15 @@
                             <small>Precio provisional</small>
                         </div>
 
-                        <button type="button" class="cart-btn">
-                            Agregar al carrito
-                        </button>
+                        <button type="button" class="cart-btn" id="btnAgregarCarrito">
+    Agregar al carrito
+</button>
 
                         <a
                             class="whatsapp-btn"
                             href="https://wa.me/5071234567?text=Hola,%20quiero%20pedir%20un%20Ice%20Cream%20Rolls."
                             target="_blank">
-                            💬 Pedir vía WhatsApp
+                            Pedir vía WhatsApp
                         </a>
                     </section>
 

@@ -38,7 +38,7 @@
         </nav>
         
         <div class="cart">
-            <a href="#">🛒</a>
+            <a href="pantalla-de-carrito.jsp">🛒</a>
         </div>
     </header>
 

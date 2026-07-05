@@ -159,5 +159,6 @@
     </footer>
 
     <script src="detalle-barquillo.js"></script>
+    <script src="carrito-global.js"></script>
 </body>
 </html>

@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="item-details">
                 <h3>${nombre}</h3>
                 <p class="item-meta">Categoría: ${categoria}</p>
+                ${producto.sabor ? `<p class="item-meta">Sabor: ${producto.sabor}</p>` : ""}
+                ${producto.toppings ? `<p class="item-meta">Toppings: ${producto.toppings}</p>` : ""}
                 <span class="item-unit-price">$${precio.toFixed(2)}</span>
             </div>
 
@@ -91,8 +93,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (checkoutBtn) {
         checkoutBtn.classList.remove("disabled-checkout");
+
+        checkoutBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            enviarPedidoAPago(carrito, subtotal, itbms, total);
+        });
     }
 });
+
+function enviarPedidoAPago(carrito, subtotal, itbms, total) {
+    if (!carrito || carrito.length === 0) {
+        alert("El carrito está vacío.");
+        return;
+    }
+
+    const form = document.createElement("form");
+    form.method = "post";
+    form.action = "pago.jsp";
+
+    carrito.forEach(function (producto) {
+        agregarCampo(form, "nombreProducto", producto.nombre || "Producto");
+        agregarCampo(form, "categoriaProducto", producto.categoria || "Sin categoría");
+        agregarCampo(form, "precioProducto", Number(producto.precio) || 0);
+        agregarCampo(form, "cantidadProducto", Number(producto.cantidad) || 1);
+        agregarCampo(form, "saborProducto", producto.sabor || "");
+        agregarCampo(form, "toppingsProducto", producto.toppings || "");
+    });
+
+    agregarCampo(form, "subtotal", subtotal.toFixed(2));
+    agregarCampo(form, "itbms", itbms.toFixed(2));
+    agregarCampo(form, "total", total.toFixed(2));
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function agregarCampo(form, nombre, valor) {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = nombre;
+    input.value = valor;
+    form.appendChild(input);
+}
 
 function guardarCarrito(carrito) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
