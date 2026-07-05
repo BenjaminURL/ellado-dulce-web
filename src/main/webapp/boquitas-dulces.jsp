@@ -69,7 +69,7 @@
                         <p>Bocaditos suaves y dulces, perfectos para compartir.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="price" style="font-size: 18px; margin-bottom: 0;">$4.50</span>
-                            <a href="detalle-mini-donas.jsp">Ver más</a>
+                            <a href="detalle-boquitas-donas.jsp">Ver más</a>
                         </div>
                     </div>
                 </article>
@@ -82,7 +82,7 @@
                         <p>Pequeños cupcakes esponjosos con topping delicado.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="price" style="font-size: 18px; margin-bottom: 0;">$4.75</span>
-                            <a href="detalle-mini-cupcakes.jsp">Ver más</a>
+                            <a href="detalle-boquitas-cupcakes.jsp">Ver más</a>
                         </div>
                     </div>
                 </article>
@@ -95,7 +95,7 @@
                         <p>Postre cremoso y clásico con sabor casero.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="price" style="font-size: 18px; margin-bottom: 0;">$5.00</span>
-                            <a href="detalle-tres-leches.jsp">Ver más</a>
+                            <a href="detalle-boquitas-leches.jsp">Ver más</a>
                         </div>
                     </div>
                 </article>
@@ -108,7 +108,7 @@
                         <p>Cuadros intensos de chocolate, suaves y deliciosos.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="price" style="font-size: 18px; margin-bottom: 0;">$4.50</span>
-                            <a href="detalle-brownies.jsp">Ver más</a>
+                            <a href="detalle-boquitas-brownies.jsp">Ver más</a>
                         </div>
                     </div>
                 </article>
@@ -121,7 +121,7 @@
                         <p>Galletas dulces, ideales para cualquier ocasión.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="price" style="font-size: 18px; margin-bottom: 0;">$3.50</span>
-                            <a href="detalle-galletas.jsp">Ver más</a>
+                            <a href="detalle-boquitas-galletas.jsp">Ver más</a>
                         </div>
                     </div>
                 </article>
@@ -134,7 +134,7 @@
                         <p>Suaves y rellenos, con un toque tradicional.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="price" style="font-size: 18px; margin-bottom: 0;">$4.00</span>
-                            <a href="detalle-alfajores.jsp">Ver más</a>
+                            <a href="detalle-boquitas-alfajores.jsp">Ver más</a>
                         </div>
                     </div>
                 </article>
@@ -147,7 +147,7 @@
                         <p>Paletas frías y dulces para refrescar tu día.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="price" style="font-size: 18px; margin-bottom: 0;">$3.75</span>
-                            <a href="detalle-paletas.jsp">Ver más</a>
+                            <a href="detalle-boquitas-paletas.jsp">Ver más</a>
                         </div>
                     </div>
                 </article>
@@ -160,7 +160,7 @@
                         <p>Clásico tradicional, cremoso y reconfortante.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="price" style="font-size: 18px; margin-bottom: 0;">$4.25</span>
-                            <a href="detalle-arroz-leche.jsp">Ver más</a>
+                            <a href="detalle-boquitas-arroz.jsp">Ver más</a>
                         </div>
                     </div>
                 </article>
