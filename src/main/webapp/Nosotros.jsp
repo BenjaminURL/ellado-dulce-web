@@ -16,18 +16,23 @@
         </div>
 
         <nav class="menu">
-            <a class="active" href="index.jsp">Inicio</a>
-            <a href="helados.jsp">Helados</a>
-            <a href="html/bebidas.jsp">Bebidas</a>
-            <a href="">Crepes</a>
+            <a href="index.jsp">Inicio</a>
 
-            <a href="Boquitas.jsp">Boquitas</a>
-            <a href="pasteles.jsp">Pasteles</a>
+            <div class="dropdown" style="display: inline-block; position: relative;">
+                <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+                <div class="dropdown-menu">
+                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+                </div>
+            </div>
+
+            <a href="Pasteles.jsp">Pasteles</a>
             <a href="reservas.jsp">Reservas</a>
             <a href="actividades.jsp">Actividades</a>
-            <a href="nosotros.jsp">Nosotros</a>
+            <a href="Nosotros.jsp">Nosotros</a>
             <a href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
+        
         <div class="cart">
             <a href="">
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
@@ -35,7 +40,7 @@
         </div>
     </header>
 
-    <!-- ================= HERO ================= -->
+
     <section class="hero-about">
         <div class="hero-content">
             <h1>Nosotros</h1>
@@ -46,7 +51,7 @@
         </div>
     </section>
 
-    <!-- ================= HISTORIA ================= -->
+
     <section class="history-section">
         <div class="history-container">
             <div class="history-text">

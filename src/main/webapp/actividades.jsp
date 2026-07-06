@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="catalogo-productos.css?">
+    <link rel="stylesheet" href="catalogo-productos.css">
 </head>
 <body>
 
@@ -22,19 +22,24 @@
         <img src="imagenes/logo2019.png" class="logo-img" alt="Logo El Lado Dulce">
         <span>El <strong>Lado Dulce</strong></span>
     </div>
+    
+	<nav class="menu">
+            <a href="index.jsp">Inicio</a>
 
-    <nav class="menu">
-        <a href="index.jsp">Inicio</a>
-        <a href="helados.jsp">Helados</a>
-        <a href="html/bebidas.jsp">Bebidas</a>
-        <a href="#">Crepes</a>
-        <a href="Boquitas.jsp">Boquitas</a>
-        <a href="Pasteles.jsp">Pasteles</a>
-        <a href="reservas.jsp">Reservas</a>
-        <a class="active" href="actividades.jsp">Actividades</a>
-        <a href="Nosotros.jsp">Nosotros</a>
-        <a href="mi-cuenta.jsp">Mi cuenta</a>
-    </nav>
+            <div class="dropdown" style="display: inline-block; position: relative;">
+                <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+                <div class="dropdown-menu">
+                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+                </div>
+            </div>
+
+            <a href="Pasteles.jsp">Pasteles</a>
+            <a href="reservas.jsp">Reservas</a>
+            <a href="actividades.jsp">Actividades</a>
+            <a href="Nosotros.jsp">Nosotros</a>
+            <a href="mi-cuenta.jsp">Mi cuenta</a>
+        </nav>
 
     <div class="cart">
         <a href="pantalla-de-carrito.jsp">

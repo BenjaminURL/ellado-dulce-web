@@ -3,7 +3,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio | Ellado Dulce</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,11 +21,7 @@
 
         <nav class="menu">
             <a href="index.jsp">Inicio</a>
-            <a href="helados.jsp">Helados</a>
-            <a href="html/bebidas.jsp">Bebidas</a>
-            <a href="crepes.jsp">Crepes</a> <!-- Corregido: ya no está vacío -->
 
-            <!-- ÍTEM DESPLEGABLE DE BOQUITAS (Igual al de las otras secciones para evitar errores) -->
             <div class="dropdown" style="display: inline-block; position: relative;">
                 <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
                 <div class="dropdown-menu">
@@ -35,21 +30,13 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
-                    <div class="dropdown">
-            <a href="Boquitas.jsp" class="dropbtn active">Boquitas ▾</a>
-
-            <div class="dropdown-content">
-                <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
-                <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
-            </div>
-=======
->>>>>>> 7c3f0f16ec680a0c52bab7c1aec04a6545ce422a
             <a href="Pasteles.jsp">Pasteles</a>
             <a href="reservas.jsp">Reservas</a>
-            <a href="nosotros.jsp">Nosotros</a>
+            <a href="actividades.jsp">Actividades</a>
+            <a href="Nosotros.jsp">Nosotros</a>
             <a href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
+        
         <div class="cart">
             <a href="pantalla-de-carrito.jsp">
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
@@ -69,15 +56,9 @@
                     </p>
 
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">Ver menú</a>
-                        <a href="#" class="btn btn-outline">Reservar ahora</a>
+                        <a href="Pasteles.jsp" class="btn btn-primary">Ver menú</a>
+                        <a href="reservas.jsp" class="btn btn-outline">Reservar ahora</a>
                     </div>
-                </div>
-
-                <div class="hero-images">
-                    <div class="hero-card dark">Light Gray</div>
-                    <div class="hero-card light">Light Gray</div>
-                    <div class="hero-card wide">Light Gray</div>
                 </div>
             </div>
         </section>
@@ -86,53 +67,60 @@
             <h2><span></span> Productos destacados</h2>
 
             <div class="product-grid">
-                <article class="product-card">
-                    <span class="badge">Popular</span>
-                    <button class="favorite">♡</button>
-                    <div class="product-img">Light Gray</div>
-                    <h3>Ice Rolls</h3>
-                    <p class="price">$5.50</p>
-                    <button class="small-btn">+ Agregar</button>
-                </article>
+    <article class="product-card">
+        <span class="badge">Popular</span>
+        <button class="favorite">♡</button>
+        <div class="product-img">
+            <img src="imagenes/Index/bandejaDeTequeños.jpg" alt="Bandeja de tequeños">
+        </div>
+        <h3>Bandeja de tequeños</h3>
+        <p class="price">$5.50</p>
+        <button class="small-btn">+ Agregar</button>
+    </article>
 
-                <article class="product-card">
-                    <span class="badge">Popular</span>
-                    <button class="favorite">♡</button>
-                    <div class="product-img">Light Gray</div>
-                    <h3>Frozen Yogurt</h3>
-                    <p class="price">$5.00</p>
-                    <button class="small-btn">+ Agregar</button>
-                </article>
+    <article class="product-card">
+        <span class="badge">Popular</span>
+        <button class="favorite">♡</button>
+        <div class="product-img">
+            <img src="imagenes/Index/empanadasSurtidas.jpg" alt="Mini Empanaditas Surtidas">
+        </div>
+        <h3>Mini Empanaditas Surtidas</h3>
+        <p class="price">$5.00</p>
+        <button class="small-btn">+ Agregar</button>
+    </article>
 
-                <article class="product-card">
-                    <button class="favorite">♡</button>
-                    <div class="product-img">Light Gray</div>
-                    <h3>Crepes Nutella Fresa</h3>
-                    <p class="price">$7.00</p>
-                    <button class="small-btn">+ Agregar</button>
-                </article>
+    <article class="product-card">
+        <button class="favorite">♡</button>
+        <div class="product-img">
+            <img src="imagenes/Index/Mini-Quiche-Lorraine.jpg" alt="Mini Quiches Lorraine">
+        </div>
+        <h3>Mini Quiches Lorraine (4 uds)</h3>
+        <p class="price">$6.50</p>
+        <button class="small-btn">+ Agregar</button>
+    </article>
 
-                <article class="product-card">
-                    <button class="favorite">♡</button>
-                    <div class="product-img">Light Gray</div>
-                    <h3>Granizado Fresa</h3>
-                    <p class="price">$3.50</p>
-                    <button class="small-btn">+ Agregar</button>
-                </article>
-            </div>
+    <article class="product-card">
+        <button class="favorite">♡</button>
+        <div class="product-img">
+            <img src="imagenes/Index/cotte-cachitos.jpeg" alt="Cachitos de Jamón y Queso">
+        </div>
+        <h3>Cachitos de Jamón y Queso</h3>
+        <p class="price">$3.75</p>
+        <button class="small-btn">+ Agregar</button>
+    </article>
+	</div>
         </section>
 
-        <!-- SECCIÓN PROMO MODIFICADA: Ahora solo contiene los pasteles -->
         <section class="promo-section container" style="display: block;">
-            <article class="promo-card light-promo" style="max-width: 100%; width: 100%;">
-                <h3>Pasteles personalizados</h3>
+            <article class="promo-card dark-promo" style="max-width: 100%; width: 100%;">
+                <h3>Nuestros Pasteles</h3>
                 <p>
-                    Diseña tu pastel ideal eligiendo los bizcochos, las coberturas de crema chantilly, 
-                    los rellenos más cremosos y decoraciones espectaculares con chispas para tus celebraciones.
+                    Explora nuestra colección de pasteles frescos, desde los clásicos de chocolate 
+                    hasta creaciones frutales ideales para cualquier ocasión especial. 
+                    ¡Encuentra tu favorito hoy mismo!
                 </p>
                 <div style="margin-top: 15px;">
-                    <a href="personalizarPastel.jsp" class="btn btn-primary">Personalizar pastel</a>
-                    <a href="Pasteles.jsp" class="btn btn-outline small-outline dark-text">Ver diseños</a>
+                    <a href="Pasteles.jsp" class="btn btn-primary">Ver Catálogo</a>
                 </div>
             </article>
         </section>
@@ -147,7 +135,7 @@
                     </p>
 
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">Reservar ahora</a>
+                        <a href="reservas.jsp" class="btn btn-primary">Reservar ahora</a>
                     </div>
                 </div>
 
@@ -227,7 +215,7 @@
                     </div>
                 </div>
 
-                <a href="#" class="btn btn-primary">Conocer más</a>
+                <a href="login.jsp" class="btn btn-primary">Conocer más</a>
             </div>
         </section>
 
