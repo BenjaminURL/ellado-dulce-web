@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inicio | Ellado Dulce</title>
+    <title>Inicio | Ellado Dulce</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="inicio.css">
 </head>
 <body>
 
@@ -24,8 +24,18 @@
             <a href="index.jsp">Inicio</a>
             <a href="helados.jsp">Helados</a>
             <a href="html/bebidas.jsp">Bebidas</a>
-            <a href="">Crepes</a>
+            <a href="crepes.jsp">Crepes</a> <!-- Corregido: ya no está vacío -->
 
+            <!-- ÍTEM DESPLEGABLE DE BOQUITAS (Igual al de las otras secciones para evitar errores) -->
+            <div class="dropdown" style="display: inline-block; position: relative;">
+                <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+                <div class="dropdown-menu">
+                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+                </div>
+            </div>
+
+<<<<<<< HEAD
                     <div class="dropdown">
             <a href="Boquitas.jsp" class="dropbtn active">Boquitas ▾</a>
 
@@ -33,9 +43,10 @@
                 <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
                 <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
             </div>
+=======
+>>>>>>> 7c3f0f16ec680a0c52bab7c1aec04a6545ce422a
             <a href="Pasteles.jsp">Pasteles</a>
             <a href="reservas.jsp">Reservas</a>
-            <a href="actividades.jsp">Actividades</a>
             <a href="nosotros.jsp">Nosotros</a>
             <a href="mi-cuenta.jsp">Mi cuenta</a>
         </nav>
@@ -44,33 +55,32 @@
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
             </a>
         </div>
-
     </header>
 
     <main>
 
-<section class="hero">
-    <div class="hero-inner">
-        <div class="hero-content">
-            <h1>Endulza tu día <br><span>con Ellado Dulce</span></h1>
-            <p>
-                Helados, crepes, cafés, pasteles personalizados, boquitas para eventos
-                y actividades creativas para crear momentos inolvidables.
-            </p>
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1>Endulza tu día <br><span>con Ellado Dulce</span></h1>
+                    <p>
+                        Helados, crepes, cafés, pasteles personalizados, boquitas para eventos
+                        y un rincón de noticias reposteras para los amantes del buen dulce.
+                    </p>
 
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">Ver menú</a>
-                <a href="#" class="btn btn-outline">Reservar ahora</a>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Ver menú</a>
+                        <a href="#" class="btn btn-outline">Reservar ahora</a>
+                    </div>
+                </div>
+
+                <div class="hero-images">
+                    <div class="hero-card dark">Light Gray</div>
+                    <div class="hero-card light">Light Gray</div>
+                    <div class="hero-card wide">Light Gray</div>
+                </div>
             </div>
-        </div>
-
-        <div class="hero-images">
-            <div class="hero-card dark">Light Gray</div>
-            <div class="hero-card light">Light Gray</div>
-            <div class="hero-card wide">Light Gray</div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <section class="section container">
             <h2><span></span> Productos destacados</h2>
@@ -112,25 +122,15 @@
             </div>
         </section>
 
-        <section class="promo-section container">
-            <article class="promo-card dark-promo">
-                <h3>Boquitas para eventos</h3>
-                <p>
-                    Endulza tus eventos con mini donas, cupcakes, brownies,
-                    alfajores y más para compartir.
-                </p>
-                <div>
-                    <a href="Boquitas.jsp" class="btn btn-primary">Ver opciones</a>
-                </div>
-            </article>
-
-            <article class="promo-card light-promo">
+        <!-- SECCIÓN PROMO MODIFICADA: Ahora solo contiene los pasteles -->
+        <section class="promo-section container" style="display: block;">
+            <article class="promo-card light-promo" style="max-width: 100%; width: 100%;">
                 <h3>Pasteles personalizados</h3>
                 <p>
-                    Diseña tu pastel ideal con sabores, decoración,
-                    mensaje y detalles especiales.
+                    Diseña tu pastel ideal eligiendo los bizcochos, las coberturas de crema chantilly, 
+                    los rellenos más cremosos y decoraciones espectaculares con chispas para tus celebraciones.
                 </p>
-                <div>
+                <div style="margin-top: 15px;">
                     <a href="personalizarPastel.jsp" class="btn btn-primary">Personalizar pastel</a>
                     <a href="Pasteles.jsp" class="btn btn-outline small-outline dark-text">Ver diseños</a>
                 </div>
@@ -140,107 +140,107 @@
         <section class="reserve-band">
             <div class="reserve-section">
                 <div class="reserve-info">
-                <h2><span></span> Reserva de local</h2>
-                <p>
-                    Celebra en nuestro espacio con decoración personalizada,
-                    ambiente acogedor y actividades únicas para tu evento especial.
-                </p>
+                    <h2><span></span> Reserva de local</h2>
+                    <p>
+                        Celebra en nuestro espacio con decoración personalizada,
+                        ambiente acogedor y un menú inolvidable para tu evento especial.
+                    </p>
 
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">Reservar ahora</a>
-                </div>
-            </div>
-
-            <div class="reserve-prices">
-                <div class="price-box">
-                    <span>Precio base</span>
-                    <strong>$60</strong>
-                    <small>2 horas</small>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Reservar ahora</a>
+                    </div>
                 </div>
 
-                <div class="price-box dark-box">
-                    <span>Extra hora</span>
-                    <strong>$20</strong>
-                    <small>c/u</small>
+                <div class="reserve-prices">
+                    <div class="price-box">
+                        <span>Precio base</span>
+                        <strong>$60</strong>
+                        <small>2 horas</small>
+                    </div>
+
+                    <div class="price-box dark-box">
+                        <span>Extra hora</span>
+                        <strong>$20</strong>
+                        <small>c/u</small>
+                    </div>
                 </div>
-            </div>
             </div>
         </section>
 
-        <section class="section container">
-    <h2><span></span> Actividades del mes</h2>
-
-            <div class="activity-grid">
-                <article class="activity-card pink">
-                    <div class="activity-icon">
-                        <img src="imagenes/iconos/origamiwoback.png" alt="Icono de origami">
-                    </div>
-                    <h3>Origami</h3>
-                    <p>Aprende a doblar papel y crear figuras increíbles con nuestros instructores.</p>
-                    <a href="#">Ver detalles</a>
-                </article>
-
-                <article class="activity-card purple">
-                    <div class="activity-icon">
-                        <img src="imagenes/iconos/decoracion de galletas.png" alt="Icono de decoración de galletas">
-                    </div>
-                    <h3>Decoración de galletas</h3>
-                    <p>Decora tus propias galletas con glasé real y diseños únicos.</p>
-                    <a href="#">Ver detalles</a>
-                </article>
-                
-                <article class="activity-card yellow">
-                    <div class="activity-icon">
-                        <img src="imagenes/iconos/pinturaback.png" alt="Icono de pintura">
-                    </div>
-                    <h3>Pintura</h3>
-                    <p>Expresa tu creatividad en lienzo con pinturas y colores vibrantes.</p>
-                    <a href="#">Ver detalles</a>
-                </article>
-            </div>
-        </section>
+		<section class="section container">
+		    <h2><span></span> Noticias Dulces</h2>
+		
+		    <div class="activity-grid">
+		        <article class="activity-card pink">
+		            <div class="activity-icon" style="width: 80px; height: 80px; margin: 0 auto 15px auto; overflow: hidden; border-radius: 50%;">
+		                <img src="https://cimamastologia.com.ar/wp-content/uploads/2025/03/azucar.png" alt="Tendencias" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='imagenes/iconos/compra3 (1).png'">
+		            </div>
+		            <h3>Tendencias: Menos Azúcar, Más Sabor</h3>
+		            <p>La repostería artesanal evoluciona con el uso de azúcares naturales de frutas y alternativas orgánicas que mantienen intacto el sabor de siempre.</p>
+		            <a href="#">Leer artículo</a>
+		        </article>
+		
+		        <article class="activity-card purple">
+		            <div class="activity-icon" style="width: 80px; height: 80px; margin: 0 auto 15px auto; overflow: hidden; border-radius: 50%;">
+		                <img src="https://edenred.com.uy/wp-content/uploads/2023/06/el-chocolate-un-placer-con-beneficios-nutricionales-1024x683.jpg" alt="Postres de autor" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='imagenes/iconos/medall (1).png'">
+		            </div>
+		            <h3>El Auge de los Postres de Autor</h3>
+		            <p>Expertos pasteleros revelan por qué las presentaciones individuales y las fusiones exóticas están dominando las mesas de dulces este año.</p>
+		            <a href="#">Leer artículo</a>
+		        </article>
+		        
+		        <article class="activity-card yellow">
+		            <div class="activity-icon" style="width: 80px; height: 80px; margin: 0 auto 15px auto; overflow: hidden; border-radius: 50%;">
+		                <img src="https://cdn0.uncomo.com/es/posts/6/3/9/como_endurecer_el_merengue_para_decorar_49936_600.jpg" alt="Azúcar Glass" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='imagenes/iconos/giftbox1.1 (1).png'">
+		            </div>
+		            <h3>Secretos del Azúcar Glass Perfecto</h3>
+		            <p>Descubre el impacto técnico que tiene la finura del azúcar en coberturas delicadas como el merengue y el glaseado para boquitas.</p>
+		            <a href="#">Leer artículo</a>
+		        </article>
+		    </div>
+		</section>
         
         <section class="points-wrapper">
             <div class="points-section">
-        <div>
-            <h2>Sistema de puntos</h2>
-            <p>
-                Cada compra te acerca a más beneficios. Acumula puntos en cada visita
-                y canjéalos por productos, descuentos y beneficios especiales.
-            </p>
-        </div>
+                <div>
+                    <h2>Sistema de puntos</h2>
+                    <p>
+                        Cada compra te acerca a más beneficios. Acumula puntos en cada visita
+                        y canjéalos por productos, descuentos y beneficios especiales.
+                    </p>
+                </div>
 
-        <div class="points-steps">
-            <div class="point-step">
-                <img src="imagenes/iconos/compra3 (1).png" alt="Icono de compra">
-                <p>Compra</p>
+                <div class="points-steps">
+                    <div class="point-step">
+                        <img src="imagenes/iconos/compra3 (1).png" alt="Icono de compra">
+                        <p>Compra</p>
+                    </div>
+
+                    <div class="point-step">
+                        <img src="imagenes/iconos/medall (1).png" alt="Icono de puntos">
+                        <p>Puntos</p>
+                    </div>
+
+                    <div class="point-step">
+                        <img src="imagenes/iconos/giftbox1.1 (1).png" alt="Icono de premio">
+                        <p>Premio</p>
+                    </div>
+                </div>
+
+                <a href="#" class="btn btn-primary">Conocer más</a>
             </div>
-
-            <div class="point-step">
-                <img src="imagenes/iconos/medall (1).png" alt="Icono de puntos">
-                <p>Puntos</p>
-            </div>
-
-            <div class="point-step">
-                <img src="imagenes/iconos/giftbox1.1 (1).png" alt="Icono de premio">
-                <p>Premio</p>
-            </div>
-        </div>
-
-        <a href="#" class="btn btn-primary">Conocer más</a>
-    </div>
-</section>
+        </section>
 
     </main>
 
     <footer class="footer">
         <div class="footer-col">
-    <div class="footer-logo">
-        <img src="imagenes/logo2019.png" alt="Logo Ellado Dulce" class="footer-logo-img">
-        <h3>Ellado <span>Dulce</span></h3>
-    </div>
-    <p>Tu lugar favorito para endulzar cada momento.</p>
-</div>
+            <div class="footer-logo">
+                <img src="imagenes/logo2019.png" alt="Logo Ellado Dulce" class="footer-logo-img">
+                <h3>Ellado <span>Dulce</span></h3>
+            </div>
+            <p>Tu lugar favorito para endulzar cada momento.</p>
+        </div>
 
         <div class="footer-col">
             <h3>Horarios</h3>
@@ -261,7 +261,7 @@
         </div>
 
         <div class="copyright">
-            © 2025 Ellado Dulce. Todos los derechos reservados.
+            © 2026 Ellado Dulce. Todos los derechos reservados.
         </div>
     </footer>
 
