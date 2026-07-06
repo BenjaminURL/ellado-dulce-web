@@ -14,7 +14,6 @@
 </head>
 <body>
 
-    <!-- HEADER IDÉNTICO CON EL DROPDOWN DE BOQUITAS -->
     <header class="navbar">
         <div class="logo">
             <img src="imagenes/logo2019.png" class="logo-img" alt="Logo El Lado Dulce" />
@@ -27,7 +26,6 @@
             <a href="html/bebidas.jsp">Bebidas</a>
             <a href="">Crepes</a>
 		
-            <!-- ÍTEM DESPLEGABLE DE BOQUITAS -->
             <div class="dropdown">
                 <a href="#" class="dropdown-toggle active">Boquitas <span class="arrow">∨</span></a>
                 <div class="dropdown-menu">
@@ -52,7 +50,6 @@
     </header>
 
     <main>
-        <!-- ENCABEZADO DE LA SECCIÓN -->
         <section class="custom-header">
             <div class="header-text">
                 <h1>Mini Tres Leches <br><span>Individuales</span></h1>
@@ -63,48 +60,16 @@
             </div>
         </section>
 
-        <!-- GRID DEL CONFIGURADOR -->
         <div class="configurator-grid">
             
-            <!-- PANEL DE VISTA PREVIA (IZQUIERDA) -->
             <div class="preview-panel">
                 <img id="previewCake" src="imagenes/productos/mini-tres-leches.png" alt="Mini Tres Leches El Lado Dulce">
             </div>
 
-            <!-- PANEL DE SELECCIÓN DE OPCIONES (CENTRO) -->
             <div class="options-panel">
                 
-                <!-- Categoría 1: Cantidad -->
                 <div class="category">
-                    <h2>1. Selecciona la cantidad</h2>
-                    <div class="cards" id="cantidadContainer">
-                        <div class="card selected" data-precio="18.00" data-value="6 unidades">
-                            <div>
-                                <strong>Caja de 6 unidades</strong>
-                                <p>Vasitos individuales para compartir</p>
-                            </div>
-                            <span class="option-price">$18.00</span>
-                        </div>
-                        <div class="card" data-precio="34.00" data-value="12 unidades">
-                            <div>
-                                <strong>Caja de 12 unidades</strong>
-                                <p>La cantidad ideal para mesas de postres</p>
-                            </div>
-                            <span class="option-price">$34.00</span>
-                        </div>
-                        <div class="card" data-precio="65.00" data-value="24 unidades">
-                            <div>
-                                <strong>Bandeja de 24 unidades</strong>
-                                <p>Excelente para grandes celebraciones</p>
-                            </div>
-                            <span class="option-price">$65.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2: Sabor del Bizcocho -->
-                <div class="category">
-                    <h2>2. Sabor de la base</h2>
+                    <h2>1. Sabor de la base</h2>
                     <div class="cards" id="saborContainer">
                         <div class="card selected" data-value="Vainilla Tradicional">
                             <strong>Vainilla Tradicional (Remojo de 3 leches clásico)</strong>
@@ -115,9 +80,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 3: Decoración de la Cobertura -->
                 <div class="category">
-                    <h2>3. Cobertura Chantilly y Topping</h2>
+                    <h2>2. Cobertura Chantilly y Topping</h2>
                     <div class="cards" id="toppingContainer">
                         <div class="card selected" data-value="Chantilly con Canela">
                             <strong>Base Chantilly con Canela Molida</strong>
@@ -133,7 +97,6 @@
 
             </div>
 
-            <!-- PANEL DE RESUMEN DE COMPRA (DERECHA) -->
             <div class="summary-panel">
                 <h2>Resumen de Boquitas</h2>
                 
@@ -142,8 +105,8 @@
                     <strong>Mini Tres Leches</strong>
                 </div>
                 <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <strong id="resumenCantidad">6 unidades</strong>
+                    <span>Presentación:</span>
+                    <strong>Caja de 6 uds.</strong>
                 </div>
                 <div class="summary-item">
                     <span>Sabor de Base:</span>
@@ -167,7 +130,6 @@
         </div>
     </main>
 
-    <!-- FOOTER IDÉNTICO -->
     <footer class="footer">
         <div class="footer-col">
             <div class="footer-logo">
@@ -196,11 +158,10 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE INTERACTIVIDAD -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
-            function configurarGrupo(containerId, resumenId, onChangeCallback) {
+            function configurarGrupo(containerId, resumenId) {
                 const container = document.getElementById(containerId);
                 const cards = container.querySelectorAll('.card');
                 
@@ -211,30 +172,15 @@
                         
                         const valor = this.getAttribute('data-value');
                         document.getElementById(resumenId).innerText = valor;
-                        
-                        if(onChangeCallback) onChangeCallback(this);
                     });
                 });
             }
-
-            // Configurar Cantidad
-            configurarGrupo('cantidadContainer', 'resumenCantidad', function() {
-                calcularPrecioTotal();
-            });
 
             // Configurar Sabor
             configurarGrupo('saborContainer', 'resumenSabor');
 
             // Configurar Topping
             configurarGrupo('toppingContainer', 'resumenTopping');
-
-            // Calcular precio total
-            function calcularPrecioTotal() {
-                const cantSeleccionada = document.querySelector('#cantidadContainer .card.selected');
-                let precioBase = parseFloat(cantSeleccionada.getAttribute('data-precio'));
-                
-                document.getElementById('totalPrice').innerText = "$" + precioBase.toFixed(2);
-            }
 
             // Simulación del botón del carrito
             const btnCarrito = document.getElementById('btnAgregarCarrito');

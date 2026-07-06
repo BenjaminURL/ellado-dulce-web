@@ -58,7 +58,7 @@
                 <h1>Mini Cupcakes <br><span>Personalizados</span></h1>
                 <p>
                     Perfectos para cumpleaños, mesas de dulces y eventos corporativos. 
-                    Elige el sabor, la cantidad y personaliza los colores de la crema a tu gusto.
+                    Elige el sabor y personaliza el tipo de crema a tu gusto.
                 </p>
             </div>
         </section>
@@ -74,37 +74,9 @@
             <!-- PANEL DE SELECCIÓN DE OPCIONES (CENTRO) -->
             <div class="options-panel">
                 
-                <!-- Categoría 1: Cantidad -->
+                <!-- Categoría 1: Masa / Sabor -->
                 <div class="category">
-                    <h2>1. Selecciona la cantidad</h2>
-                    <div class="cards" id="cantidadContainer">
-                        <div class="card selected" data-precio="15.00" data-value="12 unidades">
-                            <div>
-                                <strong>Caja de 12 unidades</strong>
-                                <p>Ideal para compartir en familia</p>
-                            </div>
-                            <span class="option-price">$15.00</span>
-                        </div>
-                        <div class="card" data-precio="28.00" data-value="24 unidades">
-                            <div>
-                                <strong>Caja de 24 unidades</strong>
-                                <p>Recomendado para reuniones</p>
-                            </div>
-                            <span class="option-price">$28.00</span>
-                        </div>
-                        <div class="card" data-precio="55.00" data-value="58 unidades">
-                            <div>
-                                <strong>Bandeja de 50 unidades</strong>
-                                <p>Perfecto para eventos grandes</p>
-                            </div>
-                            <span class="option-price">$55.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2: Masa / Sabor -->
-                <div class="category">
-                    <h2>2. Sabor del bizcocho</h2>
+                    <h2>1. Sabor del bizcocho</h2>
                     <div class="cards" id="saborContainer">
                         <div class="card selected" data-value="Vainilla Tradicional">
                             <strong>Vainilla Tradicional</strong>
@@ -113,14 +85,14 @@
                             <strong>Chocolate Intenso</strong>
                         </div>
                         <div class="card" data-value="Red Velvet">
-                            <strong>Red Velvet (+ $2.00)</strong>
+                            <strong>Red Velvet</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categoría 3: Cobertura -->
+                <!-- Categoría 2: Cobertura -->
                 <div class="category">
-                    <h2>3. Tipo de Frosting</h2>
+                    <h2>2. Tipo de Frosting</h2>
                     <div class="cards" id="frostingContainer">
                         <div class="card selected" data-value="Crema de Mantequilla">
                             <strong>Buttercream (Crema de Mantequilla)</strong>
@@ -145,8 +117,8 @@
                     <strong>Mini Cupcakes</strong>
                 </div>
                 <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <strong id="resumenCantidad">12 unidades</strong>
+                    <span>Presentación:</span>
+                    <strong>Caja de 12 uds.</strong>
                 </div>
                 <div class="summary-item">
                     <span>Masa:</span>
@@ -204,7 +176,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             
             // Función genérica para manejar la selección de tarjetas
-            function configurarGrupo(containerId, resumenId, onChangeCallback) {
+            function configurarGrupo(containerId, resumenId) {
                 const container = document.getElementById(containerId);
                 const cards = container.querySelectorAll('.card');
                 
@@ -218,39 +190,15 @@
                         // Actualizar texto del resumen lateral
                         const valor = this.getAttribute('data-value');
                         document.getElementById(resumenId).innerText = valor;
-                        
-                        if(onChangeCallback) onChangeCallback(this);
                     });
                 });
             }
 
-            // Manejar Cantidades y Precios
-            configurarGrupo('cantidadContainer', 'resumenCantidad', function(cardSeleccionada) {
-                calcularPrecioTotal();
-            });
-
             // Manejar Sabores
-            configurarGrupo('saborContainer', 'resumenSabor', function(cardSeleccionada) {
-                calcularPrecioTotal();
-            });
+            configurarGrupo('saborContainer', 'resumenSabor');
 
             // Manejar Frosting
             configurarGrupo('frostingContainer', 'resumenFrosting');
-
-            // Función para calcular el precio total combinando opciones
-            function calcularPrecioTotal() {
-                const cantSeleccionada = document.querySelector('#cantidadContainer .card.selected');
-                const saborSeleccionado = document.querySelector('#saborContainer .card.selected');
-                
-                let precioBase = parseFloat(cantSeleccionada.getAttribute('data-precio'));
-                
-                // Si eligen Red Velvet sumamos un pequeño extra por el tipo de masa especial
-                if(saborSeleccionado.getAttribute('data-value') === "Red Velvet") {
-                    precioBase += 2.00;
-                }
-                
-                document.getElementById('totalPrice').innerText = "$" + precioBase.toFixed(2);
-            }
 
             // Simulación de agregar al carrito
             const btnCarrito = document.getElementById('btnAgregarCarrito');

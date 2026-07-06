@@ -74,37 +74,9 @@
             <!-- PANEL DE SELECCIÓN DE OPCIONES (CENTRO) -->
             <div class="options-panel">
                 
-                <!-- Categoría 1: Cantidad -->
+                <!-- Categoría 1: Sabor de la Galleta -->
                 <div class="category">
-                    <h2>1. Selecciona la cantidad</h2>
-                    <div class="cards" id="cantidadContainer">
-                        <div class="card selected" data-precio="8.50" data-value="12 unidades">
-                            <div>
-                                <strong>Caja de 12 unidades</strong>
-                                <p>Un antojo perfecto para el día</p>
-                            </div>
-                            <span class="option-price">$8.50</span>
-                        </div>
-                        <div class="card" data-precio="16.00" data-value="24 unidades">
-                            <div>
-                                <strong>Caja de 24 unidades</strong>
-                                <p>Ideales para compartir en la tarde</p>
-                            </div>
-                            <span class="option-price">$16.00</span>
-                        </div>
-                        <div class="card" data-precio="30.00" data-value="50 unidades">
-                            <div>
-                                <strong>Bandeja de 50 unidades</strong>
-                                <p>La mejor variedad para tus invitados</p>
-                            </div>
-                            <span class="option-price">$30.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2: Sabor de la Galleta -->
-                <div class="category">
-                    <h2>2. Tipo / Sabor</h2>
+                    <h2>1. Tipo / Sabor</h2>
                     <div class="cards" id="saborContainer">
                         <div class="card selected" data-value="Chispas de Chocolate">
                             <strong>Chispas de Chocolate Clásica</strong>
@@ -113,20 +85,20 @@
                             <strong>Doble Chocolate Intenso</strong>
                         </div>
                         <div class="card" data-value="Red Velvet Premium">
-                            <strong>Red Velvet con Chispas Blancas (+ $1.00)</strong>
+                            <strong>Red Velvet con Chispas Blancas</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categoría 3: Tipo de Empaque / Entrega -->
+                <!-- Categoría 2: Tipo de Empaque / Entrega -->
                 <div class="category">
-                    <h2>3. Preferencia de empaque</h2>
+                    <h2>2. Preferencia de empaque</h2>
                     <div class="cards" id="toppingContainer">
                         <div class="card selected" data-value="Caja Estándar">
                             <strong>Empaque Estándar de Pastelería</strong>
                         </div>
                         <div class="card" data-value="Bolsa Térmica (Calentitas)">
-                            <strong>Envío Térmica (Para mantenerlas tibias)</strong>
+                            <strong>Envío Térmico (Para mantenerlas tibias)</strong>
                         </div>
                     </div>
                 </div>
@@ -142,8 +114,8 @@
                     <strong>Mini Galletas</strong>
                 </div>
                 <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <strong id="resumenCantidad">12 unidades</strong>
+                    <span>Presentación:</span>
+                    <strong>Caja de 12 uds.</strong>
                 </div>
                 <div class="summary-item">
                     <span>Sabor:</span>
@@ -200,7 +172,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
-            function configurarGrupo(containerId, resumenId, onChangeCallback) {
+            function configurarGrupo(containerId, resumenId) {
                 const container = document.getElementById(containerId);
                 const cards = container.querySelectorAll('.card');
                 
@@ -211,39 +183,15 @@
                         
                         const valor = this.getAttribute('data-value');
                         document.getElementById(resumenId).innerText = valor;
-                        
-                        if(onChangeCallback) onChangeCallback(this);
                     });
                 });
             }
 
-            // Configurar Cantidad
-            configurarGrupo('cantidadContainer', 'resumenCantidad', function() {
-                calcularPrecioTotal();
-            });
-
             // Configurar Sabor
-            configurarGrupo('saborContainer', 'resumenSabor', function() {
-                calcularPrecioTotal();
-            });
+            configurarGrupo('saborContainer', 'resumenSabor');
 
             // Configurar Empaque
             configurarGrupo('toppingContainer', 'resumenTopping');
-
-            // Calcular precio dinámico
-            function calcularPrecioTotal() {
-                const cantSeleccionada = document.querySelector('#cantidadContainer .card.selected');
-                const saborSeleccionado = document.querySelector('#saborContainer .card.selected');
-                
-                let precioBase = parseFloat(cantSeleccionada.getAttribute('data-precio'));
-                
-                // Extra por sabor premium
-                if(saborSeleccionado.getAttribute('data-value') === "Red Velvet Premium") {
-                    precioBase += 1.00;
-                }
-                
-                document.getElementById('totalPrice').innerText = "$" + precioBase.toFixed(2);
-            }
 
             // Simulación del botón del carrito
             const btnCarrito = document.getElementById('btnAgregarCarrito');

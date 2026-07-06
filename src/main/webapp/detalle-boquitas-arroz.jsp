@@ -74,37 +74,9 @@
             <!-- PANEL DE SELECCIÓN DE OPCIONES (CENTRO) -->
             <div class="options-panel">
                 
-                <!-- Categoría 1: Cantidad -->
+                <!-- Categoría 1: Estilo de Preparación -->
                 <div class="category">
-                    <h2>1. Selecciona la cantidad</h2>
-                    <div class="cards" id="cantidadContainer">
-                        <div class="card selected" data-precio="15.00" data-value="6 unidades">
-                            <div>
-                                <strong>Caja de 6 unidades</strong>
-                                <p>Vasitos ideales para un antojo familiar</p>
-                            </div>
-                            <span class="option-price">$15.00</span>
-                        </div>
-                        <div class="card" data-precio="28.00" data-value="12 unidades">
-                            <div>
-                                <strong>Caja de 12 unidades</strong>
-                                <p>La opción perfecta para mesas de postres</p>
-                            </div>
-                            <span class="option-price">$28.00</span>
-                        </div>
-                        <div class="card" data-precio="54.00" data-value="24 unidades">
-                            <div>
-                                <strong>Bandeja de 24 unidades</strong>
-                                <p>Excelente rendimiento para tus invitados</p>
-                            </div>
-                            <span class="option-price">$54.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2: Estilo de Preparación -->
-                <div class="category">
-                    <h2>2. Estilo de la receta</h2>
+                    <h2>1. Estilo de la receta</h2>
                     <div class="cards" id="saborContainer">
                         <div class="card selected" data-value="Tradicional con Pasitas">
                             <strong>Receta Tradicional (Con Pasitas al ron)</strong>
@@ -115,9 +87,9 @@
                     </div>
                 </div>
 
-                <!-- Categoría 3: Cobertura / Topping -->
+                <!-- Categoría 2: Cobertura / Topping -->
                 <div class="category">
-                    <h2>3. Topping y Decoración</h2>
+                    <h2>2. Topping y Decoración</h2>
                     <div class="cards" id="toppingContainer">
                         <div class="card selected" data-value="Canela Molida">
                             <strong>Toque Clásico de Canela en Polvo</strong>
@@ -142,8 +114,8 @@
                     <strong>Mini Arroz con Leche</strong>
                 </div>
                 <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <strong id="resumenCantidad">6 unidades</strong>
+                    <span>Presentación:</span>
+                    <strong>Caja de 6 uds.</strong>
                 </div>
                 <div class="summary-item">
                     <span>Estilo:</span>
@@ -200,7 +172,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
-            function configurarGrupo(containerId, resumenId, onChangeCallback) {
+            function configurarGrupo(containerId, resumenId) {
                 const container = document.getElementById(containerId);
                 const cards = container.querySelectorAll('.card');
                 
@@ -211,30 +183,15 @@
                         
                         const valor = this.getAttribute('data-value');
                         document.getElementById(resumenId).innerText = valor;
-                        
-                        if(onChangeCallback) onChangeCallback(this);
                     });
                 });
             }
-
-            // Configurar Cantidad
-            configurarGrupo('cantidadContainer', 'resumenCantidad', function() {
-                calcularPrecioTotal();
-            });
 
             // Configurar Estilo de Receta
             configurarGrupo('saborContainer', 'resumenSabor');
 
             // Configurar Decoración
             configurarGrupo('toppingContainer', 'resumenTopping');
-
-            // Calcular precio dinámico
-            function calcularPrecioTotal() {
-                const cantSeleccionada = document.querySelector('#cantidadContainer .card.selected');
-                let precioBase = parseFloat(cantSeleccionada.getAttribute('data-precio'));
-                
-                document.getElementById('totalPrice').innerText = "$" + precioBase.toFixed(2);
-            }
 
             // Simulación del carrito
             const btnCarrito = document.getElementById('btnAgregarCarrito');

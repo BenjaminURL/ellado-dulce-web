@@ -74,50 +74,22 @@
             <!-- PANEL DE SELECCIÓN DE OPCIONES (CENTRO) -->
             <div class="options-panel">
                 
-                <!-- Categoría 1: Cantidad -->
+                <!-- Categoría 1: Mezcla Base -->
                 <div class="category">
-                    <h2>1. Selecciona la cantidad</h2>
-                    <div class="cards" id="cantidadContainer">
-                        <div class="card selected" data-precio="10.00" data-value="12 unidades">
-                            <div>
-                                <strong>Caja de 12 unidades</strong>
-                                <p>El tamaño perfecto para regalar o compartir</p>
-                            </div>
-                            <span class="option-price">$10.00</span>
-                        </div>
-                        <div class="card" data-precio="18.50" data-value="24 unidades">
-                            <div>
-                                <strong>Caja de 24 unidades</strong>
-                                <p>La porción ideal para reuniones medianas</p>
-                            </div>
-                            <span class="option-price">$18.50</span>
-                        </div>
-                        <div class="card" data-precio="35.00" data-value="50 unidades">
-                            <div>
-                                <strong>Bandeja de 50 unidades</strong>
-                                <p>Excelente rendimiento para eventos grandes</p>
-                            </div>
-                            <span class="option-price">$35.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2: Mezcla Base -->
-                <div class="category">
-                    <h2>2. Estilo de la masa</h2>
+                    <h2>1. Estilo de la masa</h2>
                     <div class="cards" id="saborContainer">
                         <div class="card selected" data-value="Clásicos sin nueces">
                             <strong>Clásicos de Puro Chocolate</strong>
                         </div>
                         <div class="card" data-value="Con Nueces Trituradas">
-                            <strong>Con Nueces (+ $1.50)</strong>
+                            <strong>Con Nueces</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categoría 3: Cobertura / Topping -->
+                <!-- Categoría 2: Cobertura / Topping -->
                 <div class="category">
-                    <h2>3. Decoración superior</h2>
+                    <h2>2. Decoración superior</h2>
                     <div class="cards" id="toppingContainer">
                         <div class="card selected" data-value="Azúcar Glass">
                             <strong>Lluvia de Azúcar Glass</strong>
@@ -142,8 +114,8 @@
                     <strong>Mini Brownies</strong>
                 </div>
                 <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <strong id="resumenCantidad">12 unidades</strong>
+                    <span>Presentación:</span>
+                    <strong>Caja de 12 uds.</strong>
                 </div>
                 <div class="summary-item">
                     <span>Masa:</span>
@@ -200,7 +172,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
-            function configurarGrupo(containerId, resumenId, onChangeCallback) {
+            function configurarGrupo(containerId, resumenId) {
                 const container = document.getElementById(containerId);
                 const cards = container.querySelectorAll('.card');
                 
@@ -211,39 +183,15 @@
                         
                         const valor = this.getAttribute('data-value');
                         document.getElementById(resumenId).innerText = valor;
-                        
-                        if(onChangeCallback) onChangeCallback(this);
                     });
                 });
             }
 
-            // Configurar Cantidad
-            configurarGrupo('cantidadContainer', 'resumenCantidad', function() {
-                calcularPrecioTotal();
-            });
-
             // Configurar Sabor / Estilo Masa
-            configurarGrupo('saborContainer', 'resumenSabor', function() {
-                calcularPrecioTotal();
-            });
+            configurarGrupo('saborContainer', 'resumenSabor');
 
             // Configurar Decoración
             configurarGrupo('toppingContainer', 'resumenTopping');
-
-            // Calcular precio total dinámicamente con adicionales
-            function calcularPrecioTotal() {
-                const cantSeleccionada = document.querySelector('#cantidadContainer .card.selected');
-                const saborSeleccionado = document.querySelector('#saborContainer .card.selected');
-                
-                let precioBase = parseFloat(cantSeleccionada.getAttribute('data-precio'));
-                
-                // Si eligen con Nueces, sumamos el valor extra
-                if(saborSeleccionado.getAttribute('data-value') === "Con Nueces Trituradas") {
-                    precioBase += 1.50;
-                }
-                
-                document.getElementById('totalPrice').innerText = "$" + precioBase.toFixed(2);
-            }
 
             // Simulación del botón del carrito
             const btnCarrito = document.getElementById('btnAgregarCarrito');

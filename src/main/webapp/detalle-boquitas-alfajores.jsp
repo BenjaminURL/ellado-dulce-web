@@ -74,50 +74,22 @@
             <!-- PANEL DE SELECCIÓN DE OPCIONES (CENTRO) -->
             <div class="options-panel">
                 
-                <!-- Categoría 1: Cantidad -->
+                <!-- Categoría 1: Tipo de Masa -->
                 <div class="category">
-                    <h2>1. Selecciona la cantidad</h2>
-                    <div class="cards" id="cantidadContainer">
-                        <div class="card selected" data-precio="11.00" data-value="12 unidades">
-                            <div>
-                                <strong>Caja de 12 unidades</strong>
-                                <p>Ideales para un dulce compartir</p>
-                            </div>
-                            <span class="option-price">$11.00</span>
-                        </div>
-                        <div class="card" data-precio="20.00" data-value="24 unidades">
-                            <div>
-                                <strong>Caja de 24 unidades</strong>
-                                <p>La porción preferida para reuniones</p>
-                            </div>
-                            <span class="option-price">$20.00</span>
-                        </div>
-                        <div class="card" data-precio="38.50" data-value="50 unidades">
-                            <div>
-                                <strong>Bandeja de 50 unidades</strong>
-                                <p>Rendimiento ideal para mesas de dulces</p>
-                            </div>
-                            <span class="option-price">$38.50</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2: Tipo de Masa -->
-                <div class="category">
-                    <h2>2. Tipo de masa</h2>
+                    <h2>1. Tipo de masa</h2>
                     <div class="cards" id="saborContainer">
                         <div class="card selected" data-value="Maicena Clásica">
                             <strong>Maicena Clásica Tradicional</strong>
                         </div>
                         <div class="card" data-value="Masa de Chocolate">
-                            <strong>Masa de Chocolate Intenso (+ $1.50)</strong>
+                            <strong>Masa de Chocolate Intenso</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categoría 3: Cobertura / Acabado Exterior -->
+                <!-- Categoría 2: Cobertura / Acabado Exterior -->
                 <div class="category">
-                    <h2>3. Acabado exterior</h2>
+                    <h2>2. Acabado exterior</h2>
                     <div class="cards" id="toppingContainer">
                         <div class="card selected" data-value="Coco Rallado">
                             <strong>Borde de Coco Rallado Clásico</strong>
@@ -142,8 +114,8 @@
                     <strong>Mini Alfajores</strong>
                 </div>
                 <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <strong id="resumenCantidad">12 unidades</strong>
+                    <span>Presentación:</span>
+                    <strong>Caja de 12 uds.</strong>
                 </div>
                 <div class="summary-item">
                     <span>Masa:</span>
@@ -200,7 +172,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
-            function configurarGrupo(containerId, resumenId, onChangeCallback) {
+            function configurarGrupo(containerId, resumenId) {
                 const container = document.getElementById(containerId);
                 const cards = container.querySelectorAll('.card');
                 
@@ -211,39 +183,15 @@
                         
                         const valor = this.getAttribute('data-value');
                         document.getElementById(resumenId).innerText = valor;
-                        
-                        if(onChangeCallback) onChangeCallback(this);
                     });
                 });
             }
 
-            // Configurar Cantidad
-            configurarGrupo('cantidadContainer', 'resumenCantidad', function() {
-                calcularPrecioTotal();
-            });
-
             // Configurar Masa
-            configurarGrupo('saborContainer', 'resumenSabor', function() {
-                calcularPrecioTotal();
-            });
+            configurarGrupo('saborContainer', 'resumenSabor');
 
             // Configurar Acabado
             configurarGrupo('toppingContainer', 'resumenTopping');
-
-            // Calcular precio dinámico
-            function calcularPrecioTotal() {
-                const cantSeleccionada = document.querySelector('#cantidadContainer .card.selected');
-                const saborSeleccionado = document.querySelector('#saborContainer .card.selected');
-                
-                let precioBase = parseFloat(cantSeleccionada.getAttribute('data-precio'));
-                
-                // Añadir costo extra si se elige masa de chocolate
-                if(saborSeleccionado.getAttribute('data-value') === "Masa de Chocolate") {
-                    precioBase += 1.50;
-                }
-                
-                document.getElementById('totalPrice').innerText = "$" + precioBase.toFixed(2);
-            }
 
             // Simulación del carrito
             const btnCarrito = document.getElementById('btnAgregarCarrito');

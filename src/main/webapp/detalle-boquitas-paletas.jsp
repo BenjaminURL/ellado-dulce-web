@@ -14,7 +14,6 @@
 </head>
 <body>
 
-    <!-- HEADER IDÉNTICO CON EL DROPDOWN DE BOQUITAS -->
     <header class="navbar">
         <div class="logo">
             <img src="imagenes/logo2019.png" class="logo-img" alt="Logo El Lado Dulce" />
@@ -27,7 +26,6 @@
             <a href="html/bebidas.jsp">Bebidas</a>
             <a href="">Crepes</a>
 		
-            <!-- ÍTEM DESPLEGABLE DE BOQUITAS -->
             <div class="dropdown">
                 <a href="#" class="dropdown-toggle active">Boquitas <span class="arrow">∨</span></a>
                 <div class="dropdown-menu">
@@ -52,7 +50,6 @@
     </header>
 
     <main>
-        <!-- ENCABEZADO DE LA SECCIÓN -->
         <section class="custom-header">
             <div class="header-text">
                 <h1>Mini Paletas <br><span>Divertidas</span></h1>
@@ -63,48 +60,16 @@
             </div>
         </section>
 
-        <!-- GRID DEL CONFIGURADOR -->
         <div class="configurator-grid">
             
-            <!-- PANEL DE VISTA PREVIA (IZQUIERDA) -->
             <div class="preview-panel">
                 <img id="previewCake" src="imagenes/productos/mini-paletas.png" alt="Mini Paletas El Lado Dulce">
             </div>
 
-            <!-- PANEL DE SELECCIÓN DE OPCIONES (CENTRO) -->
             <div class="options-panel">
                 
-                <!-- Categoría 1: Cantidad -->
                 <div class="category">
-                    <h2>1. Selecciona la cantidad</h2>
-                    <div class="cards" id="cantidadContainer">
-                        <div class="card selected" data-precio="14.00" data-value="12 unidades">
-                            <div>
-                                <strong>Caja de 12 unidades</strong>
-                                <p>Ideales para un detalle o fiesta pequeña</p>
-                            </div>
-                            <span class="option-price">$14.00</span>
-                        </div>
-                        <div class="card" data-precio="26.00" data-value="24 unidades">
-                            <div>
-                                <strong>Caja de 24 unidades</strong>
-                                <p>La cantidad perfecta para exhibir en tu mesa</p>
-                            </div>
-                            <span class="option-price">$26.00</span>
-                        </div>
-                        <div class="card" data-precio="50.00" data-value="50 unidades">
-                            <div>
-                                <strong>Bandeja de 50 unidades</strong>
-                                <p>Recomendado para eventos y cumpleaños grandes</p>
-                            </div>
-                            <span class="option-price">$50.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2: Relleno Interior -->
-                <div class="category">
-                    <h2>2. Sabor del pastel interior</h2>
+                    <h2>1. Sabor del pastel interior</h2>
                     <div class="cards" id="saborContainer">
                         <div class="card selected" data-value="Trufa de Chocolate">
                             <strong>Trufa de Chocolate Intenso</strong>
@@ -115,9 +80,8 @@
                     </div>
                 </div>
 
-                <!-- Categoría 3: Cobertura Exterior -->
                 <div class="category">
-                    <h2>3. Cobertura de Chocolate</h2>
+                    <h2>2. Cobertura de Chocolate</h2>
                     <div class="cards" id="toppingContainer">
                         <div class="card selected" data-value="Chocolate con Leche">
                             <strong>Chocolate con Leche y Líneas Blancas</strong>
@@ -126,14 +90,13 @@
                             <strong>Chocolate Blanco con Chispitas de Colores</strong>
                         </div>
                         <div class="card" data-value="Chocolate de Color Personalizado">
-                            <strong>Color Temático según tu evento (+ $2.00)</strong>
+                            <strong>Color Temático según tu evento</strong>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- PANEL DE RESUMEN DE COMPRA (DERECHA) -->
             <div class="summary-panel">
                 <h2>Resumen de Boquitas</h2>
                 
@@ -142,8 +105,8 @@
                     <strong>Mini Paletas</strong>
                 </div>
                 <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <strong id="resumenCantidad">12 unidades</strong>
+                    <span>Presentación:</span>
+                    <strong>Caja de 12 uds.</strong>
                 </div>
                 <div class="summary-item">
                     <span>Interior:</span>
@@ -167,7 +130,6 @@
         </div>
     </main>
 
-    <!-- FOOTER IDÉNTICO -->
     <footer class="footer">
         <div class="footer-col">
             <div class="footer-logo">
@@ -196,11 +158,10 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE INTERACTIVIDAD -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
-            function configurarGrupo(containerId, resumenId, onChangeCallback) {
+            function configurarGrupo(containerId, resumenId) {
                 const container = document.getElementById(containerId);
                 const cards = container.querySelectorAll('.card');
                 
@@ -211,39 +172,15 @@
                         
                         const valor = this.getAttribute('data-value');
                         document.getElementById(resumenId).innerText = valor;
-                        
-                        if(onChangeCallback) onChangeCallback(this);
                     });
                 });
             }
-
-            // Configurar Cantidad
-            configurarGrupo('cantidadContainer', 'resumenCantidad', function() {
-                calcularPrecioTotal();
-            });
 
             // Configurar Interior
             configurarGrupo('saborContainer', 'resumenSabor');
 
             // Configurar Cobertura
-            configurarGrupo('toppingContainer', 'resumenTopping', function() {
-                calcularPrecioTotal();
-            });
-
-            // Calcular precio dinámico
-            function calcularPrecioTotal() {
-                const cantSeleccionada = document.querySelector('#cantidadContainer .card.selected');
-                const toppingSeleccionado = document.querySelector('#toppingContainer .card.selected');
-                
-                let precioBase = parseFloat(cantSeleccionada.getAttribute('data-precio'));
-                
-                // Extra si eligen chocolate de color personalizado para eventos
-                if(toppingSeleccionado.getAttribute('data-value') === "Chocolate de Color Personalizado") {
-                    precioBase += 2.00;
-                }
-                
-                document.getElementById('totalPrice').innerText = "$" + precioBase.toFixed(2);
-            }
+            configurarGrupo('toppingContainer', 'resumenTopping');
 
             // Simulación del carrito
             const btnCarrito = document.getElementById('btnAgregarCarrito');

@@ -58,7 +58,7 @@
                 <h1>Mini Donas <br><span>Decoradas</span></h1>
                 <p>
                     Esponjosas, coloridas y deliciosas. Elige tu cobertura favorita, combina los colores 
-                    y personaliza los toppings para que combinen a la perfección con tu fiesta o evento.
+                    y personaliza los toppings para que se adapten a la perfección a tu antojo o evento.
                 </p>
             </div>
         </section>
@@ -74,37 +74,9 @@
             <!-- PANEL DE SELECCIÓN DE OPCIONES (CENTRO) -->
             <div class="options-panel">
                 
-                <!-- Categoría 1: Cantidad -->
+                <!-- Categoría 1: Cobertura Principal -->
                 <div class="category">
-                    <h2>1. Selecciona la cantidad</h2>
-                    <div class="cards" id="cantidadContainer">
-                        <div class="card selected" data-precio="12.00" data-value="12 unidades">
-                            <div>
-                                <strong>Caja de 12 unidades</strong>
-                                <p>Perfectas para un pequeño detalle</p>
-                            </div>
-                            <span class="option-price">$12.00</span>
-                        </div>
-                        <div class="card" data-precio="22.00" data-value="24 unidades">
-                            <div>
-                                <strong>Caja de 24 unidades</strong>
-                                <p>La opción favorita para compartir</p>
-                            </div>
-                            <span class="option-price">$22.00</span>
-                        </div>
-                        <div class="card" data-precio="42.00" data-value="50 unidades">
-                            <div>
-                                <strong>Bandeja de 50 unidades</strong>
-                                <p>Ideal para tu mesa de dulces completa</p>
-                            </div>
-                            <span class="option-price">$42.00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categoría 2: Cobertura Principal -->
-                <div class="category">
-                    <h2>2. Cobertura base</h2>
+                    <h2>1. Cobertura base</h2>
                     <div class="cards" id="coberturaContainer">
                         <div class="card selected" data-value="Chocolate Clásico">
                             <strong>Chocolate con Leche Clásico</strong>
@@ -118,15 +90,15 @@
                     </div>
                 </div>
 
-                <!-- Categoría 3: Toppings / Decoración -->
+                <!-- Categoría 2: Toppings / Decoración -->
                 <div class="category">
-                    <h2>3. Decoración / Topping</h2>
+                    <h2>2. Decoración / Topping</h2>
                     <div class="cards" id="toppingContainer">
                         <div class="card selected" data-value="Chispitas de colores">
                             <strong>Chispitas de Colores (Sprinkles)</strong>
                         </div>
                         <div class="card" data-value="Galleta Oreo Triturada">
-                            <strong>Galleta Oreo Triturada (+ $1.50)</strong>
+                            <strong>Galleta Oreo Triturada</strong>
                         </div>
                         <div class="card" data-value="Líneas de Caramelo">
                             <strong>Hilos de Caramelo Salado</strong>
@@ -145,8 +117,8 @@
                     <strong>Mini Donas</strong>
                 </div>
                 <div class="summary-item">
-                    <span>Cantidad:</span>
-                    <strong id="resumenCantidad">12 unidades</strong>
+                    <span>Presentación:</span>
+                    <strong>Caja de 12 uds.</strong>
                 </div>
                 <div class="summary-item">
                     <span>Cobertura:</span>
@@ -204,7 +176,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             
             // Función genérica para controlar la selección de tarjetas
-            function configurarGrupo(containerId, resumenId, onChangeCallback) {
+            function configurarGrupo(containerId, resumenId) {
                 const container = document.getElementById(containerId);
                 const cards = container.querySelectorAll('.card');
                 
@@ -215,39 +187,15 @@
                         
                         const valor = this.getAttribute('data-value');
                         document.getElementById(resumenId).innerText = valor;
-                        
-                        if(onChangeCallback) onChangeCallback(this);
                     });
                 });
             }
-
-            // Configurar Cantidad
-            configurarGrupo('cantidadContainer', 'resumenCantidad', function() {
-                calcularPrecioTotal();
-            });
 
             // Configurar Cobertura
             configurarGrupo('coberturaContainer', 'resumenCobertura');
 
             // Configurar Topping
-            configurarGrupo('toppingContainer', 'resumenTopping', function() {
-                calcularPrecioTotal();
-            });
-
-            // Función para calcular precio con adicionales
-            function calcularPrecioTotal() {
-                const cantSeleccionada = document.querySelector('#cantidadContainer .card.selected');
-                const toppingSeleccionado = document.querySelector('#toppingContainer .card.selected');
-                
-                let precioBase = parseFloat(cantSeleccionada.getAttribute('data-precio'));
-                
-                // Si eligen Oreo sumamos el extra por ingrediente premium
-                if(toppingSeleccionado.getAttribute('data-value') === "Galleta Oreo Triturada") {
-                    precioBase += 1.50;
-                }
-                
-                document.getElementById('totalPrice').innerText = "$" + precioBase.toFixed(2);
-            }
+            configurarGrupo('toppingContainer', 'resumenTopping');
 
             // Simulación de agregar al carrito
             const btnCarrito = document.getElementById('btnAgregarCarrito');
