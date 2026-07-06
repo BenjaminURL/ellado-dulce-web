@@ -6,9 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boquitas | Ellado Dulce</title>
+    <title>Boquitas Saladas | Ellado Dulce</title>
 
-    <link rel="stylesheet" href="catalogo-productos.css?v=32">
+    <link rel="stylesheet" href="catalogo-productos.css?v=31">
 </head>
 <body>
 
@@ -49,22 +49,28 @@
 
 <section class="cake-hero">
     <div class="cake-info">
-        <h1>Boquitas</h1>
+        <h1>Boquitas Saladas</h1>
 
         <p>
-            Explora nuestras boquitas dulces y saladas, ideales para eventos,
-            reuniones, cumpleaños y celebraciones especiales.
+            Opciones saladas perfectas para eventos, reuniones y celebraciones.
+            Ideales para acompañar tus reservas o pedidos especiales.
         </p>
+
+        <div class="cake-tags">
+            <span>Eventos</span>
+            <span>Por encargo</span>
+            <span>Saladas gourmet</span>
+        </div>
     </div>
 
     <div class="cake-image">
-        <img src="imagenes/productos/boquitas.webp" alt="Boquitas dulces y saladas">
+        <img src="imagenes/productos/boquitas-saladas.webp" alt="Boquitas Saladas">
     </div>
 </section>
 
 <section class="cakes-section">
 
-    <h2>TODAS LAS BOQUITAS</h2>
+    <h2>BOQUITAS SALADAS</h2>
 
     <div class="cakes-grid">
 
@@ -83,29 +89,20 @@
         );
 
         String sql =
-            "SELECT " +
-            "m.m_id_menu, " +
-            "m.m_producto, " +
-            "m.m_precio, " +
-            "m.m_descripcion, " +
-            "c.ct_descripcion " +
-            "FROM menu m " +
-            "INNER JOIN categoria c ON m.m_ct_id_categoria = c.ct_id_categoria " +
-            "WHERE m.m_ct_id_categoria IN (7, 8) " +
-            "ORDER BY c.ct_descripcion, m.m_id_menu";
+            "SELECT m_id_menu, m_producto, m_precio, m_descripcion " +
+            "FROM menu " +
+            "WHERE m_ct_id_categoria = ? " +
+            "ORDER BY m_id_menu";
 
         ps = con.prepareStatement(sql);
+        ps.setInt(1, 8);
+
         rs = ps.executeQuery();
 
-        boolean hayBoquitas = false;
-
         while (rs.next()) {
-            hayBoquitas = true;
-
             int idMenu = rs.getInt("m_id_menu");
             String producto = rs.getString("m_producto");
             String descripcion = rs.getString("m_descripcion");
-            String categoria = rs.getString("ct_descripcion");
             double precio = rs.getDouble("m_precio");
 
             String precioTexto = String.format(java.util.Locale.US, "%.2f", precio);
@@ -117,8 +114,6 @@
                 alt="<%= producto %>">
 
             <div class="cake-content">
-                <span class="category-label"><%= categoria %></span>
-
                 <h3><%= producto %></h3>
 
                 <strong class="cake-price">B/.<%= precioTexto %></strong>
@@ -132,18 +127,10 @@
 <%
         }
 
-        if (!hayBoquitas) {
-%>
-
-        <p>No hay boquitas registradas todavía.</p>
-
-<%
-        }
-
     } catch (Exception e) {
 %>
 
-        <p>Error al cargar las boquitas.</p>
+        <p>Error al cargar las boquitas saladas.</p>
 
 <%
         e.printStackTrace();

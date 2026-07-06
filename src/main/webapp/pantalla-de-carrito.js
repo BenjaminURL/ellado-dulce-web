@@ -1,134 +1,201 @@
+const cartItems = document.getElementById("cartItems");
+const emptyCartMessage = document.getElementById("emptyCartMessage");
+const clearCartBtn = document.getElementById("clearCartBtn");
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+const subtotalAmount = document.getElementById("subtotalAmount");
+const itbmsAmount = document.getElementById("itbmsAmount");
+const totalAmount = document.getElementById("totalAmount");
+
+const usarPuntosCheck = document.getElementById("usarPuntosCheck");
+const pointsDiscountLine = document.getElementById("pointsDiscountLine");
+const pointsDiscountAmount = document.getElementById("pointsDiscountAmount");
+
+const ITBMS = 0.07;
+
 function obtenerClaveCarrito() {
+    if (typeof idClienteActual === "undefined" || !idClienteActual) {
+        return "carrito";
+    }
+
     return "carrito_cliente_" + idClienteActual;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const cartItems = document.getElementById("cartItems");
+function cargarCarrito() {
+    const claveCarrito = obtenerClaveCarrito();
+    return JSON.parse(localStorage.getItem(claveCarrito)) || [];
+}
 
-    const cartSubtotal = document.getElementById("cartSubtotal");
-    const cartTax = document.getElementById("cartTax");
-    const cartTotal = document.getElementById("cartTotal");
-    const cartCount = document.querySelector(".cart-count");
-    const checkoutBtn = document.getElementById("checkoutBtn");
+function guardarCarrito(carrito) {
+    const claveCarrito = obtenerClaveCarrito();
+    localStorage.setItem(claveCarrito, JSON.stringify(carrito));
+}
 
-    const carrito = JSON.parse(localStorage.getItem(obtenerClaveCarrito())) || [];
+function formatoDinero(valor) {
+    return "$" + Number(valor).toFixed(2);
+}
+
+function normalizarNumero(valor, defecto) {
+    const numero = Number(valor);
+
+    if (isNaN(numero)) {
+        return defecto;
+    }
+
+    return numero;
+}
+
+function calcularSubtotal(carrito) {
+    let subtotal = 0;
+
+    carrito.forEach(function (producto) {
+        const precio = normalizarNumero(producto.precio, 0);
+        const cantidad = normalizarNumero(producto.cantidad, 1);
+
+        subtotal += precio * cantidad;
+    });
+
+    return subtotal;
+}
+
+function calcularDescuentoPuntos(subtotal) {
+    if (!usarPuntosCheck || !usarPuntosCheck.checked) {
+        return 0;
+    }
+
+    const puntos = typeof puntosClienteActual !== "undefined" ? Number(puntosClienteActual) : 0;
+    const descuentoDisponible = puntos / 10;
+
+    if (descuentoDisponible > subtotal) {
+        return subtotal;
+    }
+
+    return descuentoDisponible;
+}
+
+function actualizarResumen() {
+    const carrito = cargarCarrito();
+
+    const subtotal = calcularSubtotal(carrito);
+    const itbms = subtotal * ITBMS;
+    const descuentoPuntos = calcularDescuentoPuntos(subtotal);
+    const total = subtotal + itbms - descuentoPuntos;
+
+    subtotalAmount.textContent = formatoDinero(subtotal);
+    itbmsAmount.textContent = formatoDinero(itbms);
+    pointsDiscountAmount.textContent = "-" + formatoDinero(descuentoPuntos);
+    totalAmount.textContent = formatoDinero(total < 0 ? 0 : total);
+
+    if (descuentoPuntos > 0) {
+        pointsDiscountLine.classList.remove("hidden");
+    } else {
+        pointsDiscountLine.classList.add("hidden");
+    }
+
+    checkoutBtn.disabled = carrito.length === 0;
 
     if (carrito.length === 0) {
-        cartItems.innerHTML = `
-            <div class="empty-cart-inline">
-                <h2>Sin productos</h2>
-                <p>Aún no has agregado productos al carrito.</p>
-                <a href="Boquitas.jsp">Ver productos</a>
-            </div>
-        `;
-
-        cartSubtotal.textContent = "$0.00";
-        cartTax.textContent = "$0.00";
-        cartTotal.textContent = "$0.00";
-
-        if (cartCount) {
-            cartCount.textContent = "0";
-        }
-
-        if (checkoutBtn) {
-            checkoutBtn.classList.add("disabled-checkout");
-        }
-
-        return;
+        checkoutBtn.classList.add("disabled-checkout");
+    } else {
+        checkoutBtn.classList.remove("disabled-checkout");
     }
+}
+
+function renderizarCarrito() {
+    const carrito = cargarCarrito();
 
     cartItems.innerHTML = "";
 
-    let subtotal = 0;
-    let cantidadTotal = 0;
+    if (carrito.length === 0) {
+        emptyCartMessage.classList.remove("hidden");
+        actualizarResumen();
+        return;
+    }
+
+    emptyCartMessage.classList.add("hidden");
 
     carrito.forEach(function (producto, index) {
         const nombre = producto.nombre || "Producto";
-        const precio = Number(producto.precio) || 0;
-        const cantidad = Number(producto.cantidad) || 1;
-        const imagen = producto.imagen || "";
+        const precio = normalizarNumero(producto.precio, 0);
+        const cantidad = normalizarNumero(producto.cantidad, 1);
+        const imagen = producto.imagen || "imagenes/logo2019.png";
+        const sabor = producto.sabor || "";
+        const toppings = producto.toppings || "";
+        const notas = producto.notas || "";
 
         const totalProducto = precio * cantidad;
 
-        subtotal += totalProducto;
-        cantidadTotal += cantidad;
-
-        const item = document.createElement("div");
-        item.classList.add("cart-item");
+        const item = document.createElement("article");
+        item.className = "cart-item";
 
         item.innerHTML = `
             <div class="item-img-placeholder">
-                ${imagen ? `<img src="${imagen}" alt="${nombre}">` : ""}
+                <img src="${imagen}" alt="${nombre}">
             </div>
 
             <div class="item-details">
                 <h3>${nombre}</h3>
-                ${producto.sabor && producto.sabor !== "No seleccionado" ? `<p class="item-meta">Sabor: ${producto.sabor}</p>` : ""}
-                ${producto.toppings && producto.toppings !== "Sin toppings" ? `<p class="item-meta">Toppings: ${producto.toppings}</p>` : ""}
-                <span class="item-unit-price">$${precio.toFixed(2)}</span>
+
+                ${sabor && sabor !== "No seleccionado" ? `<p class="item-meta">Sabor: ${sabor}</p>` : ""}
+                ${toppings && toppings !== "Sin toppings" ? `<p class="item-meta">Toppings: ${toppings}</p>` : ""}
+                ${notas ? `<p class="item-meta">Notas: ${notas}</p>` : ""}
+
+                <p class="item-unit-price">${formatoDinero(precio)}</p>
             </div>
 
             <div class="item-quantity">
-                <button class="qty-btn" onclick="restarCantidad(${index})">-</button>
-                <input type="number" value="${cantidad}" readonly>
-                <button class="qty-btn" onclick="sumarCantidad(${index})">+</button>
+                <button type="button" class="qty-btn btn-restar" data-index="${index}">-</button>
+                <input type="text" value="${cantidad}" readonly>
+                <button type="button" class="qty-btn btn-sumar" data-index="${index}">+</button>
             </div>
 
-            <div class="item-total">$${totalProducto.toFixed(2)}</div>
+            <strong class="item-total">${formatoDinero(totalProducto)}</strong>
 
-            <button class="item-remove" onclick="eliminarProducto(${index})">×</button>
+            <button type="button" class="item-remove" data-index="${index}">×</button>
         `;
 
         cartItems.appendChild(item);
     });
 
-    const itbms = subtotal * 0.07;
-    const total = subtotal + itbms;
+    actualizarResumen();
+}
 
-    cartSubtotal.textContent = "$" + subtotal.toFixed(2);
-    cartTax.textContent = "$" + itbms.toFixed(2);
-    cartTotal.textContent = "$" + total.toFixed(2);
+function sumarCantidad(index) {
+    const carrito = cargarCarrito();
 
-    if (cartCount) {
-        cartCount.textContent = cantidadTotal;
+    carrito[index].cantidad = normalizarNumero(carrito[index].cantidad, 1) + 1;
+
+    guardarCarrito(carrito);
+    renderizarCarrito();
+}
+
+function restarCantidad(index) {
+    const carrito = cargarCarrito();
+
+    const cantidadActual = normalizarNumero(carrito[index].cantidad, 1);
+
+    if (cantidadActual > 1) {
+        carrito[index].cantidad = cantidadActual - 1;
     }
 
-    if (checkoutBtn) {
-        checkoutBtn.classList.remove("disabled-checkout");
+    guardarCarrito(carrito);
+    renderizarCarrito();
+}
 
-        checkoutBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-            enviarPedidoAPago(carrito, subtotal, itbms, total);
-        });
-    }
-});
+function eliminarProducto(index) {
+    const carrito = cargarCarrito();
 
-function enviarPedidoAPago(carrito, subtotal, itbms, total) {
-    if (!carrito || carrito.length === 0) {
-        alert("El carrito está vacío.");
-        return;
-    }
+    carrito.splice(index, 1);
 
-    const form = document.createElement("form");
-    form.method = "post";
-    form.action = "pago.jsp";
+    guardarCarrito(carrito);
+    renderizarCarrito();
+}
 
-    carrito.forEach(function (producto) {
-        agregarCampo(form, "nombreProducto", producto.nombre || "Producto");
-        agregarCampo(form, "categoriaProducto", producto.categoria || "Sin categoría");
-        agregarCampo(form, "precioProducto", Number(producto.precio) || 0);
-        agregarCampo(form, "cantidadProducto", Number(producto.cantidad) || 1);
-        agregarCampo(form, "saborProducto", producto.sabor || "");
-        agregarCampo(form, "toppingsProducto", producto.toppings || "");
-        agregarCampo(form, "notasProducto", producto.notas || "");
-    });
+function vaciarCarrito() {
+    const claveCarrito = obtenerClaveCarrito();
 
-    agregarCampo(form, "subtotal", subtotal.toFixed(2));
-    agregarCampo(form, "itbms", itbms.toFixed(2));
-    agregarCampo(form, "total", total.toFixed(2));
-
-    document.body.appendChild(form);
-    form.submit();
+    localStorage.removeItem(claveCarrito);
+    renderizarCarrito();
 }
 
 function agregarCampo(form, nombre, valor) {
@@ -139,35 +206,67 @@ function agregarCampo(form, nombre, valor) {
     form.appendChild(input);
 }
 
-function guardarCarrito(carrito) {
-    localStorage.setItem(obtenerClaveCarrito(), JSON.stringify(carrito));
-}
+function enviarPedidoAPago() {
+    const carrito = cargarCarrito();
 
-function sumarCantidad(index) {
-    const carrito = JSON.parse(localStorage.getItem(obtenerClaveCarrito())) || [];
-
-    carrito[index].cantidad++;
-
-    guardarCarrito(carrito);
-    location.reload();
-}
-
-function restarCantidad(index) {
-    const carrito = JSON.parse(localStorage.getItem(obtenerClaveCarrito())) || [];
-
-    if (carrito[index].cantidad > 1) {
-        carrito[index].cantidad--;
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
     }
 
-    guardarCarrito(carrito);
-    location.reload();
+    const form = document.createElement("form");
+    form.method = "post";
+    form.action = "confirmarPedido.jsp";
+
+    carrito.forEach(function (producto) {
+        agregarCampo(form, "nombreProducto", producto.nombre || "Producto");
+        agregarCampo(form, "precioProducto", normalizarNumero(producto.precio, 0));
+        agregarCampo(form, "cantidadProducto", normalizarNumero(producto.cantidad, 1));
+        agregarCampo(form, "saborProducto", producto.sabor || "");
+        agregarCampo(form, "toppingsProducto", producto.toppings || "");
+        agregarCampo(form, "notasProducto", producto.notas || "");
+    });
+
+    agregarCampo(form, "metodoPago", "Tarjeta simulada");
+
+    agregarCampo(
+        form,
+        "usarPuntos",
+        usarPuntosCheck && usarPuntosCheck.checked ? "si" : "no"
+    );
+
+    document.body.appendChild(form);
+    form.submit();
 }
 
-function eliminarProducto(index) {
-    const carrito = JSON.parse(localStorage.getItem(obtenerClaveCarrito())) || [];
+cartItems.addEventListener("click", function (event) {
+    const boton = event.target;
 
-    carrito.splice(index, 1);
+    if (boton.classList.contains("btn-sumar")) {
+        sumarCantidad(Number(boton.dataset.index));
+    }
 
-    guardarCarrito(carrito);
-    location.reload();
+    if (boton.classList.contains("btn-restar")) {
+        restarCantidad(Number(boton.dataset.index));
+    }
+
+    if (boton.classList.contains("item-remove")) {
+        eliminarProducto(Number(boton.dataset.index));
+    }
+});
+
+clearCartBtn.addEventListener("click", function () {
+    vaciarCarrito();
+});
+
+checkoutBtn.addEventListener("click", function () {
+    enviarPedidoAPago();
+});
+
+if (usarPuntosCheck) {
+    usarPuntosCheck.addEventListener("change", function () {
+        actualizarResumen();
+    });
 }
+
+renderizarCarrito();

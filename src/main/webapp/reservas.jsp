@@ -20,19 +20,25 @@
             <span>Ellado <strong>Dulce</strong></span>
         </div>
 
-        <nav class="menu">
-            <a class="active" href="index.jsp">Inicio</a>
-            <a href="helados.jsp">Helados</a>
-            <a href="html/bebidas.jsp">Bebidas</a>
-            <a href="">Crepes</a>
+            <nav class="menu">
+        <a href="index.jsp">Inicio</a>
+        <a href="helados.jsp">Helados</a>
+        <a href="html/bebidas.jsp">Bebidas</a>
+        <a href="#">Crepes</a>
+                <div class="dropdown">
+            <a href="Boquitas.jsp" class="dropbtn active">Boquitas ▾</a>
 
-            <a href="Boquitas.jsp">Boquitas</a>
-            <a href="Pasteles.jsp">Pasteles</a>
-            <a href="reservas.jsp">Reservas</a>
-            <a href="actividades.jsp">Actividades</a>
-            <a href="nosotros.jsp">Nosotros</a>
-            <a href="mi-cuenta.jsp">Mi cuenta</a>
-        </nav>
+            <div class="dropdown-content">
+                <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+            </div>
+        </div>
+        <a class="active" href="Pasteles.jsp">Pasteles</a>
+        <a href="reservas.jsp">Reservas</a>
+        <a href="actividades.jsp">Actividades</a>
+        <a href="Nosotros.jsp">Nosotros</a>
+        <a href="mi-cuenta.jsp">Mi cuenta</a>
+    </nav>
         <div class="cart">
             <a href="">
                 <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
@@ -56,10 +62,6 @@
                            target="_blank"
                            class="btn btn-whatsapp">
                             Cotizar en whatsapp
-                        </a>
-
-                        <a href="personalizar-reserva.jsp" class="btn btn-outline">
-                            Personalizar reserva
                         </a>
                     </div>
                 </div>
@@ -89,7 +91,7 @@
                     </ul>
 
                     <div class="event-buttons">
-                        <a href="detalle-cumpleanos.jsp" class="btn-card primary-card">Ver paquete</a>
+                        <a href="detalle-reserva.jsp?id=2">Comprar</a>
                     </div>
                 </article>
 
@@ -109,7 +111,7 @@
                     </ul>
 
                     <div class="event-buttons">
-                        <a href="detalle-corporativo.jsp" class="btn-card primary-card">Ver paquete</a>
+                        <a href="detalle-reserva.jsp?id=1">Comprar</a>
                     </div>
                 </article>
 

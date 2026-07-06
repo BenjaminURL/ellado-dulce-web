@@ -2,47 +2,78 @@
 <%@ page import="java.sql.*" %>
 
 <%
+    request.setCharacterEncoding("UTF-8");
+
     String usuario = request.getParameter("usuario");
     String contrasena = request.getParameter("contrasena");
+
+    if (usuario == null || contrasena == null || usuario.trim().equals("") || contrasena.trim().equals("")) {
+        response.sendRedirect("login.jsp?error=campos");
+        return;
+    }
+
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        String url = "jdbc:mysql://localhost:3306/ellado_dulce_db";
-        String user = "root";
-        String pass = "";
+        con = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/ellado_dulce_db",
+            "root",
+            ""
+        );
 
-        String sql = "SELECT c_id_cliente, c_p_nombre, c_p_apellido, c_p_usuario, c_p_correo, c_p_telefono " +
-             "FROM cliente " +
-             "WHERE (c_p_usuario = ? OR c_p_correo = ?) " +
-             "AND c_p_contrasena = ?";
+        String sql =
+            "SELECT " +
+            "c_id_cliente, " +
+            "c_p_nombre, " +
+            "c_p_apellido, " +
+            "c_p_usuario, " +
+            "c_p_correo, " +
+            "c_p_telefono, " +
+            "c_rol " +
+            "FROM cliente " +
+            "WHERE (c_p_usuario = ? OR c_p_correo = ?) " +
+            "AND c_p_contrasena = ? " +
+            "LIMIT 1";
 
-        try (
-            Connection con = DriverManager.getConnection(url, user, pass);
-            PreparedStatement ps = con.prepareStatement(sql)
-        ) {
-            ps.setString(1, usuario);
-            ps.setString(2, usuario);
-            ps.setString(3, contrasena);
+        ps = con.prepareStatement(sql);
+        ps.setString(1, usuario.trim());
+        ps.setString(2, usuario.trim());
+        ps.setString(3, contrasena.trim());
 
-            try (ResultSet rs = ps.executeQuery()) {
+        rs = ps.executeQuery();
 
-                if (rs.next()) {
-                    session.setAttribute("idCliente", rs.getInt("c_id_cliente"));
-                    session.setAttribute("nombreCliente", rs.getString("c_p_nombre"));
-                    session.setAttribute("apellidoCliente", rs.getString("c_p_apellido"));
-                    session.setAttribute("usuarioCliente", rs.getString("c_p_usuario"));
-                    session.setAttribute("correoCliente", rs.getString("c_p_correo"));
-                    session.setAttribute("telefonoCliente", rs.getString("c_p_telefono"));
+        if (rs.next()) {
+            int idCliente = rs.getInt("c_id_cliente");
+            String nombreCliente = rs.getString("c_p_nombre");
+            String apellidoCliente = rs.getString("c_p_apellido");
+            String usuarioCliente = rs.getString("c_p_usuario");
+            String correoCliente = rs.getString("c_p_correo");
+            String telefonoCliente = rs.getString("c_p_telefono");
+            String rolCliente = rs.getString("c_rol");
 
-                    response.sendRedirect("mi-cuenta.jsp");
-                    return;
-                } else {
-                    response.sendRedirect("login.jsp?error=1");
-                    return;
-                }
+            session.setAttribute("idCliente", idCliente);
+            session.setAttribute("nombreCliente", nombreCliente);
+            session.setAttribute("apellidoCliente", apellidoCliente);
+            session.setAttribute("usuarioCliente", usuarioCliente);
+            session.setAttribute("correoCliente", correoCliente);
+            session.setAttribute("telefonoCliente", telefonoCliente);
+            session.setAttribute("rolCliente", rolCliente);
 
+            if ("ADMIN".equalsIgnoreCase(rolCliente)) {
+                response.sendRedirect("admin.jsp");
+            } else {
+                response.sendRedirect("mi-cuenta.jsp");
             }
+
+            return;
+
+        } else {
+            response.sendRedirect("login.jsp?error=credenciales");
+            return;
         }
 
     } catch (Exception e) {
@@ -50,5 +81,10 @@
         out.println("<pre>");
         e.printStackTrace(new java.io.PrintWriter(out));
         out.println("</pre>");
+
+    } finally {
+        if (rs != null) rs.close();
+        if (ps != null) ps.close();
+        if (con != null) con.close();
     }
 %>

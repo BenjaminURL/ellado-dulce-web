@@ -874,3 +874,42 @@ textarea:focus {
     }
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 190px;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(16, 25, 66, 0.16);
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 11px 16px;
+    color: #101942;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dropdown-content a:hover {
+    background-color: #fff1f7;
+    color: #ff4f8b;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

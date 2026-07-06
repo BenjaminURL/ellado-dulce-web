@@ -69,106 +69,108 @@ a {
     color: #ff4f8b;
 }
 
-.cart {
-    font-size: 20px;
+.cart a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* PAGE */
+.cart-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
 
-.cumpleanos-page {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 28px 60px 90px;
+/* PÁGINA */
+
+.reserva-page {
+    padding: 38px 32px 70px;
 }
 
 .back-link {
-    display: inline-block;
-    color: #9b98ad;
+    max-width: 1180px;
+    margin: 0 auto 24px;
+    display: block;
+    color: #7a7890;
     font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 28px;
+    font-weight: 700;
 }
 
-.back-link:hover {
-    color: #ff4f8b;
-}
-
-.cumpleanos-layout {
+.reserva-layout {
+    max-width: 1180px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 46px;
+    grid-template-columns: 1.25fr 0.85fr;
+    gap: 34px;
     align-items: start;
 }
 
 .left-area {
     display: flex;
     flex-direction: column;
-    gap: 26px;
+    gap: 24px;
 }
 
 /* IMAGEN */
 
 .product-image {
     width: 100%;
-    height: 340px;
-    border-radius: 18px;
-    box-shadow: 0 8px 20px rgba(16, 25, 66, 0.08);
+    height: 300px;
+    border-radius: 22px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 12px 30px rgba(16, 25, 66, 0.08);
 }
 
-.placeholder {
-    background-color: #ffffff;
-    background-image:
-        linear-gradient(45deg, #ececec 25%, transparent 25%),
-        linear-gradient(-45deg, #ececec 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #ececec 75%),
-        linear-gradient(-45deg, transparent 75%, #ececec 75%);
-    background-size: 32px 32px;
-    background-position: 0 0, 0 16px, 16px -16px, -16px 0;
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* FORMULARIO */
 
 .form-card {
     background-color: #ffffff;
-    border-radius: 18px;
-    padding: 32px;
-    box-shadow: 0 8px 20px rgba(16, 25, 66, 0.08);
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 12px 30px rgba(16, 25, 66, 0.08);
 }
 
 .form-card h2 {
-    color: #171b4f;
-    font-size: 20px;
-    font-weight: 800;
+    font-size: 24px;
+    color: #101942;
     margin-bottom: 24px;
 }
 
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    color: #171b4f;
-    font-size: 12px;
+    color: #101942;
+    font-size: 13px;
     font-weight: 800;
-    text-transform: uppercase;
     margin-bottom: 8px;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    border: 1px solid #eeeaf0;
-    border-radius: 12px;
-    padding: 14px 16px;
-    font-family: inherit;
+    border: 1px solid #eadce6;
+    border-radius: 16px;
+    padding: 15px 17px;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 14px;
     color: #101942;
     outline: none;
     background-color: #ffffff;
 }
 
 .form-group textarea {
-    min-height: 95px;
+    min-height: 105px;
     resize: vertical;
 }
 
@@ -186,118 +188,127 @@ a {
 .continue-btn {
     width: 100%;
     border: none;
+    border-radius: 999px;
+    padding: 15px 22px;
     background-color: #ff4f8b;
     color: #ffffff;
-    border-radius: 999px;
-    padding: 15px 24px;
+    font-family: "Poppins", Arial, sans-serif;
     font-size: 14px;
     font-weight: 800;
-    display: block;
-    text-align: center;
-    margin-top: 8px;
-    box-shadow: 0 8px 16px rgba(255, 79, 139, 0.25);
-    transition: 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(255, 79, 139, 0.24);
 }
 
 .continue-btn:hover {
     background-color: #f63878;
-    transform: translateY(-2px);
 }
 
-/* CARD DERECHO */
+/* TARJETA DEL PAQUETE */
 
 .package-card {
     background-color: #ffffff;
-    border-radius: 18px;
-    padding: 42px 36px;
-    box-shadow: 0 8px 20px rgba(16, 25, 66, 0.08);
+    border-radius: 24px;
+    padding: 34px;
+    box-shadow: 0 14px 34px rgba(16, 25, 66, 0.1);
+    position: sticky;
+    top: 24px;
 }
 
 .package-card h1 {
-    color: #171b4f;
-    font-size: 32px;
-    font-weight: 800;
-    margin-bottom: 10px;
+    font-size: 34px;
+    line-height: 1.1;
+    color: #101942;
+    margin-bottom: 16px;
 }
 
 .price {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     margin-bottom: 18px;
 }
 
 .price strong {
     color: #ff4f8b;
-    font-size: 30px;
+    font-size: 34px;
     font-weight: 800;
 }
 
 .price span {
-    color: #8b89a4;
-    font-size: 18px;
+    color: #8b88a3;
+    font-size: 14px;
     font-weight: 600;
 }
 
 .description {
-    color: #7a7890;
+    color: #625f7d;
     font-size: 14px;
     line-height: 1.7;
     margin-bottom: 26px;
 }
 
 .package-card h3 {
-    color: #171b4f;
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 18px;
+    font-size: 16px;
+    color: #101942;
+    margin-bottom: 16px;
 }
 
 .include-list {
     list-style: none;
-    margin-bottom: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
 }
 
 .include-list li {
     display: flex;
     align-items: center;
-    gap: 14px;
-    color: #5d5b77;
+    gap: 10px;
+    color: #625f7d;
     font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 18px;
 }
 
-.include-list span {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    background-color: #fff0f6;
-    color: #ff4f8b;
+.include-list li span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff4f8b;
+    flex-shrink: 0;
+}
+
+.buy-btn,
+.whatsapp-btn {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 999px;
+    padding: 14px 22px;
     font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    cursor: pointer;
 }
 
 .buy-btn {
-    width: 100%;
-    display: block;
-    text-align: center;
-    border-radius: 999px;
+    border: none;
     background-color: #ff4f8b;
     color: #ffffff;
-    padding: 16px 24px;
-    font-size: 15px;
-    font-weight: 800;
-    box-shadow: 0 8px 16px rgba(255, 79, 139, 0.25);
-    transition: 0.2s ease;
+    margin-bottom: 14px;
+    box-shadow: 0 10px 22px rgba(255, 79, 139, 0.24);
 }
 
 .buy-btn:hover {
     background-color: #f63878;
-    transform: translateY(-2px);
+}
+
+.whatsapp-btn {
+    border: 1px solid #ff4f8b;
+    color: #ff4f8b;
+    background-color: #ffffff;
+}
+
+.whatsapp-btn:hover {
+    background-color: #ff4f8b;
+    color: #ffffff;
 }
 
 /* FOOTER */
@@ -356,22 +367,10 @@ a {
 
 /* RESPONSIVE */
 
-@media (max-width: 1000px) {
-    .cumpleanos-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .footer {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 700px) {
+@media (max-width: 950px) {
     .navbar {
         flex-wrap: wrap;
         gap: 18px;
-        padding-left: 22px;
-        padding-right: 22px;
     }
 
     .menu {
@@ -381,7 +380,23 @@ a {
         gap: 20px;
     }
 
-    .cumpleanos-page {
+    .reserva-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .package-card {
+        position: static;
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar,
+    .reserva-page,
+    .footer {
         padding-left: 22px;
         padding-right: 22px;
     }
@@ -391,31 +406,14 @@ a {
     }
 
     .product-image {
-        height: 250px;
+        height: 240px;
     }
 
     .package-card h1 {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .price strong {
-        font-size: 26px;
+        font-size: 28px;
     }
-
-    .footer {
-        padding-left: 22px;
-        padding-right: 22px;
-    }
-}
-
-.cart a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cart-img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
 }

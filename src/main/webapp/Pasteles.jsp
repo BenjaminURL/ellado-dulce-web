@@ -25,7 +25,14 @@
         <a href="helados.jsp">Helados</a>
         <a href="html/bebidas.jsp">Bebidas</a>
         <a href="#">Crepes</a>
-        <a href="Boquitas.jsp">Boquitas</a>
+                <div class="dropdown">
+            <a href="Boquitas.jsp" class="dropbtn active">Boquitas ▾</a>
+
+            <div class="dropdown-content">
+                <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+            </div>
+        </div>
         <a class="active" href="Pasteles.jsp">Pasteles</a>
         <a href="reservas.jsp">Reservas</a>
         <a href="actividades.jsp">Actividades</a>
@@ -55,10 +62,6 @@
 
             <a href="#" class="btn-whatsapp">
                 Cotizar por WhatsApp
-            </a>
-
-            <a href="personalizarPastel.jsp" class="btn-custom">
-                Personalizar pastel
             </a>
 
         </div>

@@ -1,96 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const registros = [
-        {
-            id: 1,
-            tipo: "Pedido",
-            cliente: "María Alejandra González",
-            cedula: "8-987-654",
-            celular: "+507 6543 2100",
-            correo: "maria@example.com",
-            fecha: "14/05/2025 10:30 a.m.",
-            estado: "Entregado"
-        },
-        {
-            id: 2,
-            tipo: "Actividad",
-            cliente: "María Isabel Torres",
-            cedula: "8-765-432",
-            celular: "+507 6123 4567",
-            correo: "maria.torres@gmail.com",
-            fecha: "14/05/2025 10:00 a.m.",
-            estado: "Confirmado"
-        },
-        {
-            id: 3,
-            tipo: "Reserva",
-            cliente: "Carlos y Laura Sánchez",
-            cedula: "8-654-321",
-            celular: "+507 6678 9123",
-            correo: "carlos.sanchez@mail.com",
-            fecha: "14/05/2025 03:00 p.m.",
-            estado: "Confirmado"
-        },
-        {
-            id: 4,
-            tipo: "Pedido",
-            cliente: "Luis Carlos Ramírez",
-            cedula: "8-543-210",
-            celular: "+507 6890 1234",
-            correo: "luis.ramirez@gmail.com",
-            fecha: "13/05/2025 09:15 a.m.",
-            estado: "Pendiente"
-        },
-        {
-            id: 5,
-            tipo: "Actividad",
-            cliente: "Daniela Morales",
-            cedula: "8-432-109",
-            celular: "+507 6555 7788",
-            correo: "daniela.morales@mail.com",
-            fecha: "13/05/2025 02:00 p.m.",
-            estado: "Confirmado"
-        },
-        {
-            id: 6,
-            tipo: "Reserva",
-            cliente: "Miguel Herrera",
-            cedula: "8-321-098",
-            celular: "+507 6789 5432",
-            correo: "miguel.herrera@mail.com",
-            fecha: "12/05/2025 04:00 p.m.",
-            estado: "Confirmado"
-        },
-        {
-            id: 7,
-            tipo: "Pedido",
-            cliente: "Sofía Martínez",
-            cedula: "8-210-987",
-            celular: "+507 6321 9876",
-            correo: "sofia.m@correo.com",
-            fecha: "12/05/2025 11:00 a.m.",
-            estado: "En proceso"
-        },
-        {
-            id: 8,
-            tipo: "Actividad",
-            cliente: "Andrés Castillo",
-            cedula: "8-109-876",
-            celular: "+507 6987 5544",
-            correo: "andres.c@mail.com",
-            fecha: "11/05/2025 03:30 p.m.",
-            estado: "Pendiente"
-        },
-        {
-            id: 9,
-            tipo: "Pedido",
-            cliente: "Valeria Núñez",
-            cedula: "8-098-765",
-            celular: "+507 6114 2233",
-            correo: "valeria.nunez@gmail.com",
-            fecha: "11/05/2025 06:10 p.m.",
-            estado: "Listo"
-        }
-    ];
+    const registros = Array.isArray(window.registrosAdmin) ? window.registrosAdmin : [];
 
     const buscarPor = document.getElementById("buscarPor");
     const busquedaCliente = document.getElementById("busquedaCliente");
@@ -106,14 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnPaginaAnterior = document.getElementById("btnPaginaAnterior");
     const btnPaginaSiguiente = document.getElementById("btnPaginaSiguiente");
     const paginaActualTexto = document.getElementById("paginaActual");
-    
+
     let paginaActual = 1;
     const registrosPorPagina = 9;
-    let listaActual = [];
-
+    let listaActual = registros;
 
     function normalizarTexto(texto) {
-        return texto.toString().trim().toLowerCase();
+        return (texto || "").toString().trim().toLowerCase();
     }
 
     function claseTipo(tipo) {
@@ -171,17 +79,22 @@ document.addEventListener("DOMContentLoaded", function () {
             return "status-entregado";
         }
 
-        if (estadoNormalizado === "confirmado") {
+        if (estadoNormalizado === "confirmado" || estadoNormalizado === "confirmada") {
             return "status-confirmado";
+        }
+
+        if (estadoNormalizado === "cancelado" || estadoNormalizado === "cancelada") {
+            return "status-cancelado";
+        }
+
+        if (estadoNormalizado === "realizado" || estadoNormalizado === "realizada") {
+            return "status-entregado";
         }
 
         return "status-pendiente";
     }
 
     function obtenerValorBusqueda(registro, filtro) {
-        if (filtro === "cedula") {
-            return registro.cedula;
-        }
 
         if (filtro === "nombre") {
             return registro.cliente;
@@ -206,7 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return registros.filter(function (registro) {
             const textoBase = normalizarTexto(obtenerValorBusqueda(registro, filtroCliente));
-            const coincideCliente = textoBusqueda === "" || textoBase.includes(textoBusqueda);
+
+            const coincideCliente =
+                textoBusqueda === "" ||
+                textoBase.includes(textoBusqueda);
 
             const coincideTipo =
                 filtroRegistro === "todo" ||
@@ -246,80 +162,98 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function mostrarRegistros(lista) {
-    tablaRegistros.innerHTML = "";
-    listaActual = lista;
+        tablaRegistros.innerHTML = "";
+        listaActual = lista;
 
-    contadorRegistros.textContent = "(" + lista.length + ")";
+        contadorRegistros.textContent = "(" + lista.length + ")";
 
-    if (lista.length === 0) {
-        tablaRegistros.innerHTML = `
-            <tr>
-                <td colspan="8">
-                    <div class="sin-informacion">
-                        <strong>Sin información</strong>
-                        <p>Este cliente no tiene pedidos, actividades ni reservas registradas.</p>
-                    </div>
+        if (lista.length === 0) {
+            tablaRegistros.innerHTML = `
+                <tr>
+                    <td colspan="8">
+                        <div class="sin-informacion">
+                            <strong>Sin información</strong>
+                            <p>No hay pedidos, actividades ni reservas con esos filtros.</p>
+                        </div>
+                    </td>
+                </tr>
+            `;
+
+            textoCantidad.textContent = "No hay registros para mostrar";
+            paginaActualTexto.textContent = "1";
+            btnPaginaAnterior.disabled = true;
+            btnPaginaSiguiente.disabled = true;
+
+            return;
+        }
+
+        const totalPaginas = Math.ceil(lista.length / registrosPorPagina);
+
+        if (paginaActual > totalPaginas) {
+            paginaActual = totalPaginas;
+        }
+
+        const inicio = (paginaActual - 1) * registrosPorPagina;
+        const fin = inicio + registrosPorPagina;
+        const registrosPagina = lista.slice(inicio, fin);
+
+        registrosPagina.forEach(function (registro) {
+            const fila = document.createElement("tr");
+
+            fila.innerHTML = `
+                <td>
+                    <span class="type-pill ${claseTipo(registro.tipo)}">
+                        ${iconoTipo(registro.tipo)} ${registro.tipo}
+                    </span>
                 </td>
-            </tr>
-        `;
 
-        textoCantidad.textContent = "No hay registros para mostrar";
-        paginaActualTexto.textContent = "1";
-        btnPaginaAnterior.disabled = true;
-        btnPaginaSiguiente.disabled = true;
+                <td>${registro.cliente}</td>
+                <td>${registro.cedula ? registro.cedula : "—"}</td>
+                <td>${registro.celular}</td>
+                <td>${registro.correo}</td>
+                <td>${registro.fecha}</td>
 
-        return;
+                <td>
+                    ${crearCeldaEstado(registro)}
+                </td>
+
+                <td>
+                    <a href="#" class="action-btn btnDetalle" data-detalle="${registro.detalle}">
+                        Ver detalle
+                    </a>
+                </td>
+            `;
+
+            tablaRegistros.appendChild(fila);
+        });
+
+        const registroInicio = inicio + 1;
+        const registroFin = Math.min(fin, lista.length);
+
+        textoCantidad.textContent =
+            "Mostrando " + registroInicio + " a " + registroFin + " de " + lista.length + " registros";
+
+        paginaActualTexto.textContent = paginaActual;
+
+        btnPaginaAnterior.disabled = paginaActual === 1;
+        btnPaginaSiguiente.disabled = paginaActual === totalPaginas;
+
+        activarCambioEstadoPedidos();
+        activarDetalle();
     }
 
-    const totalPaginas = Math.ceil(lista.length / registrosPorPagina);
+    function activarDetalle() {
+        const botonesDetalle = document.querySelectorAll(".btnDetalle");
 
-    if (paginaActual > totalPaginas) {
-        paginaActual = totalPaginas;
+        botonesDetalle.forEach(function (boton) {
+            boton.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                const detalle = boton.dataset.detalle || "Sin detalle disponible.";
+                alert(detalle);
+            });
+        });
     }
-
-    const inicio = (paginaActual - 1) * registrosPorPagina;
-    const fin = inicio + registrosPorPagina;
-    const registrosPagina = lista.slice(inicio, fin);
-
-    registrosPagina.forEach(function (registro) {
-        const fila = document.createElement("tr");
-
-        fila.innerHTML = `
-            <td>
-                <span class="type-pill ${claseTipo(registro.tipo)}">
-                    ${iconoTipo(registro.tipo)} ${registro.tipo}
-                </span>
-            </td>
-
-            <td>${registro.cliente}</td>
-            <td>${registro.cedula}</td>
-            <td>${registro.celular}</td>
-            <td>${registro.correo}</td>
-            <td>${registro.fecha}</td>
-
-            <td>
-                ${crearCeldaEstado(registro)}
-            </td>
-
-            <td>
-                <a href="#" class="action-btn">Ver detalle</a>
-            </td>
-        `;
-
-        tablaRegistros.appendChild(fila);
-    });
-
-    const registroInicio = inicio + 1;
-    const registroFin = Math.min(fin, lista.length);
-
-    textoCantidad.textContent = "Mostrando " + registroInicio + " a " + registroFin + " de " + lista.length + " registros";
-    paginaActualTexto.textContent = paginaActual;
-
-    btnPaginaAnterior.disabled = paginaActual === 1;
-    btnPaginaSiguiente.disabled = paginaActual === totalPaginas;
-
-    activarCambioEstadoPedidos();
-}
 
     function activarCambioEstadoPedidos() {
         const selectsEstado = document.querySelectorAll(".status-select");
@@ -329,23 +263,47 @@ document.addEventListener("DOMContentLoaded", function () {
                 const idRegistro = Number(select.dataset.id);
                 const nuevoEstado = select.value;
 
-                const registro = registros.find(function (item) {
-                    return item.id === idRegistro;
-                });
+                fetch("actualizar-estado-pedido.jsp", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body:
+                        "idPedido=" + encodeURIComponent(idRegistro) +
+                        "&nuevoEstado=" + encodeURIComponent(nuevoEstado)
+                })
+                .then(function (respuesta) {
+                    return respuesta.text();
+                })
+                .then(function (texto) {
+                    if (texto.trim() === "OK") {
+                        const registro = registros.find(function (item) {
+                            return item.id === idRegistro && item.tipo === "Pedido";
+                        });
 
-                if (registro && registro.tipo === "Pedido") {
-                    registro.estado = nuevoEstado;
+                        if (registro) {
+                            registro.estado = nuevoEstado;
+                        }
+
+                        aplicarFiltros();
+                    } else {
+                        alert("No se pudo actualizar el estado del pedido.");
+                        aplicarFiltros();
+                    }
+                })
+                .catch(function () {
+                    alert("Error de conexión al actualizar el pedido.");
                     aplicarFiltros();
-                }
+                });
             });
         });
     }
 
     function aplicarFiltros() {
-    paginaActual = 1;
-    const listaFiltrada = filtrarRegistros();
-    mostrarRegistros(listaFiltrada);
-}
+        paginaActual = 1;
+        const listaFiltrada = filtrarRegistros();
+        mostrarRegistros(listaFiltrada);
+    }
 
     btnBuscar.addEventListener("click", function () {
         aplicarFiltros();
@@ -368,29 +326,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     btnLimpiar.addEventListener("click", function () {
-    buscarPor.value = "todos";
-    busquedaCliente.value = "";
-    buscarRegistro.value = "todo";
-    estadoRegistro.value = "todo";
-    paginaActual = 1;
-    mostrarRegistros([]);
-});
+        buscarPor.value = "todos";
+        busquedaCliente.value = "";
+        buscarRegistro.value = "todo";
+        estadoRegistro.value = "todo";
+        paginaActual = 1;
+        mostrarRegistros(registros);
+    });
 
-btnPaginaAnterior.addEventListener("click", function () {
-    if (paginaActual > 1) {
-        paginaActual--;
-        mostrarRegistros(listaActual);
-    }
-});
+    btnPaginaAnterior.addEventListener("click", function () {
+        if (paginaActual > 1) {
+            paginaActual--;
+            mostrarRegistros(listaActual);
+        }
+    });
 
-btnPaginaSiguiente.addEventListener("click", function () {
-    const totalPaginas = Math.ceil(listaActual.length / registrosPorPagina);
+    btnPaginaSiguiente.addEventListener("click", function () {
+        const totalPaginas = Math.ceil(listaActual.length / registrosPorPagina);
 
-    if (paginaActual < totalPaginas) {
-        paginaActual++;
-        mostrarRegistros(listaActual);
-    }
-});
+        if (paginaActual < totalPaginas) {
+            paginaActual++;
+            mostrarRegistros(listaActual);
+        }
+    });
 
-mostrarRegistros([]);
+    mostrarRegistros(registros);
 });

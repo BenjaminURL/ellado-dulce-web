@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <%
     if (session.getAttribute("idCliente") == null) {
@@ -7,6 +9,41 @@
     }
 
     int idCliente = (Integer) session.getAttribute("idCliente");
+
+    int puntosCliente = 0;
+
+Connection conPuntos = null;
+PreparedStatement psPuntos = null;
+ResultSet rsPuntos = null;
+
+try {
+    Class.forName("com.mysql.cj.jdbc.Driver");
+
+    conPuntos = DriverManager.getConnection(
+        "jdbc:mysql://localhost:3306/ellado_dulce_db",
+        "root",
+        ""
+    );
+
+    String sqlPuntos = "SELECT c_puntos FROM cliente WHERE c_id_cliente = ?";
+
+    psPuntos = conPuntos.prepareStatement(sqlPuntos);
+    psPuntos.setInt(1, idCliente);
+
+    rsPuntos = psPuntos.executeQuery();
+
+    if (rsPuntos.next()) {
+        puntosCliente = rsPuntos.getInt("c_puntos");
+    }
+
+} catch (Exception e) {
+    puntosCliente = 0;
+
+} finally {
+    if (rsPuntos != null) rsPuntos.close();
+    if (psPuntos != null) psPuntos.close();
+    if (conPuntos != null) conPuntos.close();
+}
 
     String nombreCliente = (String) session.getAttribute("nombreCliente");
     String apellidoCliente = (String) session.getAttribute("apellidoCliente");
@@ -19,6 +56,10 @@
     if (usuarioCliente == null) usuarioCliente = "";
     if (correoCliente == null) correoCliente = "";
     if (telefonoCliente == null || telefonoCliente.trim().equals("")) telefonoCliente = "No registrado";
+
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm a");
+    SimpleDateFormat formatoFechaHora = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
 %>
 
 <!DOCTYPE html>
@@ -32,7 +73,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="mi-cuenta.css">
+    <link rel="stylesheet" href="mi-cuenta.css?v=2">
 </head>
 <body>
 
@@ -47,7 +88,16 @@
         <a href="helados.jsp">Helados</a>
         <a href="html/bebidas.jsp">Bebidas</a>
         <a href="">Crepes</a>
-        <a href="Boquitas.jsp">Boquitas</a>
+
+        <div class="dropdown">
+            <a href="Boquitas.jsp" class="dropbtn">Boquitas ▾</a>
+
+            <div class="dropdown-content">
+                <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+            </div>
+        </div>
+
         <a href="Pasteles.jsp">Pasteles</a>
         <a href="reservas.jsp">Reservas</a>
         <a href="actividades.jsp">Actividades</a>
@@ -70,45 +120,310 @@
 
             <section class="welcome-card">
                 <div class="user-info">
-                    <div class="avatar"></div>
 
                     <div>
                         <span>Bienvenida de vuelta</span>
                         <h1>Hola, <strong id="userName"><%= nombreCliente %></strong></h1>
                         <p>
-                            Aquí puedes ver tus pedidos, reservas, actividades y disfrutar los beneficios.
+                            Aquí puedes ver tus órdenes, reservas y actividades compradas.
                         </p>
                     </div>
                 </div>
 
                 <div class="points-box">
                     <span>PUNTOS</span>
-                    <strong id="totalPoints">0</strong>
+                    <strong id="totalPoints"><%= puntosCliente %></strong>
                 </div>
             </section>
 
-            <section class="activities-card" id="activitiesCard">
+            <section class="history-card">
                 <div class="section-header">
-                    <h2>Mis actividades</h2>
-                    <a href="actividades.jsp">Ver todas mis actividades &rarr;</a>
+                    <h2>Mi historial</h2>
+
+                    <select id="historySelect" class="history-select">
+                        <option value="actividades">Actividades</option>
+                        <option value="ordenes">Órdenes</option>
+                        <option value="reservas">Reservas</option>
+                    </select>
                 </div>
 
-                <div class="activities-table">
-                    <div class="table-head">
-                        <span>Actividad</span>
-                        <span>Fecha y hora</span>
-                        <span>Precio</span>
-                        <span></span>
-                    </div>
+                <div class="history-section" id="actividadesSection">
+                    <h3>Mis actividades</h3>
 
-                    <div id="activitiesList">
-                        <!-- Las actividades compradas se cargan con JavaScript -->
+                    <div class="history-table">
+                        <div class="table-head">
+                            <span>Actividad</span>
+                            <span>Fecha y hora</span>
+                            <span>Confirmación</span>
+                            <span>Estado</span>
+                        </div>
+
+<%
+    Connection conAct = null;
+    PreparedStatement psAct = null;
+    ResultSet rsAct = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        conAct = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/ellado_dulce_db",
+            "root",
+            ""
+        );
+
+        String sqlAct =
+            "SELECT a.a_nombre, a.a_fecha, a.a_hora, ac.ac_numero_confirmacion, ac.ac_estado " +
+            "FROM actividad_compra ac " +
+            "INNER JOIN actividad a ON ac.ac_id_actividad = a.a_id_actividad " +
+            "WHERE ac.ac_id_cliente = ? " +
+            "ORDER BY ac.ac_fecha_compra DESC";
+
+        psAct = conAct.prepareStatement(sqlAct);
+        psAct.setInt(1, idCliente);
+
+        rsAct = psAct.executeQuery();
+
+        boolean hayActividades = false;
+
+        while (rsAct.next()) {
+            hayActividades = true;
+
+            String actividad = rsAct.getString("a_nombre");
+            java.sql.Date fecha = rsAct.getDate("a_fecha");
+            java.sql.Time hora = rsAct.getTime("a_hora");
+            String confirmacion = rsAct.getString("ac_numero_confirmacion");
+            String estado = rsAct.getString("ac_estado");
+
+            String fechaHoraTexto = formatoFecha.format(fecha) + " " + formatoHora.format(hora);
+%>
+
+                        <div class="table-row">
+                            <span><%= actividad %></span>
+                            <span><%= fechaHoraTexto %></span>
+                            <span><%= confirmacion %></span>
+                            <span><%= estado %></span>
+                        </div>
+
+<%
+        }
+
+        if (!hayActividades) {
+%>
+
+                        <div class="empty-message">
+                            No tienes actividades compradas todavía.
+                        </div>
+
+<%
+        }
+
+    } catch (Exception e) {
+%>
+
+                        <div class="empty-message">
+                            Error al cargar tus actividades.
+                        </div>
+
+<%
+        e.printStackTrace();
+
+    } finally {
+        if (rsAct != null) rsAct.close();
+        if (psAct != null) psAct.close();
+        if (conAct != null) conAct.close();
+    }
+%>
+
+                    </div>
+                </div>
+
+                <div class="history-section hidden" id="ordenesSection">
+                    <h3>Mis órdenes</h3>
+
+                    <div class="history-table">
+                        <div class="table-head">
+                            <span>Producto</span>
+                            <span>Cantidad</span>
+                            <span>Total</span>
+                            <span>Estado</span>
+                        </div>
+
+<%
+    Connection conPed = null;
+    PreparedStatement psPed = null;
+    ResultSet rsPed = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        conPed = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/ellado_dulce_db",
+            "root",
+            ""
+        );
+
+        String sqlPed =
+            "SELECT m.m_producto, p.pd_cantidad, p.pd_total, p.pd_estado, p.pf_fechapedido " +
+            "FROM pedido p " +
+            "INNER JOIN menu m ON p.pd_m_id_menu = m.m_id_menu " +
+            "WHERE p.pd_c_id_cliente = ? " +
+            "ORDER BY p.pf_fechapedido DESC";
+
+        psPed = conPed.prepareStatement(sqlPed);
+        psPed.setInt(1, idCliente);
+
+        rsPed = psPed.executeQuery();
+
+        boolean hayPedidos = false;
+
+        while (rsPed.next()) {
+            hayPedidos = true;
+
+            String producto = rsPed.getString("m_producto");
+            int cantidad = rsPed.getInt("pd_cantidad");
+            double total = rsPed.getDouble("pd_total");
+            String estado = rsPed.getString("pd_estado");
+
+            String totalTexto = String.format(java.util.Locale.US, "%.2f", total);
+%>
+
+                        <div class="table-row">
+                            <span><%= producto %></span>
+                            <span><%= cantidad %></span>
+                            <span>B/.<%= totalTexto %></span>
+                            <span><%= estado %></span>
+                        </div>
+
+<%
+        }
+
+        if (!hayPedidos) {
+%>
+
+                        <div class="empty-message">
+                            No tienes órdenes registradas todavía.
+                        </div>
+
+<%
+        }
+
+    } catch (Exception e) {
+%>
+
+                        <div class="empty-message">
+                            Error al cargar tus órdenes.
+                        </div>
+
+<%
+        e.printStackTrace();
+
+    } finally {
+        if (rsPed != null) rsPed.close();
+        if (psPed != null) psPed.close();
+        if (conPed != null) conPed.close();
+    }
+%>
+
+                    </div>
+                </div>
+
+                <div class="history-section hidden" id="reservasSection">
+                    <h3>Mis reservas</h3>
+
+                    <div class="history-table">
+                        <div class="table-head">
+                            <span>Reserva</span>
+                            <span>Fecha y hora</span>
+                            <span>Total</span>
+                            <span>Estado</span>
+                        </div>
+
+<%
+    Connection conRes = null;
+    PreparedStatement psRes = null;
+    ResultSet rsRes = null;
+
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        conRes = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/ellado_dulce_db",
+            "root",
+            ""
+        );
+
+        String sqlRes =
+            "SELECT r.r_id_reserva, tr.tr_nombre, r.r_fecha, r.r_hora, r.r_total_estimado, r.r_estado " +
+            "FROM reserva r " +
+            "INNER JOIN tipo_reserva tr ON r.r_tr_id_tipo = tr.tr_id_tipo " +
+            "WHERE r.r_c_id_cliente = ? " +
+            "ORDER BY r.r_fecha_registro DESC";
+
+        psRes = conRes.prepareStatement(sqlRes);
+        psRes.setInt(1, idCliente);
+
+        rsRes = psRes.executeQuery();
+
+        boolean hayReservas = false;
+
+        while (rsRes.next()) {
+            hayReservas = true;
+
+            int idReserva = rsRes.getInt("r_id_reserva");
+            String tipoReserva = rsRes.getString("tr_nombre");
+            java.sql.Date fecha = rsRes.getDate("r_fecha");
+            java.sql.Time hora = rsRes.getTime("r_hora");
+            double total = rsRes.getDouble("r_total_estimado");
+            String estado = rsRes.getString("r_estado");
+
+            String fechaHoraTexto = formatoFecha.format(fecha) + " " + formatoHora.format(hora);
+            String totalTexto = String.format(java.util.Locale.US, "%.2f", total);
+%>
+
+                        <div class="table-row">
+                            <span>RES-<%= idReserva %> | <%= tipoReserva %></span>
+                            <span><%= fechaHoraTexto %></span>
+                            <span>B/.<%= totalTexto %></span>
+                            <span><%= estado %></span>
+                        </div>
+
+<%
+        }
+
+        if (!hayReservas) {
+%>
+
+                        <div class="empty-message">
+                            No tienes reservas registradas todavía.
+                        </div>
+
+<%
+        }
+
+    } catch (Exception e) {
+%>
+
+                        <div class="empty-message">
+                            Error al cargar tus reservas.
+                        </div>
+
+<%
+        e.printStackTrace();
+
+    } finally {
+        if (rsRes != null) rsRes.close();
+        if (psRes != null) psRes.close();
+        if (conRes != null) conRes.close();
+    }
+%>
+
                     </div>
                 </div>
 
                 <div class="info-message">
                     <span>ⓘ</span>
-                    <p>Si tienes alguna confirmación aparece aquí para ir al inicio de tu actividad.</p>
+                    <p>Usa el menú para cambiar entre tus actividades, órdenes y reservas.</p>
                 </div>
             </section>
 
@@ -117,30 +432,6 @@
         <aside class="side-column">
 
             <section class="personal-card">
-                <div class="personal-header">
-                    <h2>Datos personales</h2>
-                    <a href="editar-perfil.jsp">✎ Editar</a>
-                </div>
-
-                <div class="personal-data">
-                    <p>
-                        <span></span>
-                        <strong id="profileName"><%= nombreCliente %> <%= apellidoCliente %></strong>
-                    </p>
-
-                    <p>
-                        <span></span>
-                        <strong id="profileEmail"><%= correoCliente %></strong>
-                    </p>
-
-                    <p>
-                        <span></span>
-                        <strong id="profilePhone"><%= telefonoCliente %></strong>
-                    </p>
-                </div>
-
-                <a href="editar-perfil.jsp" class="edit-profile-btn">Editar perfil</a>
-
                 <a href="logout.jsp" class="logout-btn">Cerrar sesión</a>
             </section>
 
@@ -178,10 +469,35 @@
     </div>
 
     <div class="copyright">
-        © 2025 Ellado Dulce. Todos los derechos reservados.
+        © 2026 Ellado Dulce. Todos los derechos reservados.
     </div>
 </footer>
 
-<script src="mi-cuenta.js"></script>
+<script>
+    const historySelect = document.getElementById("historySelect");
+
+    const actividadesSection = document.getElementById("actividadesSection");
+    const ordenesSection = document.getElementById("ordenesSection");
+    const reservasSection = document.getElementById("reservasSection");
+
+    historySelect.addEventListener("change", function () {
+        actividadesSection.classList.add("hidden");
+        ordenesSection.classList.add("hidden");
+        reservasSection.classList.add("hidden");
+
+        if (historySelect.value === "actividades") {
+            actividadesSection.classList.remove("hidden");
+        }
+
+        if (historySelect.value === "ordenes") {
+            ordenesSection.classList.remove("hidden");
+        }
+
+        if (historySelect.value === "reservas") {
+            reservasSection.classList.remove("hidden");
+        }
+    });
+</script>
+
 </body>
 </html>
