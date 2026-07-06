@@ -88,7 +88,8 @@
                     Delicado pastel decorado con frutas naturales y crema suave.
                 </p>
 
-                <a href="detalle-pastel-frutas.jsp">Ver más</a>
+                <a href="detalle-pastel.jsp?id=5">Ver más</a>
+
             </div>
         </div>
 
@@ -104,7 +105,8 @@
                     Intenso y húmedo, cubierto de ganache y decoraciones artesanales.
                 </p>
 
-                <a href="detalle-pastel-chocolate.jsp">Ver más</a>
+                <a href="detalle-pastel.jsp?id=6">Ver más</a>
+
             </div>
         </div>
 
@@ -120,7 +122,7 @@
                     Colorido y divertido, perfecto para celebrar con los más pequeños.
                 </p>
 
-                <a href="detalle-pastel-infantil.jsp">Ver más</a>
+                <a href="detalle-pastel.jsp?id=7">Ver más</a>
             </div>
         </div>
 
@@ -136,7 +138,7 @@
                     Bizcocho sedoso de color rojo brillante con un sutil toque de cacao y relleno de crema de queso dulce.
                 </p>
 
-                <a href="detalle-pastel-red-velvet.jsp">Ver más</a>
+                <a href="detalle-pastel.jsp?id=8">Ver más</a>
             </div>
         </div>
 
@@ -152,7 +154,7 @@
                     Clásico y festivo, ideal para hacer memorable cada celebración.
                 </p>
 
-                <a href="detalle-pastel-cumpleanos.jsp">Ver más</a>
+                <a href="detalle-pastel.jsp?id=9">Ver más</a>
             </div>
         </div>
 
@@ -168,7 +170,7 @@
                     Bizcocho esponjoso, suave y aromático elaborado con extracto natural de vainilla.
                 </p>
 
-                <a href="detalle-pastel-vainilla.jsp">Ver más</a>
+                <a href="detalle-pastel.jsp?id=10">Ver más</a>
             </div>
         </div>
 
