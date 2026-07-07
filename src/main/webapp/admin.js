@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const busquedaCliente = document.getElementById("busquedaCliente");
     const buscarRegistro = document.getElementById("buscarRegistro");
     const estadoRegistro = document.getElementById("estadoRegistro");
+    const rangoFechas = document.getElementById("rangoFechas");
     const btnBuscar = document.getElementById("btnBuscar");
     const btnLimpiar = document.getElementById("btnLimpiar");
 
@@ -24,6 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
         return (texto || "").toString().trim().toLowerCase();
     }
 
+    function coincideRangoFecha(fechaRegistroTexto, rangoTexto) {
+    if (!rangoTexto || rangoTexto.trim() === "") {
+        return true;
+    }
+
+    const fechaRegistro = fechaRegistroTexto.split(" ")[0];
+
+    return fechaRegistro.includes(rangoTexto.trim());
+}
+
     function claseTipo(tipo) {
         const tipoNormalizado = normalizarTexto(tipo);
 
@@ -40,24 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         return "";
-    }
-
-    function iconoTipo(tipo) {
-        const tipoNormalizado = normalizarTexto(tipo);
-
-        if (tipoNormalizado === "pedido") {
-            return "🛍";
-        }
-
-        if (tipoNormalizado === "actividad") {
-            return "👥";
-        }
-
-        if (tipoNormalizado === "reserva") {
-            return "📅";
-        }
-
-        return "•";
     }
 
     function claseEstado(estado) {
@@ -116,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const textoBusqueda = normalizarTexto(busquedaCliente.value);
         const filtroRegistro = buscarRegistro.value;
         const filtroEstado = estadoRegistro.value;
+        const filtroFecha = rangoFechas.value;
 
         return registros.filter(function (registro) {
             const textoBase = normalizarTexto(obtenerValorBusqueda(registro, filtroCliente));
@@ -129,10 +123,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 normalizarTexto(registro.tipo) === filtroRegistro;
 
             const coincideEstado =
-                filtroEstado === "todo" ||
-                normalizarTexto(registro.estado) === filtroEstado;
+            filtroEstado === "todo" ||
+            normalizarTexto(registro.estado) === filtroEstado;
 
-            return coincideCliente && coincideTipo && coincideEstado;
+            const coincideFecha = coincideRangoFecha(registro.fecha, filtroFecha);
+
+            return coincideCliente && coincideTipo && coincideEstado && coincideFecha;
         });
     }
 
@@ -203,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fila.innerHTML = `
                 <td>
                     <span class="type-pill ${claseTipo(registro.tipo)}">
-                        ${iconoTipo(registro.tipo)} ${registro.tipo}
+                        ${registro.tipo}
                     </span>
                 </td>
 
@@ -321,17 +317,22 @@ document.addEventListener("DOMContentLoaded", function () {
         aplicarFiltros();
     });
 
+    rangoFechas.addEventListener("input", function () {
+    aplicarFiltros();
+    });
+
     estadoRegistro.addEventListener("change", function () {
         aplicarFiltros();
     });
 
     btnLimpiar.addEventListener("click", function () {
-        buscarPor.value = "todos";
-        busquedaCliente.value = "";
-        buscarRegistro.value = "todo";
-        estadoRegistro.value = "todo";
-        paginaActual = 1;
-        mostrarRegistros(registros);
+    buscarPor.value = "todos";
+    busquedaCliente.value = "";
+    buscarRegistro.value = "todo";
+    estadoRegistro.value = "todo";
+    rangoFechas.value = "";
+    paginaActual = 1;
+    mostrarRegistros(registros);
     });
 
     btnPaginaAnterior.addEventListener("click", function () {

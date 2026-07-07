@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let fechasOcupadas = [];
 
+    function usuarioEstaLogueado() {
+    return typeof clienteLogueado !== "undefined" &&
+           (clienteLogueado === true || clienteLogueado === "true");
+}
+
     function obtenerFechaManana() {
         const hoy = new Date();
         hoy.setDate(hoy.getDate() + 1);
@@ -102,15 +107,20 @@ document.addEventListener("DOMContentLoaded", function () {
             validarFechaOcupada();
         });
     }
+if (btnComprarReserva) {
+    btnComprarReserva.addEventListener("click", function () {
 
-    if (btnComprarReserva) {
-        btnComprarReserva.addEventListener("click", function () {
-            if (validarFormulario()) {
-                form.submit();
-            }
-        });
-    }
+        if (!usuarioEstaLogueado()) {
+            alert("Debes iniciar sesión para realizar una reserva.");
+            window.location.href = "mi-cuenta.jsp";
+            return;
+        }
 
+        if (validarFormulario()) {
+            form.submit();
+        }
+    });
+}
     if (form) {
         form.addEventListener("submit", function (event) {
             if (!validarFormulario()) {

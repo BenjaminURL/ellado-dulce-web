@@ -2,6 +2,8 @@
 <%@ page import="java.sql.*" %>
 
 <%
+    request.setCharacterEncoding("UTF-8");
+
     String idParam = request.getParameter("id");
 
     if (idParam == null || idParam.trim().equals("")) {
@@ -81,9 +83,15 @@
         ? "Logos, colores corporativos, pantallas, banner..."
         : "Ej: temática de princesa, colores rosado y dorado, globos, flores...";
 
-    String imagenReserva = esCorporativo
-        ? "imagenes/reservas/corporativo.png"
-        : "imagenes/reservas/cumpleanos.png";
+    String imagenReserva = "";
+
+    if (idTipo == 1) {
+        imagenReserva = "imagenes/reserva/Cumpleaños Dulce-1.png";
+    } else if (idTipo == 2) {
+        imagenReserva = "imagenes/reserva/Evento Corporativo-2.png";
+    } else {
+        imagenReserva = "imagenes/reserva/Cumpleaños Dulce-1.png";
+    }
 %>
 
 <!DOCTYPE html>
@@ -97,6 +105,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="detalle.reserva.css">
 </head>
 <body>
@@ -108,17 +117,22 @@
     </div>
 
     <nav class="menu">
-        <a href="index.jsp">Inicio</a>
-        <a href="helados.jsp">Helados</a>
-        <a href="html/bebidas.jsp">Bebidas</a>
-        <a href="">Crepes</a>
-        <a href="Boquitas.jsp">Boquitas</a>
-        <a href="Pasteles.jsp">Pasteles</a>
-        <a class="active" href="reservas.jsp">Reservas</a>
-        <a href="actividades.jsp">Actividades</a>
-        <a href="nosotros.jsp">Nosotros</a>
-        <a href="mi-cuenta.jsp">Mi cuenta</a>
-    </nav>
+            <a href="index.jsp">Inicio</a>
+
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+                <div class="dropdown-menu">
+                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+                </div>
+            </div>
+
+            <a href="Pasteles.jsp">Pasteles</a>
+            <a href="reservas.jsp">Reservas</a>
+            <a href="actividades.jsp">Actividades</a>
+            <a href="Nosotros.jsp">Nosotros</a>
+            <a href="mi-cuenta.jsp">Mi cuenta</a>
+        </nav>
 
     <div class="cart">
         <a href="pantalla-de-carrito.jsp">
@@ -142,12 +156,10 @@
             <section class="form-card">
                 <h2>Completa tu reserva</h2>
 
-                <input type="hidden" name="idTipoReserva" value="<%= idTipo %>">
-<input type="hidden" name="nombreTipo" value="<%= nombreTipo %>">
-<input type="hidden" name="precioBase" value="<%= precioTexto %>">
-<input type="hidden" name="horasBase" value="<%= horasBase %>">
+                <form id="reservaDetalleForm" action="pago.jsp" method="post">
 
-                    <input type="hidden" name="tipoReserva" value="<%= idTipo %>">
+                    <input type="hidden" name="tipoPago" value="reserva">    
+                    <input type="hidden" name="idTipoReserva" value="<%= idTipo %>">
                     <input type="hidden" name="nombreTipo" value="<%= nombreTipo %>">
                     <input type="hidden" name="precioBase" value="<%= precioTexto %>">
                     <input type="hidden" name="horasBase" value="<%= horasBase %>">
@@ -181,6 +193,7 @@
                             <input type="time" id="horaReserva" name="horaReserva" required>
                         </div>
                     </div>
+
                 </form>
             </section>
 
@@ -219,7 +232,7 @@
             </ul>
 
             <button type="button" class="buy-btn" id="btnComprarReserva">
-                Comprar
+             Comprar
             </button>
 
             <a href="#" target="_blank" class="whatsapp-btn" id="whatsappReserva">
@@ -264,11 +277,13 @@
 </footer>
 
 <script>
+    const clienteLogueado = <%= session.getAttribute("idCliente") != null ? "true" : "false" %>;
     const nombreTipoReserva = "<%= nombreTipo %>";
     const precioTipoReserva = "<%= precioTexto %>";
     const horasTipoReserva = "<%= horasBase %>";
 </script>
 
-<script src="detalle-reserva.js?v=1"></script>
+<script src="detalle-reserva.js"></script>
+
 </body>
 </html>

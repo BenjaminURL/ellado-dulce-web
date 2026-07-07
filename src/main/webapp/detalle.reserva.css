@@ -1,87 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: "Poppins", Arial, sans-serif;
-    background-color: #f8f2f6;
-    color: #101942;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* NAVBAR */
-
-.navbar {
-    width: 100%;
-    background-color: #171b4f;
-    color: #ffffff;
-    padding: 18px 42px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 16px;
-}
-
-.logo-img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-}
-
-.logo strong {
-    color: #ff4f8b;
-}
-
-.menu {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    font-size: 13px;
-}
-
-.menu a {
-    color: #ffffff;
-    opacity: 0.9;
-    transition: 0.2s ease;
-}
-
-.menu a:hover,
-.menu .active {
-    color: #ff4f8b;
-}
-
-.cart a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cart-img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-}
-
-/* PÁGINA */
+/* =========================
+   PÁGINA DE RESERVA
+========================= */
 
 .reserva-page {
     padding: 38px 32px 70px;
@@ -94,6 +13,10 @@ a {
     color: #7a7890;
     font-size: 13px;
     font-weight: 700;
+}
+
+.back-link:hover {
+    color: #ff4f8b;
 }
 
 .reserva-layout {
@@ -111,7 +34,9 @@ a {
     gap: 24px;
 }
 
-/* IMAGEN */
+/* =========================
+   IMAGEN
+========================= */
 
 .product-image {
     width: 100%;
@@ -129,7 +54,9 @@ a {
     display: block;
 }
 
-/* FORMULARIO */
+/* =========================
+   FORMULARIO
+========================= */
 
 .form-card {
     background-color: #ffffff;
@@ -185,6 +112,10 @@ a {
     gap: 18px;
 }
 
+/* =========================
+   BOTÓN CONTINUAR
+========================= */
+
 .continue-btn {
     width: 100%;
     border: none;
@@ -203,7 +134,9 @@ a {
     background-color: #f63878;
 }
 
-/* TARJETA DEL PAQUETE */
+/* =========================
+   TARJETA DEL PAQUETE
+========================= */
 
 .package-card {
     background-color: #ffffff;
@@ -250,6 +183,10 @@ a {
     margin-bottom: 16px;
 }
 
+/* =========================
+   LISTA INCLUIDA
+========================= */
+
 .include-list {
     list-style: none;
     display: flex;
@@ -274,6 +211,10 @@ a {
     flex-shrink: 0;
 }
 
+/* =========================
+   BOTONES DE COMPRA
+========================= */
+
 .buy-btn,
 .whatsapp-btn {
     width: 100%;
@@ -286,6 +227,7 @@ a {
     font-weight: 800;
     text-align: center;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .buy-btn {
@@ -311,75 +253,11 @@ a {
     color: #ffffff;
 }
 
-/* FOOTER */
-
-.footer {
-    background-color: #171b4f;
-    color: #ffffff;
-    padding: 42px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 34px;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-}
-
-.footer-logo-img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-}
-
-.footer-logo h3 {
-    margin-bottom: 0;
-}
-
-.footer h3 {
-    font-size: 16px;
-    margin-bottom: 14px;
-}
-
-.footer h3 span,
-.footer a {
-    color: #ff4f8b;
-}
-
-.footer p {
-    color: #d9d9ec;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-.copyright {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: #aeb1d0;
-    font-size: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 22px;
-    margin-top: 8px;
-}
-
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE DE RESERVA
+========================= */
 
 @media (max-width: 950px) {
-    .navbar {
-        flex-wrap: wrap;
-        gap: 18px;
-    }
-
-    .menu {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        gap: 20px;
-    }
-
     .reserva-layout {
         grid-template-columns: 1fr;
     }
@@ -387,16 +265,10 @@ a {
     .package-card {
         position: static;
     }
-
-    .footer {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 600px) {
-    .navbar,
-    .reserva-page,
-    .footer {
+    .reserva-page {
         padding-left: 22px;
         padding-right: 22px;
     }

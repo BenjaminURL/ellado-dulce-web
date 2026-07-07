@@ -1,7 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.net.URLEncoder" %>
 
 <%
+    request.setCharacterEncoding("UTF-8");
+
     String idParam = request.getParameter("id");
 
     if (idParam == null || idParam.trim().equals("")) {
@@ -74,7 +77,10 @@
     }
 
     String precioTexto = String.format(java.util.Locale.US, "%.2f", precioProducto);
-    String imagenProducto = "imagenes/productos/producto-" + idMenu + ".webp";
+
+    String imagenProducto = "imagenes/Pasteles/" + nombreProducto + "-" + idMenu + ".png";
+
+    String nombreWhatsapp = URLEncoder.encode(nombreProducto, "UTF-8");
 %>
 
 <!DOCTYPE html>
@@ -88,7 +94,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="detalle-producto.css">
+    <link rel="stylesheet" href="layout.css?v=1">
+    <link rel="stylesheet" href="detalle-producto.css?v=1">
 </head>
 <body>
 
@@ -99,17 +106,22 @@
     </div>
 
     <nav class="menu">
-        <a href="index.jsp">Inicio</a>
-        <a href="helados.jsp">Helados</a>
-        <a href="html/bebidas.jsp">Bebidas</a>
-        <a href="">Crepes</a>
-        <a href="Boquitas.jsp">Boquitas</a>
-        <a class="active" href="Pasteles.jsp">Pasteles</a>
-        <a href="reservas.jsp">Reservas</a>
-        <a href="actividades.jsp">Actividades</a>
-        <a href="nosotros.jsp">Nosotros</a>
-        <a href="mi-cuenta.jsp">Mi cuenta</a>
-    </nav>
+            <a href="index.jsp">Inicio</a>
+
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+                <div class="dropdown-menu">
+                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+                </div>
+            </div>
+
+            <a href="Pasteles.jsp">Pasteles</a>
+            <a href="reservas.jsp">Reservas</a>
+            <a href="actividades.jsp">Actividades</a>
+            <a href="Nosotros.jsp">Nosotros</a>
+            <a href="mi-cuenta.jsp">Mi cuenta</a>
+        </nav>
 
     <div class="cart">
         <a href="pantalla-de-carrito.jsp">
@@ -140,7 +152,10 @@
 
             <div class="product-header">
                 <h1><%= nombreProducto %></h1>
-                <p class="product-price">Desde B/.<%= precioTexto %></p>
+
+                <p class="product-price">
+                    Desde B/.<%= precioTexto %>
+                </p>
 
                 <p class="product-description">
                     <%= descripcionProducto %>
@@ -176,7 +191,7 @@
                 <section class="summary-box">
                     <div>
                         <span>Subtotal</span>
-                        <strong id="subtotalPrice">$<%= precioTexto %></strong>
+                        <strong id="subtotalPrice">B/.<%= precioTexto %></strong>
                         <small>Precio provisional</small>
                     </div>
 
@@ -187,7 +202,7 @@
                     <a 
                         class="whatsapp-btn" 
                         id="whatsappBtn" 
-                        href="https://wa.me/5073158752?text=Hola,%20quiero%20pedir%20<%= nombreProducto.replace(" ", "%20") %>." 
+                        href="https://wa.me/5073158752?text=Hola,%20quiero%20pedir%20<%= nombreWhatsapp %>." 
                         target="_blank">
                         Pedir vía WhatsApp
                     </a>
@@ -212,8 +227,8 @@
 
     <div class="footer-col">
         <h3>Horarios</h3>
-        <p>Lunes<br>10:00 a.m. - 8:00 p.m.</p>
-        <p>Martes a Domingo<br>10:00 a.m. - 9:00 p.m.</p>
+        <p>Lunes<br>1:00 p.m. - 8:00 p.m.</p>
+        <p>Martes a Domingo<br>1:00 p.m. - 9:00 p.m.</p>
     </div>
 
     <div class="footer-col">
@@ -239,5 +254,6 @@
 </script>
 
 <script src="detalle-producto.js?v=10"></script>
+
 </body>
 </html>

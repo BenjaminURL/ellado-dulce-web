@@ -214,12 +214,18 @@ function enviarPedidoAPago() {
         return;
     }
 
+    const subtotal = calcularSubtotal(carrito);
+    const itbms = subtotal * ITBMS;
+    const descuentoPuntos = calcularDescuentoPuntos(subtotal);
+    const total = subtotal + itbms - descuentoPuntos;
+
     const form = document.createElement("form");
     form.method = "post";
-    form.action = "confirmarPedido.jsp";
+    form.action = "pago.jsp";
 
     carrito.forEach(function (producto) {
         agregarCampo(form, "nombreProducto", producto.nombre || "Producto");
+        agregarCampo(form, "categoriaProducto", producto.categoria || "");
         agregarCampo(form, "precioProducto", normalizarNumero(producto.precio, 0));
         agregarCampo(form, "cantidadProducto", normalizarNumero(producto.cantidad, 1));
         agregarCampo(form, "saborProducto", producto.sabor || "");
@@ -227,7 +233,9 @@ function enviarPedidoAPago() {
         agregarCampo(form, "notasProducto", producto.notas || "");
     });
 
-    agregarCampo(form, "metodoPago", "Tarjeta simulada");
+    agregarCampo(form, "subtotal", subtotal.toFixed(2));
+    agregarCampo(form, "itbms", itbms.toFixed(2));
+    agregarCampo(form, "total", total < 0 ? "0.00" : total.toFixed(2));
 
     agregarCampo(
         form,

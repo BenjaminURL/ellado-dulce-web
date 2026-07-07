@@ -73,7 +73,8 @@ try {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="mi-cuenta.css?v=2">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="mi-cuenta.css">
 </head>
 <body>
 
@@ -84,26 +85,22 @@ try {
     </div>
 
     <nav class="menu">
-        <a href="index.jsp">Inicio</a>
-        <a href="helados.jsp">Helados</a>
-        <a href="html/bebidas.jsp">Bebidas</a>
-        <a href="">Crepes</a>
+            <a href="index.jsp">Inicio</a>
 
-        <div class="dropdown">
-            <a href="Boquitas.jsp" class="dropbtn">Boquitas ▾</a>
-
-            <div class="dropdown-content">
-                <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
-                <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+                <div class="dropdown-menu">
+                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+                </div>
             </div>
-        </div>
 
-        <a href="Pasteles.jsp">Pasteles</a>
-        <a href="reservas.jsp">Reservas</a>
-        <a href="actividades.jsp">Actividades</a>
-        <a href="Nosotros.jsp">Nosotros</a>
-        <a class="active" href="mi-cuenta.jsp">Mi cuenta</a>
-    </nav>
+            <a href="Pasteles.jsp">Pasteles</a>
+            <a href="reservas.jsp">Reservas</a>
+            <a href="actividades.jsp">Actividades</a>
+            <a href="Nosotros.jsp">Nosotros</a>
+            <a href="mi-cuenta.jsp">Mi cuenta</a>
+        </nav>
 
     <div class="cart">
         <a href="pantalla-de-carrito.jsp">

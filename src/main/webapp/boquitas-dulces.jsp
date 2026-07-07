@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Boquitas Dulces | Ellado Dulce</title>
 
+    <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="catalogo-productos.css">
 </head>
 <body>
@@ -20,8 +21,8 @@
     <nav class="menu">
             <a href="index.jsp">Inicio</a>
 
-            <div class="dropdown" style="display: inline-block; position: relative;">
-                <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
                 <div class="dropdown-menu">
                     <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
                     <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
@@ -59,7 +60,7 @@
     </div>
 
     <div class="cake-image">
-        <img src="imagenes/productos/boquitas-dulces.webp" alt="Boquitas Dulces">
+        <img src="imagenes/boquitad.png" alt="Boquitas Dulces">
     </div>
 </section>
 
@@ -104,20 +105,20 @@
 %>
 
         <div class="cake-card">
-            <img 
-                src="imagenes/productos/producto-<%= idMenu %>.webp" 
-                alt="<%= producto %>">
+    <img 
+        src="imagenes/Productos/<%= producto %>-<%= idMenu %>.png" 
+        alt="<%= producto %>">
 
-            <div class="cake-content">
-                <h3><%= producto %></h3>
+    <div class="cake-content">
+        <h3><%= producto %></h3>
 
-                <strong class="cake-price">B/.<%= precioTexto %></strong>
+        <strong class="cake-price">B/.<%= precioTexto %></strong>
 
-                <p><%= descripcion %></p>
+        <p><%= descripcion %></p>
 
-                <a href="detalle-boquita.jsp?id=<%= idMenu %>">Ver más</a>
-            </div>
-        </div>
+        <a href="detalle-boquita.jsp?id=<%= idMenu %>">Ver más</a>
+    </div>
+</div>
 
 <%
         }

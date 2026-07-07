@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="inicio.css">
 </head>
 <body>
@@ -22,8 +23,8 @@
         <nav class="menu">
             <a href="index.jsp">Inicio</a>
 
-            <div class="dropdown" style="display: inline-block; position: relative;">
-                <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
                 <div class="dropdown-menu">
                     <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
                     <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
@@ -54,11 +55,6 @@
                         Helados, crepes, cafés, pasteles personalizados, boquitas para eventos
                         y un rincón de noticias reposteras para los amantes del buen dulce.
                     </p>
-
-                    <div class="hero-buttons">
-                        <a href="Pasteles.jsp" class="btn btn-primary">Ver menú</a>
-                        <a href="reservas.jsp" class="btn btn-outline">Reservar ahora</a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -68,63 +64,42 @@
 
             <div class="product-grid">
     <article class="product-card">
-        <span class="badge">Popular</span>
-        <button class="favorite">♡</button>
         <div class="product-img">
             <img src="imagenes/Index/bandejaDeTequeños.jpg" alt="Bandeja de tequeños">
         </div>
-        <h3>Bandeja de tequeños</h3>
-        <p class="price">$5.50</p>
-        <button class="small-btn">+ Agregar</button>
+        <h3>tequeños venezolanos</h3>
+        <p class="price">$15.50</p>
+        <a href="boquitas-saladas.jsp" class="small-btn">Ver más</a>
     </article>
 
     <article class="product-card">
-        <span class="badge">Popular</span>
-        <button class="favorite">♡</button>
         <div class="product-img">
             <img src="imagenes/Index/empanadasSurtidas.jpg" alt="Mini Empanaditas Surtidas">
         </div>
         <h3>Mini Empanaditas Surtidas</h3>
-        <p class="price">$5.00</p>
-        <button class="small-btn">+ Agregar</button>
+        <p class="price">$18.00</p>
+        <a href="boquitas-saladas.jsp" class="small-btn">Ver más</a>
     </article>
 
     <article class="product-card">
-        <button class="favorite">♡</button>
         <div class="product-img">
             <img src="imagenes/Index/Mini-Quiche-Lorraine.jpg" alt="Mini Quiches Lorraine">
         </div>
         <h3>Mini Quiches Lorraine (4 uds)</h3>
-        <p class="price">$6.50</p>
-        <button class="small-btn">+ Agregar</button>
+        <p class="price">$14.50</p>
+        <a href="boquitas-saladas.jsp" class="small-btn">Ver más</a>
     </article>
 
     <article class="product-card">
-        <button class="favorite">♡</button>
         <div class="product-img">
             <img src="imagenes/Index/cotte-cachitos.jpeg" alt="Cachitos de Jamón y Queso">
         </div>
         <h3>Cachitos de Jamón y Queso</h3>
-        <p class="price">$3.75</p>
-        <button class="small-btn">+ Agregar</button>
+        <p class="price">$22.00</p>
+        <a href="boquitas-saladas.jsp" class="small-btn">Ver más</a>
     </article>
 	</div>
         </section>
-
-        <section class="promo-section container" style="display: block;">
-            <article class="promo-card dark-promo" style="max-width: 100%; width: 100%;">
-                <h3>Nuestros Pasteles</h3>
-                <p>
-                    Explora nuestra colección de pasteles frescos, desde los clásicos de chocolate 
-                    hasta creaciones frutales ideales para cualquier ocasión especial. 
-                    ¡Encuentra tu favorito hoy mismo!
-                </p>
-                <div style="margin-top: 15px;">
-                    <a href="Pasteles.jsp" class="btn btn-primary">Ver Catálogo</a>
-                </div>
-            </article>
-        </section>
-        
         <section class="reserve-band">
             <div class="reserve-section">
                 <div class="reserve-info">
@@ -155,8 +130,8 @@
             </div>
         </section>
 
-		<section class="section container">
-		    <h2><span></span> Noticias Dulces</h2>
+		<section class="section container news-section">
+    <h2><span></span> Noticias Dulces</h2>
 		
 		    <div class="activity-grid">
 		        <article class="activity-card pink">
@@ -214,8 +189,6 @@
                         <p>Premio</p>
                     </div>
                 </div>
-
-                <a href="login.jsp" class="btn btn-primary">Conocer más</a>
             </div>
         </section>
 

@@ -1,80 +1,39 @@
-// ========================================
-// DATOS DEL EQUIPO - 5 MIEMBROS
-// ========================================
-const teamMembers = [
-    {
-        nombre: "Ashely Hernandez",
-        rol: "...",
-        descripcion: "...",
-        imagen: "imagenes/equipo/ashely.jpg",
-        cedula: "8-1021-1342",
-        carrera: "Ingenieria de software"
-    },
-    {
-        nombre: "Benjamin Romero",
-        rol: "...",
-        descripcion: "...",
-        imagen: "imagenes/equipo/benjamin.jpg",
-        cedula: "8-1025-1530",
-        carrera: "Ingenieria de software"
-    },
-    {
-        nombre: "Juan Bermudez",
-        rol: "...",
-        descripcion: "....",
-        imagen: "imagenes/equipo/juan.jpg",
-        cedula: "20-70-8224",
-        carrera: "Ingenieria de software"
-    },
-    {
-        nombre: "Diego Cedeño",
-        rol: "Maestro Heladero",
-        descripcion: "...",
-        imagen: "imagenes/equipo/diego.jpg",
-        cedula: "8-1026-447",
-        carrera: "Ingeniería de software"
-    },
-    {
-        nombre: "Alejandro Chan",
-        rol: "...",
-        descripcion: "...",
-        imagen: "imagenes/equipo/alejandro.jpg",
-        cedula: "8-1031-302",
-        carrera: "Ingenieria de software"
-    }
-];
+document.addEventListener("DOMContentLoaded", function () {
+    const tarjetasValores = document.querySelectorAll(".value-card");
+    const tarjetasEquipo = document.querySelectorAll(".team-card");
 
-// ========================================
-// RENDERIZAR EQUIPO
-// ========================================
-function renderTeam() {
-    const grid = document.getElementById('teamGrid');
-    if (!grid) return;
+    tarjetasValores.forEach(function (tarjeta) {
+        tarjeta.style.transition = "0.3s ease";
+        tarjeta.style.borderColor = "transparent";
 
-    grid.innerHTML = '';
+        tarjeta.addEventListener("mouseenter", function () {
+            tarjeta.style.borderColor = "#ff4f8b";
+            tarjeta.style.transform = "translateY(-6px)";
+            tarjeta.style.boxShadow = "0 12px 28px rgba(255, 79, 139, 0.15)";
+        });
 
-    teamMembers.forEach(member => {
-        const card = document.createElement('div');
-        card.className = 'team-card';
-
-        card.innerHTML = `
-            <div class="team-card-image" style="background-image: url('${member.imagen}'); background-size: cover; background-position: center;"></div>
-            <div class="team-card-info">
-                <h3>${member.nombre}</h3>
-                <p class="role">${member.rol}</p>
-                <p class="team-description">${member.descripcion}</p>
-                <div class="team-details">
-                    <p><strong>Cédula:</strong> ${member.cedula}</p>
-                    <p><strong>Carrera:</strong> ${member.carrera}</p>
-                </div>
-            </div>
-        `;
-
-        grid.appendChild(card);
+        tarjeta.addEventListener("mouseleave", function () {
+            tarjeta.style.borderColor = "transparent";
+            tarjeta.style.transform = "translateY(0)";
+            tarjeta.style.boxShadow = "none";
+        });
     });
-}
 
-// ========================================
-// CARGAR AL INICIO
-// ========================================
-document.addEventListener('DOMContentLoaded', renderTeam);
+    tarjetasEquipo.forEach(function (tarjeta) {
+        tarjeta.style.transition = "0.3s ease";
+        tarjeta.style.borderColor = "transparent";
+        tarjeta.style.boxShadow = "0 8px 24px rgba(16, 25, 66, 0.08)";
+
+        tarjeta.addEventListener("mouseenter", function () {
+            tarjeta.style.borderColor = "#ff4f8b";
+            tarjeta.style.transform = "translateY(-6px)";
+            tarjeta.style.boxShadow = "0 14px 32px rgba(255, 79, 139, 0.12)";
+        });
+
+        tarjeta.addEventListener("mouseleave", function () {
+            tarjeta.style.borderColor = "transparent";
+            tarjeta.style.transform = "translateY(0)";
+            tarjeta.style.boxShadow = "0 8px 24px rgba(16, 25, 66, 0.08)";
+        });
+    });
+});

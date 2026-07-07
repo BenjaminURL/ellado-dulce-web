@@ -1,8 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.net.URLEncoder" %>
 
 <%
+    request.setCharacterEncoding("UTF-8");
+
     String idParam = request.getParameter("id");
 
     if (idParam == null || idParam.trim().equals("")) {
@@ -21,7 +24,6 @@
 
     String nombre = "";
     String descripcion = "";
-    String imagen = "";
     String estado = "";
     double precio = 0.00;
     int cupos = 0;
@@ -42,7 +44,7 @@
         );
 
         String sql =
-            "SELECT a_id_actividad, a_nombre, a_descripcion, a_fecha, a_hora, a_precio, a_cupos, a_imagen, a_estado " +
+            "SELECT a_id_actividad, a_nombre, a_descripcion, a_fecha, a_hora, a_precio, a_cupos, a_estado " +
             "FROM actividad " +
             "WHERE a_id_actividad = ?";
 
@@ -58,12 +60,7 @@
             hora = rs.getTime("a_hora");
             precio = rs.getDouble("a_precio");
             cupos = rs.getInt("a_cupos");
-            imagen = rs.getString("a_imagen");
             estado = rs.getString("a_estado");
-
-            if (imagen == null || imagen.trim().equals("")) {
-                imagen = "actividad-default.png";
-            }
 
             if (estado == null || estado.trim().equals("")) {
                 estado = "Disponible";
@@ -93,8 +90,12 @@
     String horaTexto = formatoHora.format(hora);
     String precioTexto = String.format(java.util.Locale.US, "%.2f", precio);
 
+    String imagenActividad = "imagenes/actividades/" + nombre + "-" + idActividad + ".png";
+
     boolean agotada = cupos <= 0 || "Agotada".equalsIgnoreCase(estado) || "Cancelada".equalsIgnoreCase(estado);
     boolean clienteLogueado = session.getAttribute("idCliente") != null;
+
+    String nombreWhatsapp = URLEncoder.encode(nombre, "UTF-8");
 %>
 
 <!DOCTYPE html>
@@ -108,7 +109,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="detalle-producto.css?v=10">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="detalle-producto.css">
 </head>
 <body>
 
@@ -120,13 +122,21 @@
 
     <nav class="menu">
         <a href="index.jsp">Inicio</a>
-        <a href="helados.jsp">Helados</a>
-        <a href="html/bebidas.jsp">Bebidas</a>
-        <a href="">Crepes</a>
-        <a href="Boquitas.jsp">Boquitas</a>
+
+        <div class="dropdown">
+    <a href="Boquitas.jsp" class="dropdown-toggle">
+        Boquitas <span class="arrow">∨</span>
+    </a>
+
+    <div class="dropdown-menu">
+        <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+        <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+    </div>
+</div>
+
         <a href="Pasteles.jsp">Pasteles</a>
         <a href="reservas.jsp">Reservas</a>
-        <a class="active" href="actividades.jsp">Actividades</a>
+        <a href="actividades.jsp">Actividades</a>
         <a href="Nosotros.jsp">Nosotros</a>
         <a href="mi-cuenta.jsp">Mi cuenta</a>
     </nav>
@@ -146,12 +156,12 @@
 
         <div class="product-gallery">
             <div class="main-product-image">
-                <img src="imagenes/actividades/<%= imagen %>" alt="<%= nombre %>">
+                <img src="<%= imagenActividad %>" alt="<%= nombre %>">
             </div>
 
             <div class="thumbnail-row">
                 <div class="thumbnail active-thumb">
-                    <img src="imagenes/actividades/<%= imagen %>" alt="<%= nombre %>">
+                    <img src="<%= imagenActividad %>" alt="<%= nombre %>">
                 </div>
             </div>
         </div>
@@ -160,7 +170,10 @@
 
             <div class="product-header">
                 <h1><%= nombre %></h1>
-                <p class="product-price">B/.<%= precioTexto %></p>
+
+                <p class="product-price">
+                    B/.<%= precioTexto %>
+                </p>
 
                 <p class="product-description">
                     <%= descripcion %>
@@ -190,7 +203,7 @@
             <section class="summary-box">
                 <div>
                     <span>Total a pagar</span>
-                    <strong id="subtotalPrice">$<%= precioTexto %></strong>
+                    <strong id="subtotalPrice">B/.<%= precioTexto %></strong>
                     <small>Compra de 1 cupo para la actividad</small>
                 </div>
 
@@ -203,24 +216,27 @@
                 <% } else if (!clienteLogueado) { %>
 
                     <a href="login.jsp" class="cart-btn">
-                        Iniciar sesión para comprar cupo
+                        Comprar cupo
                     </a>
 
                 <% } else { %>
 
-                    <form action="comprar-actividad.jsp" method="post">
-                        <input type="hidden" name="idActividad" value="<%= idActividad %>">
+                    <form action="pago.jsp" method="post">
+                    <input type="hidden" name="tipoPago" value="actividad">
+                    <input type="hidden" name="idActividad" value="<%= idActividad %>">
+                    <input type="hidden" name="nombreActividad" value="<%= nombre %>">
+                    <input type="hidden" name="precioActividad" value="<%= precioTexto %>">
 
-                        <button type="submit" class="cart-btn">
-                            Comprar cupo
-                        </button>
+                     <button type="submit" class="cart-btn">
+                     Comprar cupo
+                     </button>
                     </form>
 
                 <% } %>
 
                 <a 
                     class="whatsapp-btn" 
-                    href="https://wa.me/5073158752?text=Hola,%20quiero%20información%20sobre%20la%20actividad%20<%= nombre.replace(" ", "%20") %>." 
+                    href="https://wa.me/5073158752?text=Hola,%20quiero%20información%20sobre%20la%20actividad%20<%= nombreWhatsapp %>." 
                     target="_blank">
                     Consultar por WhatsApp
                 </a>

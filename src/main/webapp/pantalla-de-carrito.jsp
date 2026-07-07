@@ -57,7 +57,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito | Ellado Dulce</title>
 
-    <link rel="stylesheet" href="pantalla-de-carrito.css?v=30">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="pantalla-de-carrito.css">
 </head>
 <body>
 
@@ -68,17 +69,22 @@
     </div>
 
     <nav class="menu">
-        <a href="index.jsp">Inicio</a>
-        <a href="helados.jsp">Helados</a>
-        <a href="html/bebidas.jsp">Bebidas</a>
-        <a href="">Crepes</a>
-        <a href="Boquitas.jsp">Boquitas</a>
-        <a href="Pasteles.jsp">Pasteles</a>
-        <a href="reservas.jsp">Reservas</a>
-        <a href="actividades.jsp">Actividades</a>
-        <a href="Nosotros.jsp">Nosotros</a>
-        <a href="mi-cuenta.jsp">Mi cuenta</a>
-    </nav>
+            <a href="index.jsp">Inicio</a>
+
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+                <div class="dropdown-menu">
+                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+                </div>
+            </div>
+
+            <a href="Pasteles.jsp">Pasteles</a>
+            <a href="reservas.jsp">Reservas</a>
+            <a href="actividades.jsp">Actividades</a>
+            <a href="Nosotros.jsp">Nosotros</a>
+            <a href="mi-cuenta.jsp">Mi cuenta</a>
+        </nav>
 
     <div class="cart">
         <a href="pantalla-de-carrito.jsp">
@@ -218,7 +224,7 @@
     const puntosClienteActual = <%= puntosCliente %>;
 </script>
 
-<script src="pantalla-de-carrito.js?v=30"></script>
+<script src="pantalla-de-carrito.js"></script>
 
 </body>
 </html>

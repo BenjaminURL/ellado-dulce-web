@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <title>Boquitas Saladas | Ellado Dulce</title>
 
-    <link rel="stylesheet" href="catalogo-productos.css?v=31">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="catalogo-productos.css">
 </head>
 <body>
 
@@ -20,8 +21,8 @@
     <nav class="menu">
             <a href="index.jsp">Inicio</a>
 
-            <div class="dropdown" style="display: inline-block; position: relative;">
-                <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
                 <div class="dropdown-menu">
                     <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
                     <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
@@ -59,7 +60,7 @@
     </div>
 
     <div class="cake-image">
-        <img src="imagenes/productos/boquitas-saladas.webp" alt="Boquitas Saladas">
+        <img src="imagenes/boquitas (2).png" alt="Boquitas Saladas">
     </div>
 </section>
 
@@ -105,8 +106,8 @@
 
         <div class="cake-card">
             <img 
-                src="imagenes/productos/producto-<%= idMenu %>.webp" 
-                alt="<%= producto %>">
+            src="imagenes/Productos/<%= producto %>-<%= idMenu %>.png" 
+            alt="<%= producto %>">
 
             <div class="cake-content">
                 <h3><%= producto %></h3>

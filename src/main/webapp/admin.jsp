@@ -149,6 +149,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
@@ -160,24 +161,8 @@
     </div>
 
     <nav class="menu">
-        <a href="index.jsp">Inicio</a>
-        <a href="helados.jsp">Helados</a>
-        <a href="html/bebidas.jsp">Bebidas</a>
-        <a href="#">Crepes</a>
-        <a href="Boquitas.jsp">Boquitas</a>
-        <a href="Pasteles.jsp">Pasteles</a>
-        <a href="reservas.jsp">Reservas</a>
-        <a href="actividades.jsp">Actividades</a>
-        <a href="nosotros.jsp">Nosotros</a>
-        <a href="mi-cuenta.jsp">Mi cuenta</a>
-        <a href="logout.jsp">Cerrar sesión</a>
-    </nav>
-
-    <div class="cart">
-        <a href="pantalla-de-carrito.jsp">
-            <img src="imagenes/iconos/carrito.png" alt="Carrito de compras" class="cart-img">
-        </a>
-    </div>
+            <a href="admin.jsp">admin</a>
+            <a href="logout.jsp" class="logout-header-btn">Cerrar sesión</a>
 </header>
 
 <main class="admin-page">
@@ -238,14 +223,13 @@
                     <option value="listo">Listo</option>
                     <option value="entregado">Entregado</option>
                     <option value="confirmada">Confirmada</option>
-                    <option value="cancelada">Cancelada</option>
                     <option value="realizada">Realizada</option>
                 </select>
             </div>
 
             <div class="field-group date-field">
                 <label for="rangoFechas">Rango de fechas</label>
-                <input type="text" id="rangoFechas" value="" placeholder="Filtro visual opcional">
+                <input type="text" id="rangoFechas" value="" placeholder="día/mes/año">
             </div>
 
             <button type="button" class="clear-btn" id="btnLimpiar">
@@ -326,7 +310,7 @@
 </footer>
 
 <script>
-    const registrosAdmin = [<%= registrosJS.toString() %>];
+    window.registrosAdmin = [<%= registrosJS.toString() %>];
 </script>
 
 <script src="admin.js?v=2"></script>

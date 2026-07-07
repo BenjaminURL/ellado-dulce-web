@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="catalogo-productos.css">
 </head>
 <body>
@@ -22,12 +23,12 @@
         <img src="imagenes/logo2019.png" class="logo-img" alt="Logo El Lado Dulce">
         <span>El <strong>Lado Dulce</strong></span>
     </div>
-    
-	<nav class="menu">
+
+    <nav class="menu">
             <a href="index.jsp">Inicio</a>
 
-            <div class="dropdown" style="display: inline-block; position: relative;">
-                <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
                 <div class="dropdown-menu">
                     <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
                     <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
@@ -58,13 +59,13 @@
         </p>
 
         <div class="cake-tags">
-            <span>🎨 Talleres creativos</span>
-            <span>🎟 Cupos limitados</span>
+            <span>Talleres creativos</span>
+            <span>Cupos limitados</span>
         </div>
     </div>
 
     <div class="cake-image">
-        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=640&auto=format&fit=crop" alt="Actividades creativas">
+        <img src="imagenes/actividades/Crochet-1.png" alt="Actividades creativas">
     </div>
 </section>
 
@@ -92,9 +93,9 @@
         );
 
         String sql =
-            "SELECT a_id_actividad, a_nombre, a_descripcion, a_fecha, a_hora, a_precio, a_cupos, a_imagen, a_estado " +
+            "SELECT a_id_actividad, a_nombre, a_descripcion, a_fecha, a_hora, a_precio, a_cupos, a_estado " +
             "FROM actividad " +
-            "ORDER BY a_fecha, a_hora";
+            "ORDER BY a_id_actividad";
 
         ps = con.prepareStatement(sql);
         rs = ps.executeQuery();
@@ -107,31 +108,26 @@
             Time hora = rs.getTime("a_hora");
             double precio = rs.getDouble("a_precio");
             int cupos = rs.getInt("a_cupos");
-            String imagen = rs.getString("a_imagen");
             String estado = rs.getString("a_estado");
 
             String fechaTexto = formatoFecha.format(fecha);
             String horaTexto = formatoHora.format(hora);
             String precioTexto = String.format(java.util.Locale.US, "%.2f", precio);
 
-            if (imagen == null || imagen.trim().equals("")) {
-                imagen = "actividad-default.png";
-            }
-
             boolean agotada = cupos <= 0 || "Agotada".equalsIgnoreCase(estado);
 %>
 
         <div class="cake-card">
-            <img src="imagenes/actividades/<%= imagen %>" alt="<%= nombre %>">
+            <img 
+                src="imagenes/actividades/<%= nombre %>-<%= idActividad %>.png" 
+                alt="<%= nombre %>">
 
             <div class="cake-content">
                 <h3><%= nombre %></h3>
 
                 <strong class="cake-price">B/.<%= precioTexto %></strong>
 
-                <p>
-                    <%= descripcion %>
-                </p>
+                <p><%= descripcion %></p>
 
                 <div class="tags">
                     <span class="tag orange"><%= fechaTexto %> - <%= horaTexto %></span>
@@ -169,7 +165,7 @@
 </section>
 
 <footer class="footer">
-    <div>
+    <div class="footer-col">
         <div class="footer-logo">
             <img src="imagenes/logo2019.png" class="footer-logo-img" alt="Logo El Lado Dulce">
             <h3>El <span>Lado Dulce</span></h3>
@@ -178,19 +174,19 @@
         <p>Tu lugar favorito para endulzar cada momento.</p>
     </div>
 
-    <div>
+    <div class="footer-col">
         <h3>Horarios</h3>
         <p>Lunes<br>1:00 p.m. - 8:00 p.m.</p>
         <p>Martes a Domingo<br>1:00 p.m. - 9:00 p.m.</p>
     </div>
 
-    <div>
+    <div class="footer-col">
         <h3>Ubicación</h3>
         <p>Brisas Mall, Av. Principal, San Miguelito, Provincia de Panamá.</p>
         <a href="#">Cómo llegar →</a>
     </div>
 
-    <div>
+    <div class="footer-col">
         <h3>Contacto</h3>
         <p>@elladodulce</p>
         <p>+507 315-8752</p>

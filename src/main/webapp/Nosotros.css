@@ -1,138 +1,10 @@
-/* ========================================
-   RESET Y BASE
-   ======================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =========================
+   HERO NOSOTROS
+========================= */
 
-html,
-body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: "Poppins", Arial, sans-serif;
-    background-color: #f8f2f6;
-    color: #101942;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #171b4f;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 8px 0;
-    z-index: 100;
-    margin-top: 5px;
-}
-
-.dropdown-menu a {
-    color: #ffffff;
-    padding: 10px 16px;
-    display: block;
-    white-space: nowrap;
-    font-size: 13px;
-    text-align: left;
-    transition: background 0.2s ease;
-}
-
-.dropdown-menu a:hover {
-    background-color: rgba(255, 79, 139, 0.15);
-    color: #ff4f8b;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.dropdown::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 15px;
-    display: block;
-}
-
-
-/* ========================================
-   NAVBAR
-   ======================================== */
-.navbar {
-    width: 100%;
-    background-color: #171b4f;
-    color: #ffffff;
-    padding: 18px 42px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 16px;
-}
-
-.logo-img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-}
-
-.logo strong {
-    color: #ff4f8b;
-}
-
-.menu {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    font-size: 13px;
-}
-
-.menu a {
-    color: #ffffff;
-    opacity: 0.9;
-    transition: 0.2s ease;
-}
-
-.menu a:hover,
-.menu .active {
-    color: #ff4f8b;
-}
-
-.cart {
-    font-size: 20px;
-}
-
-/* ========================================
-   HERO
-   ======================================== */
 .hero-about {
     background: linear-gradient(135deg, #171b4f 0%, #2a2f7a 100%);
-    color: #fff;
+    color: #ffffff;
     padding: 80px 42px 70px;
     text-align: center;
 }
@@ -152,9 +24,10 @@ a {
     line-height: 1.6;
 }
 
-/* ========================================
+/* =========================
    HISTORIA
-   ======================================== */
+========================= */
+
 .history-section {
     padding: 60px 42px;
     max-width: 1200px;
@@ -192,25 +65,19 @@ a {
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 12px 30px rgba(16, 25, 66, 0.12);
+    background-color: #ffffff;
 }
 
-.placeholder-img {
+.history-image img {
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
-    background-image:
-        linear-gradient(45deg, #ececec 25%, transparent 25%),
-        linear-gradient(-45deg, #ececec 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #ececec 75%),
-        linear-gradient(-45deg, transparent 75%, #ececec 75%);
-    background-size: 32px 32px;
-    background-position: 0 0, 0 16px, 16px -16px, -16px 0;
-    border-radius: 18px;
+    object-fit: cover;
 }
 
-/* ========================================
+/* =========================
    VALORES
-   ======================================== */
+========================= */
+
 .values-section {
     background-color: #ffffff;
     padding: 60px 42px 70px;
@@ -236,14 +103,7 @@ a {
     background-color: #f8f2f6;
     padding: 30px 20px;
     border-radius: 18px;
-    transition: 0.3s ease;
     border: 2px solid transparent;
-}
-
-.value-card:hover {
-    border-color: #ff4f8b;
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(255, 79, 139, 0.15);
 }
 
 .value-icon {
@@ -264,9 +124,10 @@ a {
     line-height: 1.6;
 }
 
-/* ========================================
-   EQUIPO - 5 MIEMBROS
-   ======================================== */
+/* =========================
+   EQUIPO
+========================= */
+
 .team-section {
     padding: 60px 42px 70px;
     max-width: 1200px;
@@ -300,27 +161,20 @@ a {
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(16, 25, 66, 0.08);
-    transition: 0.3s ease;
     border: 2px solid transparent;
-}
-
-.team-card:hover {
-    border-color: #ff4f8b;
-    transform: translateY(-6px);
-    box-shadow: 0 14px 32px rgba(255, 79, 139, 0.12);
 }
 
 .team-card-image {
     width: 100%;
     height: 200px;
     background-color: #ececec;
-    background-image:
-        linear-gradient(45deg, #d8d8ea 25%, transparent 25%),
-        linear-gradient(-45deg, #d8d8ea 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #d8d8ea 75%),
-        linear-gradient(-45deg, transparent 75%, #d8d8ea 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    overflow: hidden;
+}
+
+.team-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .team-card-info {
@@ -349,9 +203,6 @@ a {
     margin-bottom: 12px;
 }
 
-/* ========================================
-   EQUIPO - DETALLES ADICIONALES
-   ======================================== */
 .team-details {
     border-top: 1px solid #eeeaf0;
     padding-top: 12px;
@@ -371,64 +222,10 @@ a {
     font-size: 11px;
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
-.footer {
-    background-color: #171b4f;
-    color: #ffffff;
-    padding: 42px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 34px;
-}
+/* =========================
+   RESPONSIVE NOSOTROS
+========================= */
 
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-}
-
-.footer-logo-img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-}
-
-.footer-logo h3 {
-    margin-bottom: 0;
-}
-
-.footer h3 {
-    font-size: 16px;
-    margin-bottom: 14px;
-}
-
-.footer h3 span,
-.footer a {
-    color: #ff4f8b;
-}
-
-.footer p {
-    color: #d9d9ec;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-.copyright {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: #aeb1d0;
-    font-size: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 22px;
-    margin-top: 8px;
-}
-
-/* ========================================
-   RESPONSIVE
-   ======================================== */
 @media (max-width: 1100px) {
     .team-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -455,31 +252,11 @@ a {
     }
 }
 
-@media (max-width: 900px) {
-    .navbar {
-        flex-wrap: wrap;
-        gap: 18px;
-    }
-
-    .menu {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        gap: 20px;
-    }
-
-    .footer {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 600px) {
-    .navbar,
     .hero-about,
     .history-section,
     .values-section,
-    .team-section,
-    .footer {
+    .team-section {
         padding-left: 22px;
         padding-right: 22px;
     }
@@ -511,21 +288,4 @@ a {
     .team-card-image {
         height: 180px;
     }
-
-    .footer {
-        padding-left: 22px;
-        padding-right: 22px;
-    }
-}
-
-.cart a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cart-img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
 }

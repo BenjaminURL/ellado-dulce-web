@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="layout.css">
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
@@ -22,13 +23,16 @@
     <nav class="menu">
             <a href="index.jsp">Inicio</a>
 
-            <div class="dropdown" style="display: inline-block; position: relative;">
-                <a href="#" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
-                <div class="dropdown-menu">
-                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
-                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
-                </div>
-            </div>
+            <div class="dropdown">
+    <a href="Boquitas.jsp" class="dropdown-toggle">
+        Boquitas <span class="arrow">∨</span>
+    </a>
+
+    <div class="dropdown-menu">
+        <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+        <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+    </div>
+</div>
 
             <a href="Pasteles.jsp">Pasteles</a>
             <a href="reservas.jsp">Reservas</a>
@@ -46,10 +50,6 @@
 
 <main class="login-page">
     <section class="login-card">
-
-        <div class="login-icon">
-            E
-        </div>
 
         <h1>Iniciar sesión</h1>
         <p class="login-text">

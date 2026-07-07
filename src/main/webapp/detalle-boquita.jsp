@@ -2,10 +2,12 @@
 <%@ page import="java.sql.*" %>
 
 <%
+    request.setCharacterEncoding("UTF-8");
+
     String idParam = request.getParameter("id");
 
     if (idParam == null || idParam.trim().equals("")) {
-        response.sendRedirect("Boquitas.jsp");
+        response.sendRedirect("boquitas-dulces.jsp");
         return;
     }
 
@@ -14,14 +16,14 @@
     try {
         idMenu = Integer.parseInt(idParam);
     } catch (Exception e) {
-        response.sendRedirect("Boquitas.jsp");
+        response.sendRedirect("boquitas-dulces.jsp");
         return;
     }
 
-    String nombreProducto = "";
-    String descripcionProducto = "";
-    String categoriaProducto = "";
-    double precioProducto = 0.00;
+    String producto = "";
+    String descripcion = "";
+    double precio = 0.00;
+    int idCategoria = 0;
 
     Connection con = null;
     PreparedStatement ps = null;
@@ -37,11 +39,10 @@
         );
 
         String sql =
-            "SELECT m.m_id_menu, m.m_producto, m.m_precio, m.m_descripcion, c.ct_descripcion " +
-            "FROM menu m " +
-            "INNER JOIN categoria c ON m.m_ct_id_categoria = c.ct_id_categoria " +
-            "WHERE m.m_id_menu = ? " +
-            "AND m.m_ct_id_categoria IN (7, 8)";
+            "SELECT m_id_menu, m_producto, m_precio, m_descripcion, m_ct_id_categoria " +
+            "FROM menu " +
+            "WHERE m_id_menu = ? " +
+            "AND m_ct_id_categoria IN (7, 8)";
 
         ps = con.prepareStatement(sql);
         ps.setInt(1, idMenu);
@@ -49,17 +50,12 @@
         rs = ps.executeQuery();
 
         if (rs.next()) {
-            nombreProducto = rs.getString("m_producto");
-            precioProducto = rs.getDouble("m_precio");
-            descripcionProducto = rs.getString("m_descripcion");
-            categoriaProducto = rs.getString("ct_descripcion");
-
-            if (descripcionProducto == null || descripcionProducto.trim().equals("")) {
-                descripcionProducto = "Boquita especial preparada por Ellado Dulce, ideal para eventos, reuniones y celebraciones.";
-            }
-
+            producto = rs.getString("m_producto");
+            precio = rs.getDouble("m_precio");
+            descripcion = rs.getString("m_descripcion");
+            idCategoria = rs.getInt("m_ct_id_categoria");
         } else {
-            response.sendRedirect("Boquitas.jsp");
+            response.sendRedirect("boquitas-dulces.jsp");
             return;
         }
 
@@ -76,60 +72,63 @@
         if (con != null) con.close();
     }
 
-    String precioTexto = String.format(java.util.Locale.US, "%.2f", precioProducto);
-    String imagenProducto = "imagenes/productos/producto-" + idMenu + ".webp";
+    String precioTexto = String.format(java.util.Locale.US, "%.2f", precio);
 
-    String volverUrl = "Boquitas.jsp";
+    String categoriaTexto = "";
+    String paginaVolver = "";
 
-    if ("Boquitas Dulces".equalsIgnoreCase(categoriaProducto)) {
-        volverUrl = "boquitas-dulces.jsp";
-    } else if ("Boquitas Saladas".equalsIgnoreCase(categoriaProducto)) {
-        volverUrl = "boquitas-saladas.jsp";
+    if (idCategoria == 7) {
+        categoriaTexto = "Boquitas Dulces";
+        paginaVolver = "boquitas-dulces.jsp";
+    } else if (idCategoria == 8) {
+        categoriaTexto = "Boquitas Saladas";
+        paginaVolver = "boquitas-saladas.jsp";
+    } else {
+        categoriaTexto = "Boquitas";
+        paginaVolver = "Boquitas.jsp";
     }
+
+    String imagenProducto = "imagenes/Productos/" + producto + "-" + idMenu + ".png";
 %>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= nombreProducto %> | Ellado Dulce</title>
+    <title><%= producto %> | Ellado Dulce</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="detalle-producto.css?v=10">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="detalle-producto.css">
 </head>
 <body>
 
 <header class="navbar">
     <div class="logo">
         <img src="imagenes/logo2019.png" alt="Logo Ellado Dulce" class="logo-img">
-        <span>Ellado <strong>Dulce</strong></span>
+        <span>El <strong>Lado Dulce</strong></span>
     </div>
 
     <nav class="menu">
-        <a href="index.jsp">Inicio</a>
-        <a href="helados.jsp">Helados</a>
-        <a href="html/bebidas.jsp">Bebidas</a>
-        <a href="">Crepes</a>
+            <a href="index.jsp">Inicio</a>
 
-        <div class="dropdown">
-            <a href="Boquitas.jsp" class="dropbtn active">Boquitas ▾</a>
-
-            <div class="dropdown-content">
-                <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
-                <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+            <div class="dropdown">
+                <a href="" class="dropdown-toggle">Boquitas <span class="arrow">∨</span></a>
+                <div class="dropdown-menu">
+                    <a href="boquitas-dulces.jsp">Boquitas Dulces</a>
+                    <a href="boquitas-saladas.jsp">Boquitas Saladas</a>
+                </div>
             </div>
-        </div>
 
-        <a href="Pasteles.jsp">Pasteles</a>
-        <a href="reservas.jsp">Reservas</a>
-        <a href="actividades.jsp">Actividades</a>
-        <a href="nosotros.jsp">Nosotros</a>
-        <a href="mi-cuenta.jsp">Mi cuenta</a>
-    </nav>
+            <a href="Pasteles.jsp">Pasteles</a>
+            <a href="reservas.jsp">Reservas</a>
+            <a href="actividades.jsp">Actividades</a>
+            <a href="Nosotros.jsp">Nosotros</a>
+            <a href="mi-cuenta.jsp">Mi cuenta</a>
+        </nav>
 
     <div class="cart">
         <a href="pantalla-de-carrito.jsp">
@@ -140,78 +139,68 @@
 
 <main class="product-page">
 
-    <a href="<%= volverUrl %>" class="back-link">← Volver a <%= categoriaProducto %></a>
+    <a href="<%= paginaVolver %>" class="back-link">
+        ← Volver a <%= categoriaTexto %>
+    </a>
 
     <section class="product-detail">
 
         <div class="product-gallery">
             <div class="main-product-image">
-                <img src="<%= imagenProducto %>" alt="<%= nombreProducto %>">
-            </div>
-
-            <div class="thumbnail-row">
-                <div class="thumbnail active-thumb">
-                    <img src="<%= imagenProducto %>" alt="<%= nombreProducto %>">
-                </div>
+                <img src="<%= imagenProducto %>" alt="<%= producto %>">
             </div>
         </div>
 
         <div class="product-config">
 
             <div class="product-header">
-                <h1><%= nombreProducto %></h1>
+                <h1><%= producto %></h1>
 
-                <p class="product-price">B/.<%= precioTexto %></p>
+                <p class="product-price">
+                    B/.<%= precioTexto %>
+                </p>
 
                 <p class="product-description">
-                    <%= descripcionProducto %>
+                    <%= descripcion %>
                 </p>
             </div>
 
             <form 
-                class="order-form" 
-                id="orderForm" 
+                id="orderForm"
+                class="order-form"
+                data-nombre="<%= producto %>"
+                data-categoria="<%= categoriaTexto %>"
                 data-base-price="<%= precioTexto %>"
-                data-nombre="<%= nombreProducto %>"
-                data-categoria="<%= categoriaProducto %>"
-                data-imagen="<%= imagenProducto %>">
+                data-imagen="<%= imagenProducto %>"
+                data-sabor="">
 
-                <section class="option-box quantity-box">
-                    <h2>1. Cantidad</h2>
+                <div class="option-box">
+                    <h2>Cantidad</h2>
 
                     <div class="quantity-control">
                         <button type="button" id="btnRestar">−</button>
                         <span id="cantidad">1</span>
                         <button type="button" id="btnSumar" class="plus">+</button>
                     </div>
-                </section>
+                </div>
 
-                <section class="option-box">
-                    <h2>2. Notas especiales <span>(opcional)</span></h2>
+                <div class="option-box">
+                    <h2>Notas específicas</h2>
 
                     <textarea 
-                        id="notasEspecificas" 
-                        placeholder="Ej: sabores, colores, relleno, presentación o indicaciones especiales..."></textarea>
-                </section>
+                        id="notasEspecificas"
+                        placeholder="Ej: entrega para evento, preferencia de empaque, indicaciones especiales..."></textarea>
+                </div>
 
-                <section class="summary-box">
-                    <div>
-                        <span>Subtotal</span>
-                        <strong id="subtotalPrice">$<%= precioTexto %></strong>
-                        <small>Precio provisional</small>
-                    </div>
+                <div class="summary-box">
+                    <span>Subtotal</span>
+                    <strong id="subtotalPrice">B/.<%= precioTexto %></strong>
+                    <small>El total se actualizará según la cantidad seleccionada.</small>
 
                     <button type="button" class="cart-btn" id="btnAgregarCarrito">
                         Agregar al carrito
                     </button>
-
-                    <a 
-                        class="whatsapp-btn" 
-                        href="https://wa.me/5073158752?text=Hola,%20quiero%20pedir%20<%= nombreProducto.replace(" ", "%20") %>." 
-                        target="_blank">
-                        Pedir vía WhatsApp
-                    </a>
-                </section>
+                </div>
 
             </form>
 
